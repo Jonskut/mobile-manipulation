@@ -1,0 +1,119 @@
+<mujoco model="d1_description">
+  <default>
+    <default class="robot">
+      <default class="visual">
+        <geom contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom contype="0" conaffinity="1" group="3" />
+      </default>
+    </default>
+    <default class="floor">
+      <geom type="plane" size="0 0 0.05" material="groundplane" />
+    </default>
+  </default>
+
+  <compiler angle="radian" meshdir="." balanceinertia="true" />
+
+  <visual>
+    <global offwidth="3840" offheight="2160" />
+  </visual>
+
+  <worldbody>
+    <body name="base_link" childclass="robot" pos="0 0 0">
+      <geom name="base_link_collision" type="mesh" mesh="base_link_collision_base_link" class="collision" />
+      <geom name="base_link_visual" type="mesh" mesh="base_link_base_link" material="default_material" class="visual" />
+      <body name="Link1" pos="0 0 0.0533" quat="0 0 0 -1">
+        <inertial pos="0.0024649 0.00010517 0.032696" mass="0.13174" diaginertia="6.7236e-05 5.416e-05 4.6637e-05" />
+        <joint name="Joint1" type="hinge" range="-2.35 2.35" axis="0 0 1" />
+        <geom name="Link1_collision" type="mesh" mesh="Link1_collision_Link1" class="collision" />
+        <geom name="Link1_visual" type="mesh" mesh="Link1_Link1" material="default_material" class="visual" />
+        <body name="Link2" pos="0 0.028 0.0563" quat="0 0 -0.7071 -0.7071">
+          <inertial pos="0.0002018 0.19201 -0.027007" mass="0.20213" diaginertia="0.00025682 6.3307e-05 0.00022968" />
+          <joint name="Joint2" type="hinge" range="-1.57 1.57" axis="0 0 -1" />
+          <geom name="Link2_collision" type="mesh" mesh="Link2_collision_Link2" class="collision" />
+          <geom name="Link2_visual" type="mesh" mesh="Link2_Link2" material="default_material" class="visual" />
+          <body name="Link3" pos="0 0.2693 0.0009">
+            <inertial pos="0.015164 0.044482 -0.027461" mass="0.0629" diaginertia="1.7232e-05 1.2606e-05 1.4964e-05" />
+            <joint name="Joint3" type="hinge" range="-1.57 1.57" axis="0 0 -1" />
+            <geom name="Link3_collision" type="mesh" mesh="Link3_collision_Link3" class="collision" />
+            <geom name="Link3_visual" type="mesh" mesh="Link3_Link3" material="default_material" class="visual" />
+            <body name="Link4" pos="0.0577 0.042 -0.0275" quat="0.5 -0.5 0.5 -0.5">
+              <inertial pos="-0.00029556 -0.00016104 0.091339" mass="0.083332" diaginertia="3.9308e-05 3.4378e-05 1.1597e-05" />
+              <joint name="Joint4" type="hinge" range="-2.35 2.35" axis="0 0 1" />
+              <geom name="Link4_collision" type="mesh" mesh="Link4_collision_Link4" class="collision" />
+              <geom name="Link4_visual" type="mesh" mesh="Link4_Link4" material="default_material" class="visual" />
+              <body name="Link5" pos="-0.0001 -0.0237 0.14018" quat="0.5 0.5 -0.5 0.5">
+                <inertial pos="0.040573 0.0062891 -0.023838" mass="0.053817" diaginertia="1.3072e-05 8.6301e-06 1.1049e-05" />
+                <joint name="Joint5" type="hinge" range="-1.57 1.57" axis="0 0 -1" />
+                <geom name="Link5_collision" type="mesh" mesh="Link5_collision_Link5" class="collision" />
+                <geom name="Link5_visual" type="mesh" mesh="Link5_Link5" material="default_material" class="visual" />
+                <body name="Link6" pos="0.0825 -0.0010782 -0.023822" quat="0.5 -0.5 0.5 -0.5">
+                  <inertial pos="-0.0068528 -3.9973E-06 0.039705" mass="0.077892" diaginertia="3.8236e-05 1.7707e-05 4.8839e-05" />
+                  <joint name="Joint6" type="hinge" range="-2.35 2.35" axis="0 0 -1" />
+                  <geom name="Link6_collision" type="mesh" mesh="Link6_collision_Link6" class="collision" />
+                  <geom name="Link6_visual" type="mesh" mesh="Link6_Link6" material="default_material" class="visual" />
+                  <body name="Link7_1" pos="-0.0056012 -0.029636 0.0706" quat="0.4998 -0.5001 -0.4998 -0.5002">
+                    <inertial pos="0.018927 0.006 0.012082" mass="0.015046" diaginertia="1.2692e-06 2.0229e-06 2.6177e-06" />
+                    <joint name="Joint7_1" type="slide" range="0 0.03" axis="0 0 -1" />
+                    <geom name="Link7_1_collision" type="mesh" mesh="Link7_1_collision_Link7_1" class="collision" />
+                    <geom name="Link7_1_visual" type="mesh" mesh="Link7_1_Link7_1" material="default_material" class="visual" />
+                  </body>
+                  <body name="Link7_2" pos="-0.0056388 0.02964 0.0706" quat="0.5001 0.4998 -0.5001 0.4999">
+                    <inertial pos="0.018927 -0.006 0.012082" mass="0.015046" diaginertia="1.2692e-06 2.0229e-06 2.6177e-06" />
+                    <joint name="Joint7_2" type="slide" range="-0.03 0" axis="0 0 1" />
+                    <geom name="Link7_2_collision" type="mesh" mesh="Link7_2_collision_Link7_2" class="collision" />
+                    <geom name="Link7_2_visual" type="mesh" mesh="Link7_2_Link7_2" material="default_material" class="visual" />
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <freejoint name="floating_base" />
+    </body>
+    <light pos="0 0 2." dir="0 0 -1" directional="true" />
+    <geom name="floor" class="floor" size="0 0 0.05" />
+  </worldbody>
+
+  <asset>
+    <material name="default_material" rgba="0.7 0.7 0.7 1" />
+    <mesh name="base_link_collision_base_link" file="meshes/d1_description/meshes/base_link.STL" />
+    <mesh name="base_link_base_link" file="meshes/d1_description/meshes/base_link.STL" />
+    <mesh name="Link1_collision_Link1" file="meshes/d1_description/meshes/Link1.STL" />
+    <mesh name="Link1_Link1" file="meshes/d1_description/meshes/Link1.STL" />
+    <mesh name="Link2_collision_Link2" file="meshes/d1_description/meshes/Link2.STL" />
+    <mesh name="Link2_Link2" file="meshes/d1_description/meshes/Link2.STL" />
+    <mesh name="Link3_collision_Link3" file="meshes/d1_description/meshes/Link3.STL" />
+    <mesh name="Link3_Link3" file="meshes/d1_description/meshes/Link3.STL" />
+    <mesh name="Link4_collision_Link4" file="meshes/d1_description/meshes/Link4.STL" />
+    <mesh name="Link4_Link4" file="meshes/d1_description/meshes/Link4.STL" />
+    <mesh name="Link5_collision_Link5" file="meshes/d1_description/meshes/Link5.STL" />
+    <mesh name="Link5_Link5" file="meshes/d1_description/meshes/Link5.STL" />
+    <mesh name="Link6_collision_Link6" file="meshes/d1_description/meshes/Link6.STL" />
+    <mesh name="Link6_Link6" file="meshes/d1_description/meshes/Link6.STL" />
+    <mesh name="Link7_1_collision_Link7_1" file="meshes/d1_description/meshes/Link7_1.STL" />
+    <mesh name="Link7_1_Link7_1" file="meshes/d1_description/meshes/Link7_1.STL" />
+    <mesh name="Link7_2_collision_Link7_2" file="meshes/d1_description/meshes/Link7_2.STL" />
+    <mesh name="Link7_2_Link7_2" file="meshes/d1_description/meshes/Link7_2.STL" />
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+  </asset>
+
+  <actuator>
+    <motor name="Joint1" joint="Joint1" />
+    <motor name="Joint2" joint="Joint2" />
+    <motor name="Joint3" joint="Joint3" />
+    <motor name="Joint4" joint="Joint4" />
+    <motor name="Joint5" joint="Joint5" />
+    <motor name="Joint6" joint="Joint6" />
+    <motor name="Joint7_1" joint="Joint7_1" />
+    <motor name="Joint7_2" joint="Joint7_2" />
+  </actuator>
+
+  <visual>
+    <rgba haze="0.15 0.25 0.35 1" />
+  </visual>
+</mujoco>

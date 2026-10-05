@@ -1,0 +1,62 @@
+<body>
+  <geom name="d1_base_collision" type="mesh" mesh="d1_base_link"
+    contype="1" conaffinity="1" group="3" />
+  <geom name="d1_base_visual" type="mesh" mesh="d1_base_link"
+    contype="0" conaffinity="0" group="2" />
+  <body name="Link1" pos="0 0 0.0533" quat="0 0 0 -1">
+    <inertial pos="0.0024649 0.00010517 0.032696" mass="0.13174"
+      diaginertia="6.7236e-05 5.416e-05 4.6637e-05" />
+    <joint name="Joint1" type="hinge" range="-2.35 2.35"
+      axis="0 0 1" damping="0.05" />
+    <geom type="mesh" mesh="d1_Link1" contype="0" conaffinity="0" group="2" />
+    <body name="Link2" pos="0 0.028 0.0563" quat="0 0 -0.7071 -0.7071">
+      <inertial pos="0.0002018 0.19201 -0.027007" mass="0.20213"
+        diaginertia="0.00025682 6.3307e-05 0.00022968" />
+      <joint name="Joint2" type="hinge" range="-1.57 1.57"
+        axis="0 0 -1" damping="0.05" />
+      <geom type="mesh" mesh="d1_Link2" contype="0" conaffinity="0" group="2" />
+      <body name="Link3" pos="0 0.2693 0.0009">
+        <inertial pos="0.015164 0.044482 -0.027461" mass="0.0629"
+          diaginertia="1.7232e-05 1.2606e-05 1.4964e-05" />
+        <joint name="Joint3" type="hinge" range="-1.57 1.57"
+          axis="0 0 -1" damping="0.05" />
+        <geom type="mesh" mesh="d1_Link3" contype="0" conaffinity="0" group="2" />
+        <body name="Link4" pos="0.0577 0.042 -0.0275" quat="0.5 -0.5 0.5 -0.5">
+          <inertial pos="-0.00029556 -0.00016104 0.091339" mass="0.083332"
+            diaginertia="3.9308e-05 3.4378e-05 1.1597e-05" />
+          <joint name="Joint4" type="hinge" range="-2.35 2.35"
+            axis="0 0 1" damping="0.05" />
+          <geom type="mesh" mesh="d1_Link4" contype="0" conaffinity="0" group="2" />
+          <body name="Link5" pos="-0.0001 -0.0237 0.14018" quat="0.5 0.5 -0.5 0.5">
+            <inertial pos="0.040573 0.0062891 -0.023838" mass="0.053817"
+              diaginertia="1.3072e-05 8.6301e-06 1.1049e-05" />
+            <joint name="Joint5" type="hinge" range="-1.57 1.57"
+              axis="0 0 -1" damping="0.05" />
+            <geom type="mesh" mesh="d1_Link5" contype="0" conaffinity="0" group="2" />
+            <body name="Link6" pos="0.0825 -0.0010782 -0.023822" quat="0.5 -0.5 0.5 -0.5">
+              <inertial pos="-0.0068528 -3.9973e-06 0.039705" mass="0.077892"
+                diaginertia="3.8236e-05 1.7707e-05 4.8839e-05" />
+              <joint name="Joint6" type="hinge" range="-2.35 2.35"
+                axis="0 0 -1" damping="0.05" />
+              <geom type="mesh" mesh="d1_Link6" contype="0" conaffinity="0" group="2" />
+              <body name="Link7_1" pos="-0.0056012 -0.029636 0.0706" quat="0.4998 -0.5001 -0.4998 -0.5002">
+                <inertial pos="0.018927 0.006 0.012082" mass="0.015046"
+                  diaginertia="1.2692e-06 2.0229e-06 2.6177e-06" />
+                <joint name="Joint7_1" type="slide" range="0 0.03"
+                  axis="0 0 -1" damping="0.02" />
+                <geom type="mesh" mesh="d1_Link7_1" contype="0" conaffinity="0" group="2" />
+              </body>
+              <body name="Link7_2" pos="-0.0056388 0.02964 0.0706" quat="0.5001 0.4998 -0.5001 0.4999">
+                <inertial pos="0.018927 -0.006 0.012082" mass="0.015046"
+                  diaginertia="1.2692e-06 2.0229e-06 2.6177e-06" />
+                <joint name="Joint7_2" type="slide" range="-0.03 0"
+                  axis="0 0 1" damping="0.02" />
+                <geom type="mesh" mesh="d1_Link7_2" contype="0" conaffinity="0" group="2" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+</body>
