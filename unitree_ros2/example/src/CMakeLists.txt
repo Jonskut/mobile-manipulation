@@ -16,7 +16,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 
-include_directories(include include/common include/nlohmann)
+include_directories(include include/common include/nlohmann include/champ)
 link_directories(src)
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../../unitree_sdk2/include")
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../../d1_sdk/src/msg")
@@ -29,6 +29,9 @@ set (
   unitree_arm
   rclcpp
   std_msgs
+  sensor_msgs
+  geometry_msgs
+  trajectory_msgs
   rosbag2_cpp
 )
 
@@ -39,6 +42,9 @@ find_package(unitree_hg REQUIRED)
 find_package(unitree_api REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(unitree_arm REQUIRED)
@@ -64,6 +70,12 @@ add_executable(go2_d1_stand_controller
 )
 target_compile_features(go2_d1_stand_controller PRIVATE cxx_std_20)
 target_link_libraries(go2_d1_stand_controller unitree_sdk2)
+
+add_executable(go2_champ_walk_controller
+  src/go2/go2_champ_walk_controller.cpp
+)
+target_compile_features(go2_champ_walk_controller PRIVATE cxx_std_20)
+target_link_libraries(go2_champ_walk_controller unitree_sdk2)
 
 add_executable(go2_robot_state_client src/go2/go2_robot_state_client.cpp src/common/motor_crc.cpp) 
 target_compile_features(go2_robot_state_client PRIVATE cxx_std_20)
@@ -116,6 +128,7 @@ ament_target_dependencies(read_wireless_controller ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_sport_client ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_stand_example ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_d1_stand_controller ${DEPENDENCY_LIST})
+ament_target_dependencies(go2_champ_walk_controller ${DEPENDENCY_LIST})
 
 
 ament_target_dependencies(go2_robot_state_client ${DEPENDENCY_LIST})
@@ -160,6 +173,7 @@ install(TARGETS
         go2_sport_client
         go2_stand_example
         go2_d1_stand_controller
+        go2_champ_walk_controller
         DESTINATION lib/${PROJECT_NAME}
         )
 
@@ -182,6 +196,9 @@ install(TARGETS g1_audio_client_example)
 install(TARGETS h2_loco_client)
 install(TARGETS h2_ankle_swing_example)
 
+
+
+install(DIRECTORY config launch DESTINATION share/${PROJECT_NAME})
 
 
 if(BUILD_TESTING)

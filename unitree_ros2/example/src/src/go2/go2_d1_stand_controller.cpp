@@ -11,7 +11,6 @@
 #include <string>
 #include <thread>
 
-#include <unitree/idl/go2/LowCmd_.hpp>
 #include <unitree/idl/go2/LowState_.hpp>
 #include <unitree/robot/channel/channel_factory.hpp>
 #include <unitree/robot/channel/channel_publisher.hpp>
@@ -21,35 +20,24 @@
 #include "PubServoInfo_.hpp"
 
 namespace {
-constexpr int kLegMotorCount = 12;
+constexpr int kLegMotorCount = 12;  // kept for lowstate motor indexing
 constexpr int kArmJointCount = 7;
-constexpr double kControlPeriod = 0.002;
-constexpr double kStandDuration = 3.0;
 constexpr double kArmMoveDuration = 2.0;
 constexpr double kRadiansToDegrees = 57.29577951308232;
-constexpr float kPosStop = 2.146E+9F;
-constexpr float kVelStop = 16000.0F;
-
-constexpr std::array<float, kLegMotorCount> kStandPose = {
-    0.0F, 0.67F, -1.3F, 0.0F, 0.67F, -1.3F,
-    0.0F, 0.67F, -1.3F, 0.0F, 0.67F, -1.3F};
+// NOTE: leg motors 0-11 are owned by go2_champ_walk_controller. This node is
+// arm-only: it must not publish rt/lowcmd, or the two writers will fight.
+constexpr double kControlPeriodMs = 20.0;
 constexpr std::array<double, kArmJointCount> kArmHomeAngles = {
     0.0, -60.0, 60.0, 0.0, 30.0, 0.0, 0.0};
 
-uint32_t crc32_core(uint32_t *ptr, uint32_t length) {
-  uint32_t crc = 0xFFFFFFFF;
-  constexpr uint32_t polynomial = 0x04c11db7;
-  for (uint32_t index = 0; index < length; ++index) {
-    uint32_t bit = 1U << 31;
-    uint32_t data = ptr[index];
-    for (uint32_t count = 0; count < 32; ++count) {
-      crc = (crc & 0x80000000U) ? (crc << 1) ^ polynomial : crc << 1;
-      if (data & bit) crc ^= polynomial;
-      bit >>= 1;
-    }
-  }
-  return crc;
+// (crc32 helper + rt/lowcmd path removed; leg motors are owned by
+// go2_champ_walk_controller. History preserved in git.)
+
+float interpolate_arm(float start, float target, double progress) {
+  return static_cast<float>((1.0 - progress) * start + progress * target);
 }
+
+//}  // namespace
 
 float interpolate(float start, float target, double progress) {
   return static_cast<float>((1.0 - progress) * start + progress * target);
@@ -61,10 +49,6 @@ class Go2D1StandController final {
   Go2D1StandController(int domain_id, const std::string &interface_name) {
     unitree::robot::ChannelFactory::Instance()->Init(domain_id, interface_name);
 
-    low_cmd_pub_ = std::make_shared<
-        unitree::robot::ChannelPublisher<unitree_go::msg::dds_::LowCmd_>>(
-        "rt/lowcmd");
-    low_cmd_pub_->InitChannel();
     low_state_sub_ = std::make_shared<
         unitree::robot::ChannelSubscriber<unitree_go::msg::dds_::LowState_>>(
         "rt/lowstate");
@@ -81,7 +65,9 @@ class Go2D1StandController final {
     arm_state_sub_->InitChannel(
         [this](const void *message) { handleArmState(message); }, 1);
 
-    initialize_command();
+    // Arm-only node: the leg path (initialize_command / low_cmd_pub_) was
+    // removed. Leg motors 0-11 are owned by go2_champ_walk_controller;
+    // publishing rt/lowcmd from two writers makes the bridge flap.
   }
 
   void run() {
@@ -92,26 +78,12 @@ class Go2D1StandController final {
     publish_arm_enable(true);
     while (running_) {
       write_command();
-      std::this_thread::sleep_for(std::chrono::milliseconds(2));
+      std::this_thread::sleep_for(
+          std::chrono::milliseconds(static_cast<int>(kControlPeriodMs)));
     }
   }
 
  private:
-  void initialize_command() {
-    low_cmd_.head()[0] = 0xFE;
-    low_cmd_.head()[1] = 0xEF;
-    low_cmd_.level_flag() = 0xFF;
-    low_cmd_.gpio() = 0;
-    for (auto &motor : low_cmd_.motor_cmd()) {
-      motor.mode() = 0x01;
-      motor.q() = kPosStop;
-      motor.kp() = 0.0F;
-      motor.dq() = kVelStop;
-      motor.kd() = 0.0F;
-      motor.tau() = 0.0F;
-    }
-  }
-
   void handleLowState(const void *message) {
     std::lock_guard<std::mutex> lock(state_mutex_);
     low_state_ = *static_cast<const unitree_go::msg::dds_::LowState_ *>(message);
@@ -131,9 +103,6 @@ class Go2D1StandController final {
 
   void initialize_targets() {
     std::lock_guard<std::mutex> lock(state_mutex_);
-    for (int index = 0; index < kLegMotorCount; ++index) {
-      start_pose_[index] = low_state_.motor_state()[index].q();
-    }
     if (!arm_state_received_) {
       for (int index = 0; index < kArmJointCount - 1; ++index) {
         arm_start_angles_[index] =
@@ -145,23 +114,10 @@ class Go2D1StandController final {
   }
 
   void write_command() {
-    const double elapsed = motion_time_;
-    const double stand_progress = std::min(elapsed / kStandDuration, 1.0);
-    const double arm_progress = std::min(elapsed / kArmMoveDuration, 1.0);
-    for (int index = 0; index < kLegMotorCount; ++index) {
-      auto &motor = low_cmd_.motor_cmd()[index];
-      motor.q() = interpolate(start_pose_[index], kStandPose[index], stand_progress);
-      motor.dq() = 0.0F;
-      motor.kp() = 60.0F;
-      motor.kd() = 5.0F;
-      motor.tau() = 0.0F;
-    }
-    low_cmd_.crc() = crc32_core(
-        reinterpret_cast<uint32_t *>(&low_cmd_),
-        (sizeof(unitree_go::msg::dds_::LowCmd_) >> 2) - 1);
-    low_cmd_pub_->Write(low_cmd_);
+    // Arm-only: no rt/lowcmd writes. Only the arm pose stream remains.
+    const double arm_progress = std::min(motion_time_ / kArmMoveDuration, 1.0);
     publish_arm_pose(arm_progress);
-    motion_time_ += kControlPeriod;
+    motion_time_ += kControlPeriodMs / 1000.0;
   }
 
   void publish_arm_enable(bool enabled) {
@@ -179,7 +135,7 @@ class Go2D1StandController final {
          << ",\"address\":1,\"funcode\":2,\"data\":{\"mode\":1";
     for (int index = 0; index < kArmJointCount; ++index) {
       json << ",\"angle" << index << "\":"
-           << interpolate(static_cast<float>(arm_start_angles_[index]),
+           << interpolate_arm(static_cast<float>(arm_start_angles_[index]),
                           static_cast<float>(kArmHomeAngles[index]), progress);
     }
     json << "}}";
@@ -188,11 +144,8 @@ class Go2D1StandController final {
     arm_command_pub_->Write(command);
   }
 
-  unitree_go::msg::dds_::LowCmd_ low_cmd_;
   unitree_go::msg::dds_::LowState_ low_state_;
-  std::array<float, kLegMotorCount> start_pose_{};
   std::array<double, kArmJointCount> arm_start_angles_{};
-  unitree::robot::ChannelPublisherPtr<unitree_go::msg::dds_::LowCmd_> low_cmd_pub_;
   unitree::robot::ChannelSubscriberPtr<unitree_go::msg::dds_::LowState_> low_state_sub_;
   unitree::robot::ChannelPublisherPtr<unitree_arm::msg::dds_::ArmString_> arm_command_pub_;
   unitree::robot::ChannelSubscriberPtr<unitree_arm::msg::dds_::PubServoInfo_> arm_state_sub_;

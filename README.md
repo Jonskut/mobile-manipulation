@@ -35,3 +35,11 @@ ros2 run unitree_ros2_example go2_d1_stand_controller
 The controller uses the native Unitree DDS topic names `rt/lowcmd`,
 `rt/lowstate`, and `rt/arm_Command`, so the same command and feedback topics
 are used with MuJoCo and the physical robot.
+
+Champ 
+```bash 
+cd /workspaces/mobile-manipulation/unitree_ros2/example  # per README layout
+colcon build --packages-select unitree_ros2_example
+source install/setup.bash
+ros2 launch unitree_ros2_example go2_champ_walk.launch.py
+```

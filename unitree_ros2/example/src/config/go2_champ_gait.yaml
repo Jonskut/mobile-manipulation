@@ -1,0 +1,41 @@
+/**:
+  ros__parameters:
+    # CHAMP gait config (mirrors unitree_go2_sim/config/gait/gait.yaml).
+    gait:
+      knee_orientation : ">>"
+      pantograph_leg : false
+      odom_scaler: 0.9
+      max_linear_velocity_x : 0.3
+      max_linear_velocity_y : 0.25
+      max_angular_velocity_z : 0.5
+      com_x_translation: 0.0
+      swing_height : 0.04
+      stance_depth : 0.01
+      stance_duration : 0.25
+      nominal_height : 0.225
+
+    # Low-level servo gains for the 12 leg motors (mirrors the
+    # go2_d1_stand_controller defaults).
+    kp: 60.0
+    kd: 5.0
+
+    # Ramp from the measured pose to the CHAMP stance pose (seconds).
+    stand_duration: 3.0
+
+    # Zero the commanded velocity if no cmd_vel arrives within this time.
+    cmd_vel_timeout: 0.5
+
+    # DDS bridge settings. Must match the devcontainer: ROS_DOMAIN_ID=1
+    # and CYCLONEDDS_URI pointing at the loopback interface.
+    dds_domain_id: 1
+    dds_interface: "lo"
+
+    # Optional ROS feedback topics.
+    publish_joint_states: true
+    publish_imu: true
+    publish_joint_control: true
+
+    # Sign corrections applied to the 12 CHAMP joint targets after the
+    # CHAMP->Unitree motor remap (in Unitree motor order FR, FL, RR, RL).
+    # Leave at +1.0 unless the stance-pose sign check shows a flip.
+    # motor_signs: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
