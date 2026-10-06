@@ -78,6 +78,7 @@ add_executable(unitree_mujoco
   ${SIM_SRC}
   src/main.cc
   "${D1_SDK_MSG_DIR}/ArmString_.cpp"
+  "${D1_SDK_MSG_DIR}/PubServoInfo_.cpp"
 )
 
 add_executable(jstest src/joystick/jstest.cc src/joystick/joystick.cc)

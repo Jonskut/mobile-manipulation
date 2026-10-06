@@ -2,7 +2,7 @@
 <package format="3">
   <name>unitree_arm</name>
   <version>0.0.0</version>
-  <description>D1 arm command messages.</description>
+  <description>D1 arm command and feedback messages.</description>
   <maintainer email="unitree@unitree.com">Unitree</maintainer>
   <license>BSD-3-Clause</license>
 

@@ -11,6 +11,7 @@
 #include <unitree/common/json/json.hpp>
 
 #include "ArmString_.hpp"
+#include "PubServoInfo_.hpp"
 
 #include <array>
 #include <cmath>
@@ -26,6 +27,7 @@
 #define D1_ARM_COMMAND_TOPIC "rt/arm_Command"
 #define D1_ARM_COMMAND_ALIAS_TOPIC "rt/arm_command"
 #define D1_ARM_COMMAND_RAW_TOPIC "arm_Command"
+#define D1_ARM_FEEDBACK_TOPIC "current_servo_angle"
 
 class UnitreeSDK2BridgeBase
 {
@@ -174,6 +176,8 @@ public:
         lowstate->joystick = joystick;
         lowstate_alias = std::make_unique<LowState_t>("lowstate");
         lowstate_alias->joystick = joystick;
+        arm_feedback = std::make_unique<unitree::robot::ChannelPublisher<unitree_arm::msg::dds_::PubServoInfo_>>(D1_ARM_FEEDBACK_TOPIC);
+        arm_feedback->InitChannel();
         highstate = std::make_unique<HighState_t>();
         wireless_controller = std::make_unique<WirelessController_t>();
         wireless_controller->joystick = joystick;
@@ -213,6 +217,7 @@ public:
         }
 
         applyArmCommand();
+        publishArmFeedback();
 
         // lowstate
         if(lowstate->trylock()) {
@@ -282,6 +287,7 @@ public:
     std::shared_ptr<LowCmd_t> lowcmd_alias;
     std::unique_ptr<LowState_t> lowstate;
     std::unique_ptr<LowState_t> lowstate_alias;
+    std::unique_ptr<unitree::robot::ChannelPublisher<unitree_arm::msg::dds_::PubServoInfo_>> arm_feedback;
     
 private:
     static constexpr int kD1FirstMotor = 12;
@@ -371,6 +377,22 @@ private:
         const double opening = std::clamp(arm_target[6] / 180.0 * 0.03, 0.0, 0.03);
         mj_data_->ctrl[kD1GripperLeft] = 20.0 * (opening - mj_data_->sensordata[kD1GripperLeft]);
         mj_data_->ctrl[kD1GripperRight] = 20.0 * (-opening - mj_data_->sensordata[kD1GripperRight]);
+    }
+
+    void publishArmFeedback()
+    {
+        if (num_motor_ < param::IDL_GO_MOTOR_LIMIT) return;
+
+        constexpr double kRadiansToDegrees = 57.29577951308232;
+        unitree_arm::msg::dds_::PubServoInfo_ feedback;
+        feedback.servo0_data_(mj_data_->sensordata[12] * kRadiansToDegrees);
+        feedback.servo1_data_(mj_data_->sensordata[13] * kRadiansToDegrees);
+        feedback.servo2_data_(mj_data_->sensordata[14] * kRadiansToDegrees);
+        feedback.servo3_data_(mj_data_->sensordata[15] * kRadiansToDegrees);
+        feedback.servo4_data_(mj_data_->sensordata[16] * kRadiansToDegrees);
+        feedback.servo5_data_(mj_data_->sensordata[17] * kRadiansToDegrees);
+        feedback.servo6_data_(mj_data_->sensordata[18] * kRadiansToDegrees);
+        arm_feedback->Write(feedback);
     }
 
     std::unique_ptr<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>> arm_command;

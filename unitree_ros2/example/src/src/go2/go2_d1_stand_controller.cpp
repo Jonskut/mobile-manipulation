@@ -9,6 +9,7 @@
 #include "motor_crc.h"
 #include "rclcpp/rclcpp.hpp"
 #include "unitree_arm/msg/arm_string.hpp"
+#include "unitree_arm/msg/pub_servo_info.hpp"
 #include "unitree_go/msg/low_cmd.hpp"
 #include "unitree_go/msg/low_state.hpp"
 
@@ -39,9 +40,6 @@ class Go2D1StandController final : public rclcpp::Node {
     // active Unitree ROS 2 middleware configuration.
     arm_command_pub_ = create_publisher<unitree_arm::msg::ArmString>(
       "arm_Command", 10);
-    // Enable the D1 arm before sending position commands.
-    publish_arm_enable(true);
-
     low_cmd_pub_ = create_publisher<unitree_go::msg::LowCmd>("lowcmd", 10);
     low_state_sub_ = create_subscription<unitree_go::msg::LowState>(
       "lowstate", 10,
@@ -49,6 +47,15 @@ class Go2D1StandController final : public rclcpp::Node {
           // Do not command until the initial motor state is available.
           low_state_ = *msg;
           state_received_ = true;
+        });
+    arm_state_sub_ = create_subscription<unitree_arm::msg::PubServoInfo>(
+        "current_servo_angle", 10,
+        [this](const unitree_arm::msg::PubServoInfo::SharedPtr msg) {
+          arm_start_angles_ = {msg->servo0_data, msg->servo1_data,
+                               msg->servo2_data, msg->servo3_data,
+                               msg->servo4_data, msg->servo5_data,
+                               msg->servo6_data};
+          arm_state_received_ = true;
         });
     timer_ = create_wall_timer(std::chrono::milliseconds(2),
                                [this]() { write_command(); });
@@ -87,13 +94,21 @@ class Go2D1StandController final : public rclcpp::Node {
       for (int index = 0; index < kLegMotorCount; ++index) {
         start_pose_[index] = low_state_.motor_state[index].q;
       }
-      for (int index = 0; index < kArmJointCount - 1; ++index) {
-        arm_start_angles_[index] =
-            static_cast<double>(low_state_.motor_state[kLegMotorCount + index].q) *
-            180.0 / M_PI;
+      // Real D1 feedback arrives on current_servo_angle. MuJoCo exposes the
+      // same simulated joints in LowState as a fallback for local simulation.
+      if (!arm_state_received_) {
+        for (int index = 0; index < kArmJointCount - 1; ++index) {
+          arm_start_angles_[index] =
+              static_cast<double>(
+                  low_state_.motor_state[kLegMotorCount + index].q) *
+              180.0 / M_PI;
+        }
+        arm_start_angles_[kArmJointCount - 1] = 0.0;
       }
-      arm_start_angles_[kArmJointCount - 1] = 0.0;
       targets_initialized_ = true;
+      // Enable only after feedback has been received, so the command is sent
+      // after DDS discovery and is not lost during node construction.
+      publish_arm_enable(true);
     }
 
     const double elapsed = motion_time_;
@@ -154,9 +169,11 @@ class Go2D1StandController final : public rclcpp::Node {
   rclcpp::Publisher<unitree_arm::msg::ArmString>::SharedPtr arm_command_pub_;
   rclcpp::Publisher<unitree_go::msg::LowCmd>::SharedPtr low_cmd_pub_;
   rclcpp::Subscription<unitree_go::msg::LowState>::SharedPtr low_state_sub_;
+  rclcpp::Subscription<unitree_arm::msg::PubServoInfo>::SharedPtr arm_state_sub_;
   rclcpp::TimerBase::SharedPtr timer_;
   double motion_time_ = 0.0;
   bool state_received_ = false;
+  bool arm_state_received_ = false;
   bool targets_initialized_ = false;
   int sequence_ = 1;
 };
