@@ -14,11 +14,15 @@ cmake --build build --parallel
 
 Terminal 2
 ```bash
+cd /workspace/unitree_ros2/cyclonedds_ws
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install --parallel-workers 1
+source install/setup.bash
+
 cd /workspace/unitree_ros2/example/src
 
 rm -rf build install log
 
-source /opt/ros/humble/setup.bash
 source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
 
 colcon build --packages-select unitree_ros2_example --parallel-workers 1
@@ -27,3 +31,6 @@ source install/setup.bash
 ros2 run unitree_ros2_example go2_d1_stand_controller
 ```
 
+The controller uses the native Unitree DDS topic names `rt/lowcmd`,
+`rt/lowstate`, and `rt/arm_Command`, so the same command and feedback topics
+are used with MuJoCo and the physical robot.

@@ -318,6 +318,30 @@ export ROS_DOMAIN_ID=1 # Modify the domain id to match the simulation
 ./install/stand_go2/bin/stand_go2 # Run
 ```
 
+### D1 arm commands in MuJoCo
+
+The Go2 MuJoCo scene includes the six D1 arm joints and two gripper actuators.
+The simulator accepts the same `unitree_arm::msg::dds_::ArmString_` messages as
+the D1 SDK on `rt/arm_Command`. It also accepts the lowercase alias
+`rt/arm_command`; use the SDK spelling when targeting both simulation and the
+physical robot.
+
+Enable the arm, then send a multi-joint position command:
+
+```json
+{"seq":4,"address":1,"funcode":5,"data":{"mode":1}}
+{"seq":4,"address":1,"funcode":2,"data":{"mode":1,"angle0":0,"angle1":-60,"angle2":60,"angle3":0,"angle4":30,"angle5":0,"angle6":0}}
+```
+
+Joint angles use the D1 SDK's degree units. `angle0` through `angle5` control
+the six arm joints. `angle6` controls gripper opening and is mirrored across
+the two simulated gripper actuators. `funcode` 1 changes one joint, and
+`funcode` 5 with `mode` 0 disables arm output.
+
+The simulator uses the D1 SDK message type directly, so the same publisher can
+be used with MuJoCo and a physical D1. The physical robot handles the command
+in its firmware; MuJoCo converts it to position control internally.
+
 3. Run real robot
 ```bash
 source ~/unitree_ros2/setup.sh # Use the network card connected to the robot

@@ -8,13 +8,24 @@
 #include <unitree/dds_wrapper/robots/g1/g1.h>
 #include <unitree/idl/hg/BmsState_.hpp>
 #include <unitree/idl/hg/IMUState_.hpp>
+#include <unitree/common/json/json.hpp>
 
+#include "ArmString_.hpp"
+
+#include <array>
+#include <cmath>
 #include <iostream>
+#include <mutex>
 
 #include "param.h"
 #include "physics_joystick.h"
 
 #define MOTOR_SENSOR_NUM 3
+#define LOW_CMD_TOPIC "rt/lowcmd"
+#define LOW_CMD_ALIAS_TOPIC "lowcmd"
+#define D1_ARM_COMMAND_TOPIC "rt/arm_Command"
+#define D1_ARM_COMMAND_ALIAS_TOPIC "rt/arm_command"
+#define D1_ARM_COMMAND_RAW_TOPIC "arm_Command"
 
 class UnitreeSDK2BridgeBase
 {
@@ -157,12 +168,22 @@ using WirelessController_t = unitree::robot::go2::publisher::WirelessController;
 public:
     RobotBridge(mjModel *model, mjData *data) : UnitreeSDK2BridgeBase(model, data)
     {
-        lowcmd = std::make_shared<LowCmd_t>("rt/lowcmd");
+        lowcmd = std::make_shared<LowCmd_t>(LOW_CMD_TOPIC);
+        lowcmd_alias = std::make_shared<LowCmd_t>(LOW_CMD_ALIAS_TOPIC);
         lowstate = std::make_unique<LowState_t>();
         lowstate->joystick = joystick;
+        lowstate_alias = std::make_unique<LowState_t>("lowstate");
+        lowstate_alias->joystick = joystick;
         highstate = std::make_unique<HighState_t>();
         wireless_controller = std::make_unique<WirelessController_t>();
         wireless_controller->joystick = joystick;
+
+        arm_command = std::make_unique<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>>(D1_ARM_COMMAND_TOPIC);
+        arm_command->InitChannel([this](const void *message) { this->handleArmCommand(message); }, 10);
+        arm_command_alias = std::make_unique<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>>(D1_ARM_COMMAND_ALIAS_TOPIC);
+        arm_command_alias->InitChannel([this](const void *message) { this->handleArmCommand(message); }, 10);
+        arm_command_raw = std::make_unique<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>>(D1_ARM_COMMAND_RAW_TOPIC);
+        arm_command_raw->InitChannel([this](const void *message) { this->handleArmCommand(message); }, 10);
     }
 
     void start()
@@ -176,18 +197,26 @@ public:
         if(!mj_data_) return;
         if(lowstate->joystick) { lowstate->joystick->update(); }
         // lowcmd
-        {
-            std::lock_guard<std::mutex> lock(lowcmd->mutex_);
+        auto applyLowCmd = [this](const auto &command) {
+            std::lock_guard<std::mutex> lock(command->mutex_);
             for(int i(0); i<num_motor_; i++) {
-                auto & m = lowcmd->msg_.motor_cmd()[i];
+                auto & m = command->msg_.motor_cmd()[i];
                 mj_data_->ctrl[i] = m.tau() +
                                     m.kp() * (m.q() - mj_data_->sensordata[i]) +
                                     m.kd() * (m.dq() - mj_data_->sensordata[i + num_motor_]);
             }
+        };
+        if (!lowcmd->isTimeout()) {
+            applyLowCmd(lowcmd);
+        } else if (!lowcmd_alias->isTimeout()) {
+            applyLowCmd(lowcmd_alias);
         }
+
+        applyArmCommand();
 
         // lowstate
         if(lowstate->trylock()) {
+            lowstate_alias->lock();
             for(int i(0); i<num_motor_; i++) {
                 lowstate->msg_.motor_state()[i].q() = mj_data_->sensordata[i];
                 lowstate->msg_.motor_state()[i].dq() = mj_data_->sensordata[i + num_motor_];
@@ -223,7 +252,9 @@ public:
             }
             
             lowstate->msg_.tick() = std::round(mj_data_->time / 1e-3);
+            lowstate_alias->msg_ = lowstate->msg_;
             lowstate->unlockAndPublish();
+            lowstate_alias->unlockAndPublish();
         }
         // highstate
         if(highstate->trylock()) {
@@ -248,9 +279,107 @@ public:
     std::unique_ptr<HighState_t> highstate;
     std::unique_ptr<WirelessController_t> wireless_controller;
     std::shared_ptr<LowCmd_t> lowcmd;
+    std::shared_ptr<LowCmd_t> lowcmd_alias;
     std::unique_ptr<LowState_t> lowstate;
+    std::unique_ptr<LowState_t> lowstate_alias;
     
 private:
+    static constexpr int kD1FirstMotor = 12;
+    static constexpr int kD1JointCount = 6;
+    static constexpr int kD1GripperLeft = 18;
+    static constexpr int kD1GripperRight = 19;
+
+    static double number(const unitree::common::JsonMap &object, const std::string &key, double fallback)
+    {
+        const auto item = object.find(key);
+        if (item == object.end() || !unitree::common::IsNumber(item->second)) return fallback;
+        if (unitree::common::IsDouble(item->second)) return unitree::common::AnyCast<double>(&item->second);
+        if (unitree::common::IsFloat(item->second)) return unitree::common::AnyCast<float>(&item->second);
+        if (unitree::common::IsInt(item->second)) return unitree::common::AnyCast<int32_t>(&item->second);
+        if (unitree::common::IsUint(item->second)) return unitree::common::AnyCast<uint32_t>(&item->second);
+        if (unitree::common::IsInt64(item->second)) return unitree::common::AnyCast<int64_t>(&item->second);
+        if (unitree::common::IsUint64(item->second)) return unitree::common::AnyCast<uint64_t>(&item->second);
+        if (unitree::common::IsInt16(item->second)) return unitree::common::AnyCast<int16_t>(&item->second);
+        if (unitree::common::IsUint16(item->second)) return unitree::common::AnyCast<uint16_t>(&item->second);
+        if (unitree::common::IsInt8(item->second)) return unitree::common::AnyCast<int8_t>(&item->second);
+        if (unitree::common::IsUint8(item->second)) return unitree::common::AnyCast<uint8_t>(&item->second);
+        return fallback;
+    }
+
+    void handleArmCommand(const void *message)
+    {
+        if (num_motor_ < param::IDL_GO_MOTOR_LIMIT) return;
+
+        const auto *command = static_cast<const unitree_arm::msg::dds_::ArmString_ *>(message);
+        try
+        {
+            const auto root = unitree::common::FromJsonString(command->data_());
+            const auto &object = unitree::common::AnyCast<unitree::common::JsonMap>(&root);
+            const int funcode = static_cast<int>(number(object, "funcode", -1));
+            const auto data_item = object.find("data");
+            if (data_item == object.end() || !unitree::common::IsJsonMap(data_item->second)) return;
+            const auto &data = unitree::common::AnyCast<unitree::common::JsonMap>(&data_item->second);
+
+            std::lock_guard<std::mutex> lock(arm_mutex);
+            if (funcode == 5)
+            {
+                arm_enabled = number(data, "mode", 0) != 0;
+                return;
+            }
+            if (!arm_enabled) return;
+            if (funcode == 2)
+            {
+                for (int index = 0; index < 7; ++index)
+                {
+                    const std::string key = "angle" + std::to_string(index);
+                    arm_target[index] = number(data, key, arm_target[index]);
+                }
+                arm_target_valid = true;
+            }
+            else if (funcode == 1)
+            {
+                const int index = static_cast<int>(number(data, "id", -1));
+                if (index >= 0 && index < 7)
+                {
+                    arm_target[index] = number(data, "angle", arm_target[index]);
+                    arm_target_valid = true;
+                }
+            }
+        }
+        catch (const std::exception &error)
+        {
+            std::cerr << "Invalid D1 arm command: " << error.what() << std::endl;
+        }
+    }
+
+    void applyArmCommand()
+    {
+        if (num_motor_ < param::IDL_GO_MOTOR_LIMIT) return;
+
+        std::lock_guard<std::mutex> lock(arm_mutex);
+        if (!arm_enabled || !arm_target_valid) return;
+
+        constexpr double kDegreesToRadians = 0.017453292519943295;
+        for (int index = 0; index < kD1JointCount; ++index)
+        {
+            const int motor = kD1FirstMotor + index;
+            const double target = arm_target[index] * kDegreesToRadians;
+            mj_data_->ctrl[motor] = 40.0 * (target - mj_data_->sensordata[motor])
+                                   - 2.0 * mj_data_->sensordata[motor + num_motor_];
+        }
+
+        const double opening = std::clamp(arm_target[6] / 180.0 * 0.03, 0.0, 0.03);
+        mj_data_->ctrl[kD1GripperLeft] = 20.0 * (opening - mj_data_->sensordata[kD1GripperLeft]);
+        mj_data_->ctrl[kD1GripperRight] = 20.0 * (-opening - mj_data_->sensordata[kD1GripperRight]);
+    }
+
+    std::unique_ptr<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>> arm_command;
+    std::unique_ptr<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>> arm_command_alias;
+    std::unique_ptr<unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>> arm_command_raw;
+    std::array<double, 7> arm_target{};
+    std::mutex arm_mutex;
+    bool arm_enabled = false;
+    bool arm_target_valid = false;
     unitree::common::RecurrentThreadPtr thread_;
 };
 

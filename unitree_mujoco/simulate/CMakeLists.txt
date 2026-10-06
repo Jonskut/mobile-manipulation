@@ -38,6 +38,13 @@ if (EXISTS "${UNITREE_SDK_SOURCE_INCLUDE}/unitree/common/log/log.hpp")
   include_directories("${UNITREE_SDK_SOURCE_INCLUDE}")
 endif()
 
+set(D1_SDK_MSG_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../d1_sdk/src/msg")
+if (EXISTS "${D1_SDK_MSG_DIR}/ArmString_.hpp")
+  include_directories("${D1_SDK_MSG_DIR}")
+else()
+  message(FATAL_ERROR "D1 SDK message definition not found: ${D1_SDK_MSG_DIR}/ArmString_.hpp")
+endif()
+
 include_directories(
   /usr/local/include/iceoryx/v2.0.2
   "${MUJOCO_SOURCE_DIR}/include"
@@ -67,6 +74,10 @@ link_libraries(
   fmt
 )
 
-add_executable(unitree_mujoco ${SIM_SRC} src/main.cc)
+add_executable(unitree_mujoco
+  ${SIM_SRC}
+  src/main.cc
+  "${D1_SDK_MSG_DIR}/ArmString_.cpp"
+)
 
 add_executable(jstest src/joystick/jstest.cc src/joystick/joystick.cc)

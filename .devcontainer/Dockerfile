@@ -5,6 +5,9 @@ ENV TZ=UTC
 ENV CC=/usr/bin/gcc
 ENV CXX=/usr/bin/g++
 ENV PATH=/opt/venv/bin:${PATH}
+ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+ENV ROS_DOMAIN_ID=1
+ENV CYCLONEDDS_URI="<CycloneDDS><Domain><General><Interfaces><NetworkInterface name=\"lo\" priority=\"default\" multicast=\"default\" /></Interfaces></General></Domain></CycloneDDS>"
 
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone \
@@ -66,9 +69,9 @@ RUN printf '%s\n' \
     'source /opt/ros/humble/setup.bash' \
     'export CMAKE_PREFIX_PATH="/opt/unitree_robotics:${CMAKE_PREFIX_PATH}"' \
     'export LD_LIBRARY_PATH="/opt/unitree_robotics/lib:${LD_LIBRARY_PATH}"' \
-    'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp' \
-    'export ROS_DOMAIN_ID=1' \
-    'export CYCLONEDDS_URI="<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>"' \
+    'export RMW_IMPLEMENTATION="${RMW_IMPLEMENTATION}"' \
+    'export ROS_DOMAIN_ID="${ROS_DOMAIN_ID}"' \
+    'export CYCLONEDDS_URI="${CYCLONEDDS_URI}"' \
     'if [ -f /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash ]; then source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash; fi' \
     'if [ -f /workspace/unitree_ros2/example/install/setup.bash ]; then source /workspace/unitree_ros2/example/install/setup.bash; fi' \
     > /etc/profile.d/mobile-manipulation.sh

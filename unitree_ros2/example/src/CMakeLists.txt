@@ -24,6 +24,7 @@ set (
   unitree_go
   unitree_hg
   unitree_api
+  unitree_arm
   rclcpp
   std_msgs
   rosbag2_cpp
@@ -38,6 +39,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(unitree_arm REQUIRED)
 
 add_executable(low_level_ctrl src/low_level_ctrl.cpp src/common/motor_crc.cpp)
 add_executable(low_level_ctrl_hg src/h1-2/lowlevel/low_level_ctrl_hg.cpp src/common/motor_crc_hg.cpp)
