@@ -268,6 +268,14 @@
     <jointpos name="RL_hip_pos" joint="RL_hip_joint" />
     <jointpos name="RL_thigh_pos" joint="RL_thigh_joint" />
     <jointpos name="RL_calf_pos" joint="RL_calf_joint" />
+    <jointpos name="d1_joint1_pos" joint="Joint1" />
+    <jointpos name="d1_joint2_pos" joint="Joint2" />
+    <jointpos name="d1_joint3_pos" joint="Joint3" />
+    <jointpos name="d1_joint4_pos" joint="Joint4" />
+    <jointpos name="d1_joint5_pos" joint="Joint5" />
+    <jointpos name="d1_joint6_pos" joint="Joint6" />
+    <jointpos name="d1_gripper_left_pos" joint="Joint7_1" />
+    <jointpos name="d1_gripper_right_pos" joint="Joint7_2" />
 
     <jointvel name="FR_hip_vel" joint="FR_hip_joint" />
     <jointvel name="FR_thigh_vel" joint="FR_thigh_joint" />
@@ -281,6 +289,14 @@
     <jointvel name="RL_hip_vel" joint="RL_hip_joint" />
     <jointvel name="RL_thigh_vel" joint="RL_thigh_joint" />
     <jointvel name="RL_calf_vel" joint="RL_calf_joint" />
+    <jointvel name="d1_joint1_vel" joint="Joint1" />
+    <jointvel name="d1_joint2_vel" joint="Joint2" />
+    <jointvel name="d1_joint3_vel" joint="Joint3" />
+    <jointvel name="d1_joint4_vel" joint="Joint4" />
+    <jointvel name="d1_joint5_vel" joint="Joint5" />
+    <jointvel name="d1_joint6_vel" joint="Joint6" />
+    <jointvel name="d1_gripper_left_vel" joint="Joint7_1" />
+    <jointvel name="d1_gripper_right_vel" joint="Joint7_2" />
 
     <jointactuatorfrc name="FR_hip_torque" joint="FR_hip_joint" noise="0.01" />
     <jointactuatorfrc name="FR_thigh_torque" joint="FR_thigh_joint" noise="0.01" />
@@ -294,6 +310,14 @@
     <jointactuatorfrc name="RL_hip_torque" joint="RL_hip_joint" noise="0.01" />
     <jointactuatorfrc name="RL_thigh_torque" joint="RL_thigh_joint" noise="0.01" />
     <jointactuatorfrc name="RL_calf_torque" joint="RL_calf_joint" noise="0.01" />
+    <jointactuatorfrc name="d1_joint1_torque" joint="Joint1" noise="0.01" />
+    <jointactuatorfrc name="d1_joint2_torque" joint="Joint2" noise="0.01" />
+    <jointactuatorfrc name="d1_joint3_torque" joint="Joint3" noise="0.01" />
+    <jointactuatorfrc name="d1_joint4_torque" joint="Joint4" noise="0.01" />
+    <jointactuatorfrc name="d1_joint5_torque" joint="Joint5" noise="0.01" />
+    <jointactuatorfrc name="d1_joint6_torque" joint="Joint6" noise="0.01" />
+    <jointactuatorfrc name="d1_gripper_left_torque" joint="Joint7_1" noise="0.01" />
+    <jointactuatorfrc name="d1_gripper_right_torque" joint="Joint7_2" noise="0.01" />
 
     <framequat name="imu_quat" objtype="site" objname="imu" />
     <gyro name="imu_gyro" site="imu" />

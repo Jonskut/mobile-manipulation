@@ -1,0 +1,28 @@
+{
+  "name": "mobile-manipulation",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "mobile-manipulation",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "root",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": false,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "ms-vscode.cmake-tools",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-iot.vscode-ros",
+        "vadimcn.vscode-lldb",
+        "bierner.markdown-mermaid"
+      ],
+      "settings": {
+        "C_Cpp.default.compilerPath": "/usr/bin/g++",
+        "python.defaultInterpreterPath": "/usr/bin/python3",
+        "cmake.configureOnOpen": false
+      }
+    }
+  }
+}
