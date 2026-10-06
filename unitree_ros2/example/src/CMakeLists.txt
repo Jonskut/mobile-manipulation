@@ -18,6 +18,8 @@ endif()
 
 include_directories(include include/common include/nlohmann)
 link_directories(src)
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../../unitree_sdk2/include")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../../d1_sdk/src/msg")
 
 set (
   DEPENDENCY_LIST
@@ -40,6 +42,7 @@ find_package(std_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(unitree_arm REQUIRED)
+find_package(unitree_sdk2 REQUIRED)
 
 add_executable(low_level_ctrl src/low_level_ctrl.cpp src/common/motor_crc.cpp)
 add_executable(low_level_ctrl_hg src/h1-2/lowlevel/low_level_ctrl_hg.cpp src/common/motor_crc_hg.cpp)
@@ -54,8 +57,13 @@ target_compile_features(go2_sport_client PRIVATE cxx_std_20)
 
 add_executable(go2_stand_example src/go2/go2_stand_example.cpp src/common/motor_crc.cpp)
 target_compile_features(go2_stand_example PRIVATE cxx_std_20)
-add_executable(go2_d1_stand_controller src/go2/go2_d1_stand_controller.cpp src/common/motor_crc.cpp)
+add_executable(go2_d1_stand_controller
+  src/go2/go2_d1_stand_controller.cpp
+  "${CMAKE_CURRENT_SOURCE_DIR}/../../../d1_sdk/src/msg/ArmString_.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../../../d1_sdk/src/msg/PubServoInfo_.cpp"
+)
 target_compile_features(go2_d1_stand_controller PRIVATE cxx_std_20)
+target_link_libraries(go2_d1_stand_controller unitree_sdk2)
 
 add_executable(go2_robot_state_client src/go2/go2_robot_state_client.cpp src/common/motor_crc.cpp) 
 target_compile_features(go2_robot_state_client PRIVATE cxx_std_20)

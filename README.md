@@ -25,7 +25,8 @@ rm -rf build install log
 
 source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
 
-colcon build --packages-select unitree_ros2_example --parallel-workers 1
+export MAKEFLAGS="-j 1"
+colcon build --packages-select unitree_ros2_example --executor sequential
 source install/setup.bash
 
 ros2 run unitree_ros2_example go2_d1_stand_controller
