@@ -57,6 +57,8 @@ RUN git clone --depth 1 --branch 3.3.6 \
 RUN python3 -m venv /opt/venv \
     && /opt/venv/bin/pip install --no-cache-dir \
         catkin_pkg \
+        empy==3.3.4 \
+        lark==1.1.9 \
         mujoco \
         pygame
 

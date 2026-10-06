@@ -7,7 +7,6 @@ cd /workspace/unitree_mujoco/simulate
 rm -rf build
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel
-export LD_LIBRARY_PATH="/opt/unitree_robotics/lib:${LD_LIBRARY_PATH}"
 ./build/unitree_mujoco -r go2 -s scene_terrain.xml
 ```
 
@@ -19,8 +18,6 @@ rm -rf build install log
 
 source /opt/ros/humble/setup.bash
 source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
-export ROS_DOMAIN_ID=1
-export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'
 
 colcon build --packages-select unitree_ros2_example --parallel-workers 1
 source install/setup.bash
