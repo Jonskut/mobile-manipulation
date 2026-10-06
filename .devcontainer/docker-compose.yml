@@ -9,14 +9,9 @@ services:
     stdin_open: true
     tty: true
     environment:
-      DISPLAY: ${DISPLAY}
+      DISPLAY: ${DISPLAY:-}
       XAUTHORITY: /tmp/.Xauthority
       QT_X11_NO_MITSHM: "1"
       LIBGL_ALWAYS_INDIRECT: "0"
     volumes:
       - ..:/workspace:cached
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ${XAUTHORITY:-${HOME}/.Xauthority}:/tmp/.Xauthority:ro
-      - /dev/input:/dev/input
-    devices:
-      - /dev/dri:/dev/dri
