@@ -1,4 +1,5 @@
 Required ros2 humble and vs code dev containers
+Open in dev containers (shift+ctrl+P) -> rebuild and reopen in container
 
 Terminal 1
 
