@@ -28,7 +28,7 @@
     # DDS bridge settings. Must match the devcontainer: ROS_DOMAIN_ID=1
     # and CYCLONEDDS_URI pointing at the loopback interface.
     dds_domain_id: 1
-    dds_interface: "lo"
+    dds_interface: "wlo1"
 
     # Optional ROS feedback topics.
     publish_joint_states: true

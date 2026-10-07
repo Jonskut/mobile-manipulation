@@ -339,7 +339,8 @@ class Go2ChampWalkController : public rclcpp::Node {
 
     auto next_tick = std::chrono::steady_clock::now();
     while (running_ && rclcpp::ok()) {
-      next_tick += std::chrono::duration<double>(kControlPeriod);
+      next_tick += std::chrono::duration_cast<std::chrono::steady_clock::duration>(
+          std::chrono::duration<double>(kControlPeriod));
       stepOnce();
       std::this_thread::sleep_until(next_tick);
     }

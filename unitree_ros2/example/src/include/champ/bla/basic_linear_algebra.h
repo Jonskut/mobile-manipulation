@@ -73,13 +73,13 @@ public:
     MemT delegate;
 
     // Constructors
-    Matrix<rows,cols,MemT>() { }
-    Matrix<rows,cols,MemT>(MemT &d) : delegate(d) { }
-    Matrix<rows,cols,MemT>(typename MemT::elem_t arr[rows][cols]) { *this = arr; }
+    Matrix() { }
+    Matrix(MemT &d) : delegate(d) { }
+    Matrix(typename MemT::elem_t arr[rows][cols]) { *this = arr; }
     template<typename ...ARGS> Matrix(ARGS... args) { FillRowMajor(args...); }
 
     template<class opMemT>
-    Matrix<rows,cols,MemT>(const Matrix<rows,cols,opMemT> &obj) { *this = obj; }
+    Matrix(const Matrix<rows,cols,opMemT> &obj) { *this = obj; }
 
     // Dimension Access
     int GetRowCount() const;

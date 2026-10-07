@@ -94,8 +94,8 @@ template<class MemT> struct Reference
     const MemT &parent;
     int rowOffset, colOffset;
 
-    Reference<MemT>(const MemT &obj, int rowOff, int colOff) : parent(obj), rowOffset(rowOff), colOffset(colOff) { }
-    Reference<MemT>(const Reference<MemT> &obj) : parent(obj.parent), rowOffset(obj.rowOffset), colOffset(obj.colOffset) { }
+    Reference(const MemT &obj, int rowOff, int colOff) : parent(obj), rowOffset(rowOff), colOffset(colOff) { }
+    Reference(const Reference<MemT> &obj) : parent(obj.parent), rowOffset(obj.rowOffset), colOffset(obj.colOffset) { }
 
     typename MemT::elem_t &operator()(int row, int col) const
     {
@@ -212,7 +212,7 @@ template<class MemT> struct Minor
     const MemT parent;
     int i, j;
 
-    Minor<MemT>(const MemT &obj, int row, int col) : parent(obj), i(row), j(col) { }
+    Minor(const MemT &obj, int row, int col) : parent(obj), i(row), j(col) { }
 
     elem_t &operator()(int row, int col) const
     {
@@ -230,8 +230,8 @@ template<class MemT> struct Trans
     typedef typename MemT::elem_t elem_t;
     const MemT parent;
 
-    Trans<MemT>(const MemT &obj) : parent(obj) { }
-    Trans<MemT>(const Trans<MemT> &obj) : parent(obj.parent) { }
+    Trans(const MemT &obj) : parent(obj) { }
+    Trans(const Trans<MemT> &obj) : parent(obj.parent) { }
 
     elem_t &operator()(int row, int col) const
     {
@@ -247,10 +247,10 @@ template<int leftCols, class LeftMemT, class RightMemT> struct HorzCat
     const LeftMemT left;
     const RightMemT right;
 
-    HorzCat<leftCols,LeftMemT,RightMemT>(const LeftMemT &l, const RightMemT &r) : left(l), right(r) { }
-    HorzCat<leftCols,LeftMemT,RightMemT>(const HorzCat<leftCols,LeftMemT,RightMemT> &obj) : left(obj.left), right(obj.right) { }
+    HorzCat(const LeftMemT &l, const RightMemT &r) : left(l), right(r) { }
+    HorzCat(const HorzCat<leftCols,LeftMemT,RightMemT> &obj) : left(obj.left), right(obj.right) { }
 
-    virtual ~HorzCat<leftCols,LeftMemT,RightMemT>() { }
+    virtual ~HorzCat() { }
 
     elem_t &operator()(int row, int col) const
     {
@@ -264,10 +264,10 @@ template<int topRows, class TopMemT, class BottomMemT> struct VertCat
     const TopMemT top;
     const BottomMemT bottom;
 
-    VertCat<topRows,TopMemT,BottomMemT>(const TopMemT &t, const BottomMemT &b) : top(t), bottom(b) { }
-    VertCat<topRows,TopMemT,BottomMemT>(const VertCat<topRows,TopMemT,BottomMemT> &obj) : top(obj.top), bottom(obj.bottom) { }
+    VertCat(const TopMemT &t, const BottomMemT &b) : top(t), bottom(b) { }
+    VertCat(const VertCat<topRows,TopMemT,BottomMemT> &obj) : top(obj.top), bottom(obj.bottom) { }
 
-    virtual ~VertCat<topRows,TopMemT,BottomMemT>() { }
+    virtual ~VertCat() { }
 
     elem_t &operator()(int row, int col) const
     {
