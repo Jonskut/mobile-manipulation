@@ -125,13 +125,28 @@ inline unsigned long nowChampTimeUs() {
 
 class Go2ChampWalkController : public rclcpp::Node {
  public:
-  Go2ChampWalkController()
+  Go2ChampWalkController(int dds_domain_id, const std::string &dds_interface)
       : Node("go2_champ_walk_controller"),
         body_controller_(base_),
         leg_controller_(base_, nowChampTimeUs()),
         kinematics_(base_) {
+    // Unitree DDS was already initialized in main() BEFORE rclcpp::init(),
+    // so its domain participant exists before the ROS participant is
+    // created. Use the pre-init values as param defaults; warn if the
+    // parameter file disagrees (the pre-init values win).
+    dds_domain_id_ = dds_domain_id;
+    dds_interface_ = dds_interface;
     declareParams();
     loadParams();
+    if (dds_domain_id_ != dds_domain_id || dds_interface_ != dds_interface) {
+      RCLCPP_WARN(get_logger(),
+                  "dds_domain_id/dds_interface params (%d/%s) differ from the "
+                  "pre-initialized Unitree DDS (%d/%s); using pre-init values",
+                  dds_domain_id_, dds_interface_.c_str(), dds_domain_id,
+                  dds_interface.c_str());
+      dds_domain_id_ = dds_domain_id;
+      dds_interface_ = dds_interface;
+    }
 
     // Keep the std::string alive: GaitConfig only stores the pointer.
     gait_config_.knee_orientation = knee_orientation_.c_str();
@@ -142,8 +157,7 @@ class Go2ChampWalkController : public rclcpp::Node {
     // cmd_pose carries offsets, z is absolute = offset + nominal).
     req_pose_.position.z = gait_config_.nominal_height;
 
-    unitree::robot::ChannelFactory::Instance()->Init(dds_domain_id_,
-                                                     dds_interface_);
+    // NOTE: ChannelFactory::Init() already ran in main() before rclcpp::init().
     low_cmd_pub_ = std::make_shared<
         unitree::robot::ChannelPublisher<unitree_go::msg::dds_::LowCmd_>>(
         "rt/lowcmd");
@@ -516,8 +530,45 @@ const std::vector<std::string> Go2ChampWalkController::kChampJointNames = {
     "rh_hip_joint", "rh_upper_leg_joint", "rh_lower_leg_joint"};
 
 int main(int argc, char **argv) {
+  // Initialize Unitree's bundled CycloneDDS BEFORE rclcpp::init() creates the
+  // ROS DDS participant. Both stacks target the same domain id; creating the
+  // Unitree participant first avoids the "Failed to create domain explicitly"
+  // race seen when the ROS participant owns the domain first.
+  // Defaults match go2_champ_gait.yaml (domain 1, lo). Optional CLI override:
+  //   go2_champ_walk_controller [domain_id] [interface]
+  // NOTE: ros2 CLI remap args (--ros-args ...) are filtered out here so they
+  // are not mistaken for domain/interface overrides.
+  int dds_domain_id = 1;
+  std::string dds_interface = "lo";
+  {
+    std::vector<std::string> plain_args;
+    for (int i = 1; i < argc; ++i) {
+      std::string arg = argv[i];
+      if (arg == "--ros-args" || arg == "-r") break;
+      plain_args.push_back(arg);
+    }
+    if (plain_args.size() >= 1) {
+      try {
+        dds_domain_id = std::stoi(plain_args[0]);
+      } catch (const std::exception &) {
+        dds_domain_id = 1;
+      }
+    }
+    if (plain_args.size() >= 2) dds_interface = plain_args[1];
+  }
+  try {
+    unitree::robot::ChannelFactory::Instance()->Init(dds_domain_id,
+                                                     dds_interface);
+  } catch (const std::exception &e) {
+    fprintf(stderr, "[go2_champ_walk] Unitree ChannelFactory::Init(%d, %s) "
+                    "failed: %s\n",
+            dds_domain_id, dds_interface.c_str(), e.what());
+    return 1;
+  }
+
   rclcpp::init(argc, argv);
-  auto node = std::make_shared<Go2ChampWalkController>();
+  auto node =
+      std::make_shared<Go2ChampWalkController>(dds_domain_id, dds_interface);
   rclcpp::spin(node);
   rclcpp::shutdown();
   return 0;

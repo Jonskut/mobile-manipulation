@@ -25,10 +25,11 @@
     # Zero the commanded velocity if no cmd_vel arrives within this time.
     cmd_vel_timeout: 0.5
 
-    # DDS bridge settings. Must match the devcontainer: ROS_DOMAIN_ID=1
+    # DDS bridge settings (consumed as launch args by go2_champ_dds_bridge,
+    # not as node params). Must match the devcontainer: ROS_DOMAIN_ID=1
     # and CYCLONEDDS_URI pointing at the loopback interface.
     dds_domain_id: 1
-    dds_interface: "wlo1"
+    dds_interface: "lo"
 
     # Optional ROS feedback topics.
     publish_joint_states: true

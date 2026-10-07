@@ -49,6 +49,9 @@ find_package(rosbag2_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(unitree_arm REQUIRED)
 find_package(unitree_sdk2 REQUIRED)
+find_package(rcl REQUIRED)
+find_package(rcutils REQUIRED)
+find_package(rosidl_runtime_c REQUIRED)
 
 add_executable(low_level_ctrl src/low_level_ctrl.cpp src/common/motor_crc.cpp)
 add_executable(low_level_ctrl_hg src/h1-2/lowlevel/low_level_ctrl_hg.cpp src/common/motor_crc_hg.cpp)
@@ -71,11 +74,15 @@ add_executable(go2_d1_stand_controller
 target_compile_features(go2_d1_stand_controller PRIVATE cxx_std_20)
 target_link_libraries(go2_d1_stand_controller unitree_sdk2)
 
-add_executable(go2_champ_walk_controller
-  src/go2/go2_champ_walk_controller.cpp
+add_executable(go2_champ_dds_bridge
+  src/go2/go2_champ_dds_bridge.cpp
 )
-target_compile_features(go2_champ_walk_controller PRIVATE cxx_std_20)
-target_link_libraries(go2_champ_walk_controller unitree_sdk2)
+target_compile_features(go2_champ_dds_bridge PRIVATE cxx_std_20)
+target_link_libraries(go2_champ_dds_bridge unitree_sdk2)
+add_executable(go2_champ_gait_planner
+  src/go2/go2_champ_gait_planner.cpp
+)
+target_compile_features(go2_champ_gait_planner PRIVATE cxx_std_20)
 
 add_executable(go2_robot_state_client src/go2/go2_robot_state_client.cpp src/common/motor_crc.cpp) 
 target_compile_features(go2_robot_state_client PRIVATE cxx_std_20)
@@ -128,7 +135,8 @@ ament_target_dependencies(read_wireless_controller ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_sport_client ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_stand_example ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_d1_stand_controller ${DEPENDENCY_LIST})
-ament_target_dependencies(go2_champ_walk_controller ${DEPENDENCY_LIST})
+ament_target_dependencies(go2_champ_gait_planner ${DEPENDENCY_LIST})
+ament_target_dependencies(go2_champ_dds_bridge rcl rcutils rosidl_runtime_c sensor_msgs)
 
 
 ament_target_dependencies(go2_robot_state_client ${DEPENDENCY_LIST})
@@ -172,8 +180,8 @@ install(TARGETS
         read_wireless_controller
         go2_sport_client
         go2_stand_example
-        go2_d1_stand_controller
-        go2_champ_walk_controller
+        go2_champ_dds_bridge
+        go2_champ_gait_planner
         DESTINATION lib/${PROJECT_NAME}
         )
 
