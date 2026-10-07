@@ -1,0 +1,304 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-25065e3d3dc1e094f043.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "unitree_ros2_example",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "b2_sport_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-b2_sport_client-80168b2345571446bf22.json",
+					"name" : "b2_sport_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "b2_stand_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-b2_stand_example-beb143dc5a3b6d001252.json",
+					"name" : "b2_stand_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "b2w_sport_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-b2w_sport_client-8d09fb95f5a3446bbe81.json",
+					"name" : "b2w_sport_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "b2w_stand_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-b2w_stand_example-4ede22d54c93b554c7ea.json",
+					"name" : "b2w_stand_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_ankle_swing_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_ankle_swing_example-f05956b5972391ffc854.json",
+					"name" : "g1_ankle_swing_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_arm_action_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_arm_action_example-e0f6ae4f908dcaa039fc.json",
+					"name" : "g1_arm_action_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_arm_sdk_dds_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_arm_sdk_dds_example-0ee8e4d070f73f8a4e35.json",
+					"name" : "g1_arm_sdk_dds_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_audio_client_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_audio_client_example-dc3ab9ffd2d38138b0f2.json",
+					"name" : "g1_audio_client_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_dex3_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_dex3_example-8b9c12ad1ed3287f6440.json",
+					"name" : "g1_dex3_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_dual_arm_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_dual_arm_example-5e7b83d6e7735ac26887.json",
+					"name" : "g1_dual_arm_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_loco_client_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_loco_client_example-c0fa93e7cc9b7a6a44f7.json",
+					"name" : "g1_loco_client_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g1_low_level_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g1_low_level_example-3064673afa793a93d9fd.json",
+					"name" : "g1_low_level_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_champ_dds_bridge::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_champ_dds_bridge-19b74e213998b82712f8.json",
+					"name" : "go2_champ_dds_bridge",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_champ_gait_planner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_champ_gait_planner-494ea0b9be7c60798a87.json",
+					"name" : "go2_champ_gait_planner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_d1_stand_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_d1_stand_controller-1e58b511684e24c8456f.json",
+					"name" : "go2_d1_stand_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_robot_state_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_robot_state_client-f60d06aae4d12db217e7.json",
+					"name" : "go2_robot_state_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_sport_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_sport_client-5b60d3b3e02680045a76.json",
+					"name" : "go2_sport_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_stand_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_stand_example-c2b03137bcb1e5bdf366.json",
+					"name" : "go2_stand_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "h2_ankle_swing_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-h2_ankle_swing_example-e604a8a8af488282c203.json",
+					"name" : "h2_ankle_swing_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "h2_loco_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-h2_loco_client-be61c6daa69f236fc817.json",
+					"name" : "h2_loco_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "low_level_ctrl::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-low_level_ctrl-2f392201bf2c8ce0602a.json",
+					"name" : "low_level_ctrl",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "low_level_ctrl_hg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-low_level_ctrl_hg-2ba4f29a3ff77e5f2102.json",
+					"name" : "low_level_ctrl_hg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_low_state::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_low_state-f069c2365c58cd36ddf8.json",
+					"name" : "read_low_state",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_low_state_hg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_low_state_hg-407260780dbb51d00e8f.json",
+					"name" : "read_low_state_hg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_motion_state::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_motion_state-9ff746e4cef4cfbd3926.json",
+					"name" : "read_motion_state",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_wireless_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_wireless_controller-157c5ac4819d9749a5be.json",
+					"name" : "read_wireless_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-c29137f9abd09406bf6c.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "unitree_ros2_example_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-unitree_ros2_example_uninstall-d9aef707eaf9a980fcb6.json",
+					"name" : "unitree_ros2_example_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/workspace/build/unitree_ros2_example",
+		"source" : "/workspace/unitree_ros2/example/src"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

@@ -1,0 +1,3 @@
+gmake[2]: *** [CMakeFiles/go2_sport_client.dir/build.make:90: CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o] Interrupt
+gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/go2_sport_client.dir/all] Interrupt
+gmake: *** [Makefile:146: all] Interrupt

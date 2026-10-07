@@ -1,0 +1,78 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /opt/venv/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found unitree_go: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/share/unitree_go/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found unitree_hg: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/share/unitree_hg/cmake)
+-- Found unitree_api: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/share/unitree_api/cmake)
+-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 1.3.5 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found trajectory_msgs: 4.9.2 (/opt/ros/humble/share/trajectory_msgs/cmake)
+-- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)
+-- Found unitree_arm: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/share/unitree_arm/cmake)
+-- Found yaml-cpp version 0.7.0
+-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /workspace/unitree_ros2/example/src/include;/workspace/unitree_ros2/example/src/include/common;/workspace/unitree_ros2/example/src/include/nlohmann;/workspace/unitree_ros2/example/src/include/champ;/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include;/workspace/unitree_ros2/example/src/../../../d1_sdk/src/msg
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /workspace/build/unitree_ros2_example
+[  1%] [32mBuilding CXX object CMakeFiles/low_level_ctrl.dir/src/low_level_ctrl.cpp.o[0m
+[  2%] [32mBuilding CXX object CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o[0m
+[  4%] [32m[1mLinking CXX executable low_level_ctrl[0m
+[  4%] Built target low_level_ctrl
+[  5%] [32mBuilding CXX object CMakeFiles/low_level_ctrl_hg.dir/src/h1-2/lowlevel/low_level_ctrl_hg.cpp.o[0m
+[  7%] [32mBuilding CXX object CMakeFiles/low_level_ctrl_hg.dir/src/common/motor_crc_hg.cpp.o[0m
+[  8%] [32m[1mLinking CXX executable low_level_ctrl_hg[0m
+[  8%] Built target low_level_ctrl_hg
+[  9%] [32mBuilding CXX object CMakeFiles/g1_low_level_example.dir/src/g1/lowlevel/g1_low_level_example.cpp.o[0m
+[ 11%] [32mBuilding CXX object CMakeFiles/g1_low_level_example.dir/src/common/motor_crc_hg.cpp.o[0m
+[ 12%] [32m[1mLinking CXX executable g1_low_level_example[0m
+[ 12%] Built target g1_low_level_example
+[ 14%] [32mBuilding CXX object CMakeFiles/read_low_state.dir/src/read_low_state.cpp.o[0m
+[ 15%] [32m[1mLinking CXX executable read_low_state[0m
+[ 15%] Built target read_low_state
+[ 16%] [32mBuilding CXX object CMakeFiles/read_low_state_hg.dir/src/read_low_state_hg.cpp.o[0m
+[ 18%] [32m[1mLinking CXX executable read_low_state_hg[0m
+[ 18%] Built target read_low_state_hg
+[ 19%] [32mBuilding CXX object CMakeFiles/read_motion_state.dir/src/read_motion_state.cpp.o[0m
+[ 21%] [32m[1mLinking CXX executable read_motion_state[0m
+[ 21%] Built target read_motion_state
+[ 22%] [32mBuilding CXX object CMakeFiles/read_wireless_controller.dir/src/read_wireless_controller.cpp.o[0m
+[ 23%] [32m[1mLinking CXX executable read_wireless_controller[0m
+[ 23%] Built target read_wireless_controller
+[ 25%] [32mBuilding CXX object CMakeFiles/go2_sport_client.dir/src/go2/go2_sport_client.cpp.o[0m
+[ 26%] [32mBuilding CXX object CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o[0m

@@ -1,0 +1,714 @@
+[0.000000] (-) TimerEvent: {}
+[0.000442] (-) JobUnselected: {'identifier': 'd1_description'}
+[0.000490] (-) JobUnselected: {'identifier': 'marm_code'}
+[0.000508] (-) JobUnselected: {'identifier': 'stand_go2'}
+[0.000522] (-) JobUnselected: {'identifier': 'stand_go2'}
+[0.000535] (-) JobUnselected: {'identifier': 'stand_go2'}
+[0.000548] (-) JobUnselected: {'identifier': 'unitree_api'}
+[0.000560] (-) JobUnselected: {'identifier': 'unitree_arm'}
+[0.000572] (-) JobUnselected: {'identifier': 'unitree_go'}
+[0.000585] (-) JobUnselected: {'identifier': 'unitree_hg'}
+[0.000600] (-) JobUnselected: {'identifier': 'unitree_mujoco'}
+[0.000613] (-) JobUnselected: {'identifier': 'unitree_sdk2'}
+[0.000627] (unitree_ros2_example) JobQueued: {'identifier': 'unitree_ros2_example', 'dependencies': OrderedDict([('unitree_api', '/workspace/install/unitree_api'), ('unitree_arm', '/workspace/install/unitree_arm'), ('unitree_go', '/workspace/install/unitree_go'), ('unitree_hg', '/workspace/install/unitree_hg')])}
+[0.000648] (unitree_ros2_example) JobStarted: {'identifier': 'unitree_ros2_example'}
+[0.008896] (unitree_ros2_example) JobProgress: {'identifier': 'unitree_ros2_example', 'progress': 'cmake'}
+[0.009442] (unitree_ros2_example) Command: {'cmd': ['/usr/bin/cmake', '/workspace/unitree_ros2/example/src', '-DCMAKE_INSTALL_PREFIX=/workspace/install/unitree_ros2_example'], 'cwd': '/workspace/build/unitree_ros2_example', 'env': OrderedDict([('HOSTNAME', 'jone-ubuntu'), ('GIT_ASKPASS', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/unitree_robotics/lib:/opt/unitree_robotics/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/unitree_robotics/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/bin/helpers/browser.sh'), ('AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS', '1'), ('HOME', '/root'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'), ('TERM_PROGRAM_VERSION', '1.138.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-12803a20-c8e9-45f7-9b30-80bb1b7a5690.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('MAKEFLAGS', '-j 1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('DEBUGINFOD_URLS', ''), ('WAYLAND_DISPLAY', 'vscode-wayland-b7f0775f-cb1f-4241-88f8-47a0fed5606e.sock'), ('COLCON_PREFIX_PATH', '/workspace/unitree_ros2/example/install:/workspace/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-8503aeac-00ab-4ca7-a1b6-b6367e899634.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('CODELLDB_LAUNCH_CONNECT_FILE', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/vadimcn.vscode-lldb/rpcaddress.txt'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/workspace/unitree_ros2/example/install/unitree_ros2_example/bin:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/extensions/vadimcn.vscode-lldb-1.12.3/bin:/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/bin/remote-cli:/opt/ros/humble/bin:/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts'), ('XDG_RUNTIME_DIR', '/tmp/user/0'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-8503aeac-00ab-4ca7-a1b6-b6367e899634.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-310d2a48c67c24c1.txt'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/ms-python.python/pythonrc.py'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('XAUTHORITY', '/tmp/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/user/0/vscode-git-d17c21cc56.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-8503aeac-00ab-4ca7-a1b6-b6367e899634.sock'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/workspace/unitree_ros2/example/install/unitree_ros2_example:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('CXX', '/usr/bin/g++'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/workspace/build/unitree_ros2_example'), ('COPILOT_DEBUG_NONCE', '14871ab2a743eddea9b07310fe2b64d6'), ('PYTHONPATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('TZ', 'UTC'), ('CC', '/usr/bin/gcc'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/workspace/unitree_ros2/example/install/unitree_ros2_example:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/opt/unitree_robotics:/opt/unitree_robotics:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/unitree_robotics::/opt/ros/humble')]), 'shell': False}
+[0.066869] (unitree_ros2_example) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099847] (-) TimerEvent: {}
+[0.116160] (unitree_ros2_example) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.124496] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.186801] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.191971] (unitree_ros2_example) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/gcc - skipped\n'}
+[0.192393] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.192964] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.195357] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.199904] (-) TimerEvent: {}
+[0.269211] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.274428] (unitree_ros2_example) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/g++ - skipped\n'}
+[0.274645] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.274976] (unitree_ros2_example) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.279159] (unitree_ros2_example) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.299979] (-) TimerEvent: {}
+[0.390916] (unitree_ros2_example) StdoutLine: {'line': b'-- Found Python3: /opt/venv/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.400055] (-) TimerEvent: {}
+[0.482344] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_go: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/share/unitree_go/cmake)\n'}
+[0.500163] (-) TimerEvent: {}
+[0.529334] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.535997] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.545393] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.558947] (unitree_ros2_example) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.575622] (unitree_ros2_example) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.600265] (-) TimerEvent: {}
+[0.620897] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_hg: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/share/unitree_hg/cmake)\n'}
+[0.630775] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_api: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/share/unitree_api/cmake)\n'}
+[0.642547] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.684637] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.688178] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rmw_cyclonedds_cpp: 1.3.5 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)\n'}
+[0.700337] (-) TimerEvent: {}
+[0.710732] (unitree_ros2_example) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_cyclonedds_cpp' as default\n"}
+[0.722784] (unitree_ros2_example) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.788252] (unitree_ros2_example) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.788476] (unitree_ros2_example) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.800439] (-) TimerEvent: {}
+[0.855059] (unitree_ros2_example) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.855736] (unitree_ros2_example) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.892816] (unitree_ros2_example) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[0.900518] (-) TimerEvent: {}
+[0.907702] (unitree_ros2_example) StdoutLine: {'line': b'-- Found trajectory_msgs: 4.9.2 (/opt/ros/humble/share/trajectory_msgs/cmake)\n'}
+[0.922322] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)\n'}
+[0.981982] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_arm: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/share/unitree_arm/cmake)\n'}
+[1.000606] (-) TimerEvent: {}
+[1.063956] (unitree_ros2_example) StdoutLine: {'line': b'-- Found yaml-cpp version 0.7.0\n'}
+[1.069807] (unitree_ros2_example) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.100692] (-) TimerEvent: {}
+[1.168428] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.176337] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.179928] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /workspace/unitree_ros2/example/src/include;/workspace/unitree_ros2/example/src/include/common;/workspace/unitree_ros2/example/src/include/nlohmann;/workspace/unitree_ros2/example/src/include/champ;/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include;/workspace/unitree_ros2/example/src/../../../d1_sdk/src/msg\n'}
+[1.180008] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.187836] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.187929] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.189058] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.191330] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.192714] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.200296] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.200369] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.200750] (-) TimerEvent: {}
+[1.201610] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.202984] (unitree_ros2_example) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.300863] (-) TimerEvent: {}
+[1.330239] (unitree_ros2_example) StdoutLine: {'line': b'-- Generating done\n'}
+[1.369970] (unitree_ros2_example) StdoutLine: {'line': b'-- Build files have been written to: /workspace/build/unitree_ros2_example\n'}
+[1.381782] (unitree_ros2_example) CommandEnded: {'returncode': 0}
+[1.382284] (unitree_ros2_example) JobProgress: {'identifier': 'unitree_ros2_example', 'progress': 'build'}
+[1.382898] (unitree_ros2_example) Command: {'cmd': ['/usr/bin/cmake', '--build', '/workspace/build/unitree_ros2_example'], 'cwd': '/workspace/build/unitree_ros2_example', 'env': OrderedDict([('HOSTNAME', 'jone-ubuntu'), ('GIT_ASKPASS', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/unitree_robotics/lib:/opt/unitree_robotics/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/unitree_robotics/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/bin/helpers/browser.sh'), ('AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS', '1'), ('HOME', '/root'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'), ('TERM_PROGRAM_VERSION', '1.138.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-12803a20-c8e9-45f7-9b30-80bb1b7a5690.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('MAKEFLAGS', '-j 1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('DEBUGINFOD_URLS', ''), ('WAYLAND_DISPLAY', 'vscode-wayland-b7f0775f-cb1f-4241-88f8-47a0fed5606e.sock'), ('COLCON_PREFIX_PATH', '/workspace/unitree_ros2/example/install:/workspace/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-8503aeac-00ab-4ca7-a1b6-b6367e899634.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('CODELLDB_LAUNCH_CONNECT_FILE', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/vadimcn.vscode-lldb/rpcaddress.txt'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/workspace/unitree_ros2/example/install/unitree_ros2_example/bin:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/extensions/vadimcn.vscode-lldb-1.12.3/bin:/vscode/vscode-server/bin/linux-x64/7debcd0e2acdea1c52de81bf9ee1620444407dda/bin/remote-cli:/opt/ros/humble/bin:/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts'), ('XDG_RUNTIME_DIR', '/tmp/user/0'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-8503aeac-00ab-4ca7-a1b6-b6367e899634.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':0'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-310d2a48c67c24c1.txt'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/ms-python.python/pythonrc.py'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('XAUTHORITY', '/tmp/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/user/0/vscode-git-d17c21cc56.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-8503aeac-00ab-4ca7-a1b6-b6367e899634.sock'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/workspace/unitree_ros2/example/install/unitree_ros2_example:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('CXX', '/usr/bin/g++'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/workspace/build/unitree_ros2_example'), ('COPILOT_DEBUG_NONCE', '14871ab2a743eddea9b07310fe2b64d6'), ('PYTHONPATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/local/lib/python3.10/dist-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/local/lib/python3.10/dist-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('TZ', 'UTC'), ('CC', '/usr/bin/gcc'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/workspace/unitree_ros2/example/install/unitree_ros2_example:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/opt/unitree_robotics:/opt/unitree_robotics:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/opt/unitree_robotics::/opt/ros/humble')]), 'shell': False}
+[1.400946] (-) TimerEvent: {}
+[1.436046] (unitree_ros2_example) StdoutLine: {'line': b'[  1%] \x1b[32mBuilding CXX object CMakeFiles/low_level_ctrl.dir/src/low_level_ctrl.cpp.o\x1b[0m\n'}
+[1.501047] (-) TimerEvent: {}
+[1.601317] (-) TimerEvent: {}
+[1.701592] (-) TimerEvent: {}
+[1.801844] (-) TimerEvent: {}
+[1.902116] (-) TimerEvent: {}
+[2.002383] (-) TimerEvent: {}
+[2.102648] (-) TimerEvent: {}
+[2.202900] (-) TimerEvent: {}
+[2.303164] (-) TimerEvent: {}
+[2.403441] (-) TimerEvent: {}
+[2.503710] (-) TimerEvent: {}
+[2.603976] (-) TimerEvent: {}
+[2.704253] (-) TimerEvent: {}
+[2.804567] (-) TimerEvent: {}
+[2.904887] (-) TimerEvent: {}
+[3.005170] (-) TimerEvent: {}
+[3.105452] (-) TimerEvent: {}
+[3.205727] (-) TimerEvent: {}
+[3.306036] (-) TimerEvent: {}
+[3.406347] (-) TimerEvent: {}
+[3.506659] (-) TimerEvent: {}
+[3.606954] (-) TimerEvent: {}
+[3.707293] (-) TimerEvent: {}
+[3.807598] (-) TimerEvent: {}
+[3.907934] (-) TimerEvent: {}
+[4.008209] (-) TimerEvent: {}
+[4.108519] (-) TimerEvent: {}
+[4.208789] (-) TimerEvent: {}
+[4.309047] (-) TimerEvent: {}
+[4.409310] (-) TimerEvent: {}
+[4.509634] (-) TimerEvent: {}
+[4.609898] (-) TimerEvent: {}
+[4.710178] (-) TimerEvent: {}
+[4.756772] (unitree_ros2_example) StdoutLine: {'line': b'[  2%] \x1b[32mBuilding CXX object CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o\x1b[0m\n'}
+[4.810264] (-) TimerEvent: {}
+[4.910515] (-) TimerEvent: {}
+[5.010765] (-) TimerEvent: {}
+[5.111025] (-) TimerEvent: {}
+[5.211316] (-) TimerEvent: {}
+[5.311649] (-) TimerEvent: {}
+[5.411936] (-) TimerEvent: {}
+[5.512245] (-) TimerEvent: {}
+[5.612541] (-) TimerEvent: {}
+[5.712831] (-) TimerEvent: {}
+[5.813097] (-) TimerEvent: {}
+[5.913360] (-) TimerEvent: {}
+[6.013657] (-) TimerEvent: {}
+[6.113932] (-) TimerEvent: {}
+[6.214201] (-) TimerEvent: {}
+[6.314870] (-) TimerEvent: {}
+[6.415133] (-) TimerEvent: {}
+[6.515449] (-) TimerEvent: {}
+[6.615729] (-) TimerEvent: {}
+[6.716002] (-) TimerEvent: {}
+[6.816271] (-) TimerEvent: {}
+[6.916566] (-) TimerEvent: {}
+[6.929943] (unitree_ros2_example) StdoutLine: {'line': b'[  4%] \x1b[32m\x1b[1mLinking CXX executable low_level_ctrl\x1b[0m\n'}
+[7.016673] (-) TimerEvent: {}
+[7.088807] (unitree_ros2_example) StdoutLine: {'line': b'[  4%] Built target low_level_ctrl\n'}
+[7.106778] (unitree_ros2_example) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding CXX object CMakeFiles/low_level_ctrl_hg.dir/src/h1-2/lowlevel/low_level_ctrl_hg.cpp.o\x1b[0m\n'}
+[7.116733] (-) TimerEvent: {}
+[7.216950] (-) TimerEvent: {}
+[7.317207] (-) TimerEvent: {}
+[7.417477] (-) TimerEvent: {}
+[7.517765] (-) TimerEvent: {}
+[7.618055] (-) TimerEvent: {}
+[7.718362] (-) TimerEvent: {}
+[7.818651] (-) TimerEvent: {}
+[7.918973] (-) TimerEvent: {}
+[8.019270] (-) TimerEvent: {}
+[8.119566] (-) TimerEvent: {}
+[8.219864] (-) TimerEvent: {}
+[8.320216] (-) TimerEvent: {}
+[8.420500] (-) TimerEvent: {}
+[8.520775] (-) TimerEvent: {}
+[8.621055] (-) TimerEvent: {}
+[8.721349] (-) TimerEvent: {}
+[8.821616] (-) TimerEvent: {}
+[8.921887] (-) TimerEvent: {}
+[9.022155] (-) TimerEvent: {}
+[9.122435] (-) TimerEvent: {}
+[9.222738] (-) TimerEvent: {}
+[9.323009] (-) TimerEvent: {}
+[9.423279] (-) TimerEvent: {}
+[9.523601] (-) TimerEvent: {}
+[9.623865] (-) TimerEvent: {}
+[9.724118] (-) TimerEvent: {}
+[9.824376] (-) TimerEvent: {}
+[9.924650] (-) TimerEvent: {}
+[10.024924] (-) TimerEvent: {}
+[10.125197] (-) TimerEvent: {}
+[10.225463] (-) TimerEvent: {}
+[10.325721] (-) TimerEvent: {}
+[10.425986] (-) TimerEvent: {}
+[10.526259] (-) TimerEvent: {}
+[10.626537] (-) TimerEvent: {}
+[10.726792] (-) TimerEvent: {}
+[10.827070] (-) TimerEvent: {}
+[10.927330] (-) TimerEvent: {}
+[11.027620] (-) TimerEvent: {}
+[11.127892] (-) TimerEvent: {}
+[11.228154] (-) TimerEvent: {}
+[11.328431] (-) TimerEvent: {}
+[11.428697] (-) TimerEvent: {}
+[11.528941] (-) TimerEvent: {}
+[11.629204] (-) TimerEvent: {}
+[11.729456] (-) TimerEvent: {}
+[11.829714] (-) TimerEvent: {}
+[11.929971] (-) TimerEvent: {}
+[12.030233] (-) TimerEvent: {}
+[12.130460] (-) TimerEvent: {}
+[12.230720] (-) TimerEvent: {}
+[12.330965] (-) TimerEvent: {}
+[12.431247] (-) TimerEvent: {}
+[12.531622] (-) TimerEvent: {}
+[12.631909] (-) TimerEvent: {}
+[12.732155] (-) TimerEvent: {}
+[12.832421] (-) TimerEvent: {}
+[12.932679] (-) TimerEvent: {}
+[13.032941] (-) TimerEvent: {}
+[13.133207] (-) TimerEvent: {}
+[13.233460] (-) TimerEvent: {}
+[13.333726] (-) TimerEvent: {}
+[13.434004] (-) TimerEvent: {}
+[13.471855] (unitree_ros2_example) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/low_level_ctrl_hg.dir/src/common/motor_crc_hg.cpp.o\x1b[0m\n'}
+[13.534106] (-) TimerEvent: {}
+[13.634359] (-) TimerEvent: {}
+[13.734619] (-) TimerEvent: {}
+[13.834878] (-) TimerEvent: {}
+[13.935131] (-) TimerEvent: {}
+[14.035419] (-) TimerEvent: {}
+[14.135736] (-) TimerEvent: {}
+[14.235999] (-) TimerEvent: {}
+[14.336272] (-) TimerEvent: {}
+[14.436572] (-) TimerEvent: {}
+[14.536835] (-) TimerEvent: {}
+[14.637101] (-) TimerEvent: {}
+[14.737365] (-) TimerEvent: {}
+[14.837659] (-) TimerEvent: {}
+[14.937935] (-) TimerEvent: {}
+[15.038204] (-) TimerEvent: {}
+[15.138462] (-) TimerEvent: {}
+[15.238740] (-) TimerEvent: {}
+[15.339020] (-) TimerEvent: {}
+[15.439303] (-) TimerEvent: {}
+[15.539618] (-) TimerEvent: {}
+[15.616819] (unitree_ros2_example) StdoutLine: {'line': b'[  8%] \x1b[32m\x1b[1mLinking CXX executable low_level_ctrl_hg\x1b[0m\n'}
+[15.639717] (-) TimerEvent: {}
+[15.740006] (-) TimerEvent: {}
+[15.840276] (-) TimerEvent: {}
+[15.931607] (unitree_ros2_example) StdoutLine: {'line': b'[  8%] Built target low_level_ctrl_hg\n'}
+[15.940358] (-) TimerEvent: {}
+[15.951804] (unitree_ros2_example) StdoutLine: {'line': b'[  9%] \x1b[32mBuilding CXX object CMakeFiles/g1_low_level_example.dir/src/g1/lowlevel/g1_low_level_example.cpp.o\x1b[0m\n'}
+[16.040465] (-) TimerEvent: {}
+[16.140727] (-) TimerEvent: {}
+[16.241002] (-) TimerEvent: {}
+[16.341260] (-) TimerEvent: {}
+[16.441535] (-) TimerEvent: {}
+[16.541820] (-) TimerEvent: {}
+[16.642087] (-) TimerEvent: {}
+[16.742343] (-) TimerEvent: {}
+[16.842616] (-) TimerEvent: {}
+[16.942890] (-) TimerEvent: {}
+[17.043161] (-) TimerEvent: {}
+[17.143429] (-) TimerEvent: {}
+[17.243719] (-) TimerEvent: {}
+[17.344014] (-) TimerEvent: {}
+[17.444275] (-) TimerEvent: {}
+[17.544554] (-) TimerEvent: {}
+[17.644811] (-) TimerEvent: {}
+[17.745086] (-) TimerEvent: {}
+[17.845377] (-) TimerEvent: {}
+[17.945662] (-) TimerEvent: {}
+[18.045958] (-) TimerEvent: {}
+[18.146221] (-) TimerEvent: {}
+[18.246490] (-) TimerEvent: {}
+[18.346759] (-) TimerEvent: {}
+[18.447070] (-) TimerEvent: {}
+[18.547338] (-) TimerEvent: {}
+[18.647620] (-) TimerEvent: {}
+[18.747881] (-) TimerEvent: {}
+[18.848153] (-) TimerEvent: {}
+[18.948430] (-) TimerEvent: {}
+[19.048679] (-) TimerEvent: {}
+[19.149029] (-) TimerEvent: {}
+[19.249301] (-) TimerEvent: {}
+[19.349609] (-) TimerEvent: {}
+[19.449901] (-) TimerEvent: {}
+[19.550179] (-) TimerEvent: {}
+[19.650488] (-) TimerEvent: {}
+[19.750763] (-) TimerEvent: {}
+[19.851036] (-) TimerEvent: {}
+[19.951306] (-) TimerEvent: {}
+[20.051580] (-) TimerEvent: {}
+[20.151823] (-) TimerEvent: {}
+[20.252091] (-) TimerEvent: {}
+[20.352351] (-) TimerEvent: {}
+[20.452634] (-) TimerEvent: {}
+[20.552883] (-) TimerEvent: {}
+[20.653151] (-) TimerEvent: {}
+[20.753421] (-) TimerEvent: {}
+[20.853856] (-) TimerEvent: {}
+[20.954118] (-) TimerEvent: {}
+[21.054380] (-) TimerEvent: {}
+[21.154680] (-) TimerEvent: {}
+[21.254936] (-) TimerEvent: {}
+[21.355195] (-) TimerEvent: {}
+[21.455570] (-) TimerEvent: {}
+[21.555883] (-) TimerEvent: {}
+[21.656131] (-) TimerEvent: {}
+[21.756381] (-) TimerEvent: {}
+[21.856646] (-) TimerEvent: {}
+[21.956915] (-) TimerEvent: {}
+[22.057185] (-) TimerEvent: {}
+[22.157511] (-) TimerEvent: {}
+[22.257813] (-) TimerEvent: {}
+[22.258503] (unitree_ros2_example) StdoutLine: {'line': b'[ 11%] \x1b[32mBuilding CXX object CMakeFiles/g1_low_level_example.dir/src/common/motor_crc_hg.cpp.o\x1b[0m\n'}
+[22.357916] (-) TimerEvent: {}
+[22.458160] (-) TimerEvent: {}
+[22.558426] (-) TimerEvent: {}
+[22.658678] (-) TimerEvent: {}
+[22.758953] (-) TimerEvent: {}
+[22.859229] (-) TimerEvent: {}
+[22.959508] (-) TimerEvent: {}
+[23.059781] (-) TimerEvent: {}
+[23.160055] (-) TimerEvent: {}
+[23.260332] (-) TimerEvent: {}
+[23.360632] (-) TimerEvent: {}
+[23.460926] (-) TimerEvent: {}
+[23.561219] (-) TimerEvent: {}
+[23.661484] (-) TimerEvent: {}
+[23.761751] (-) TimerEvent: {}
+[23.862017] (-) TimerEvent: {}
+[23.962301] (-) TimerEvent: {}
+[24.062582] (-) TimerEvent: {}
+[24.162876] (-) TimerEvent: {}
+[24.263145] (-) TimerEvent: {}
+[24.363457] (-) TimerEvent: {}
+[24.450162] (unitree_ros2_example) StdoutLine: {'line': b'[ 12%] \x1b[32m\x1b[1mLinking CXX executable g1_low_level_example\x1b[0m\n'}
+[24.463540] (-) TimerEvent: {}
+[24.563791] (-) TimerEvent: {}
+[24.664060] (-) TimerEvent: {}
+[24.764305] (-) TimerEvent: {}
+[24.775596] (unitree_ros2_example) StdoutLine: {'line': b'[ 12%] Built target g1_low_level_example\n'}
+[24.796098] (unitree_ros2_example) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object CMakeFiles/read_low_state.dir/src/read_low_state.cpp.o\x1b[0m\n'}
+[24.864406] (-) TimerEvent: {}
+[24.964659] (-) TimerEvent: {}
+[25.064934] (-) TimerEvent: {}
+[25.165235] (-) TimerEvent: {}
+[25.265527] (-) TimerEvent: {}
+[25.365797] (-) TimerEvent: {}
+[25.466084] (-) TimerEvent: {}
+[25.566356] (-) TimerEvent: {}
+[25.666677] (-) TimerEvent: {}
+[25.766942] (-) TimerEvent: {}
+[25.867208] (-) TimerEvent: {}
+[25.967493] (-) TimerEvent: {}
+[26.067763] (-) TimerEvent: {}
+[26.168051] (-) TimerEvent: {}
+[26.268312] (-) TimerEvent: {}
+[26.368601] (-) TimerEvent: {}
+[26.468879] (-) TimerEvent: {}
+[26.569565] (-) TimerEvent: {}
+[26.669899] (-) TimerEvent: {}
+[26.770223] (-) TimerEvent: {}
+[26.870474] (-) TimerEvent: {}
+[26.970767] (-) TimerEvent: {}
+[27.071276] (-) TimerEvent: {}
+[27.171618] (-) TimerEvent: {}
+[27.271905] (-) TimerEvent: {}
+[27.372165] (-) TimerEvent: {}
+[27.472442] (-) TimerEvent: {}
+[27.572707] (-) TimerEvent: {}
+[27.672979] (-) TimerEvent: {}
+[27.773248] (-) TimerEvent: {}
+[27.873510] (-) TimerEvent: {}
+[27.973775] (-) TimerEvent: {}
+[28.074040] (-) TimerEvent: {}
+[28.174305] (-) TimerEvent: {}
+[28.274579] (-) TimerEvent: {}
+[28.374846] (-) TimerEvent: {}
+[28.475133] (-) TimerEvent: {}
+[28.575415] (-) TimerEvent: {}
+[28.675843] (-) TimerEvent: {}
+[28.776291] (-) TimerEvent: {}
+[28.876597] (-) TimerEvent: {}
+[28.976844] (-) TimerEvent: {}
+[29.077123] (-) TimerEvent: {}
+[29.177378] (-) TimerEvent: {}
+[29.277643] (-) TimerEvent: {}
+[29.377900] (-) TimerEvent: {}
+[29.478155] (-) TimerEvent: {}
+[29.578450] (-) TimerEvent: {}
+[29.678718] (-) TimerEvent: {}
+[29.778976] (-) TimerEvent: {}
+[29.879238] (-) TimerEvent: {}
+[29.979457] (-) TimerEvent: {}
+[30.079717] (-) TimerEvent: {}
+[30.179975] (-) TimerEvent: {}
+[30.280232] (-) TimerEvent: {}
+[30.380453] (-) TimerEvent: {}
+[30.480720] (-) TimerEvent: {}
+[30.580989] (-) TimerEvent: {}
+[30.681268] (-) TimerEvent: {}
+[30.781585] (-) TimerEvent: {}
+[30.824379] (unitree_ros2_example) StdoutLine: {'line': b'[ 15%] \x1b[32m\x1b[1mLinking CXX executable read_low_state\x1b[0m\n'}
+[30.881706] (-) TimerEvent: {}
+[30.981974] (-) TimerEvent: {}
+[31.082258] (-) TimerEvent: {}
+[31.122923] (unitree_ros2_example) StdoutLine: {'line': b'[ 15%] Built target read_low_state\n'}
+[31.142677] (unitree_ros2_example) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/read_low_state_hg.dir/src/read_low_state_hg.cpp.o\x1b[0m\n'}
+[31.182347] (-) TimerEvent: {}
+[31.282597] (-) TimerEvent: {}
+[31.382845] (-) TimerEvent: {}
+[31.483108] (-) TimerEvent: {}
+[31.583385] (-) TimerEvent: {}
+[31.683672] (-) TimerEvent: {}
+[31.783951] (-) TimerEvent: {}
+[31.884230] (-) TimerEvent: {}
+[31.984458] (-) TimerEvent: {}
+[32.084728] (-) TimerEvent: {}
+[32.184992] (-) TimerEvent: {}
+[32.285258] (-) TimerEvent: {}
+[32.385532] (-) TimerEvent: {}
+[32.485806] (-) TimerEvent: {}
+[32.586088] (-) TimerEvent: {}
+[32.686357] (-) TimerEvent: {}
+[32.786627] (-) TimerEvent: {}
+[32.886899] (-) TimerEvent: {}
+[32.987181] (-) TimerEvent: {}
+[33.087440] (-) TimerEvent: {}
+[33.187713] (-) TimerEvent: {}
+[33.287985] (-) TimerEvent: {}
+[33.388251] (-) TimerEvent: {}
+[33.488522] (-) TimerEvent: {}
+[33.588789] (-) TimerEvent: {}
+[33.689073] (-) TimerEvent: {}
+[33.789352] (-) TimerEvent: {}
+[33.890096] (-) TimerEvent: {}
+[33.990376] (-) TimerEvent: {}
+[34.090659] (-) TimerEvent: {}
+[34.190924] (-) TimerEvent: {}
+[34.291567] (-) TimerEvent: {}
+[34.391837] (-) TimerEvent: {}
+[34.492111] (-) TimerEvent: {}
+[34.592406] (-) TimerEvent: {}
+[34.692695] (-) TimerEvent: {}
+[34.792970] (-) TimerEvent: {}
+[34.893258] (-) TimerEvent: {}
+[34.993555] (-) TimerEvent: {}
+[35.093823] (-) TimerEvent: {}
+[35.194077] (-) TimerEvent: {}
+[35.294330] (-) TimerEvent: {}
+[35.394609] (-) TimerEvent: {}
+[35.494860] (-) TimerEvent: {}
+[35.595124] (-) TimerEvent: {}
+[35.695400] (-) TimerEvent: {}
+[35.795655] (-) TimerEvent: {}
+[35.895906] (-) TimerEvent: {}
+[35.996169] (-) TimerEvent: {}
+[36.096421] (-) TimerEvent: {}
+[36.196675] (-) TimerEvent: {}
+[36.296928] (-) TimerEvent: {}
+[36.397179] (-) TimerEvent: {}
+[36.497449] (-) TimerEvent: {}
+[36.597707] (-) TimerEvent: {}
+[36.698308] (-) TimerEvent: {}
+[36.798580] (-) TimerEvent: {}
+[36.899256] (-) TimerEvent: {}
+[36.999535] (-) TimerEvent: {}
+[37.099814] (-) TimerEvent: {}
+[37.200077] (-) TimerEvent: {}
+[37.212593] (unitree_ros2_example) StdoutLine: {'line': b'[ 18%] \x1b[32m\x1b[1mLinking CXX executable read_low_state_hg\x1b[0m\n'}
+[37.300175] (-) TimerEvent: {}
+[37.400446] (-) TimerEvent: {}
+[37.498683] (unitree_ros2_example) StdoutLine: {'line': b'[ 18%] Built target read_low_state_hg\n'}
+[37.500500] (-) TimerEvent: {}
+[37.518354] (unitree_ros2_example) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding CXX object CMakeFiles/read_motion_state.dir/src/read_motion_state.cpp.o\x1b[0m\n'}
+[37.600617] (-) TimerEvent: {}
+[37.700867] (-) TimerEvent: {}
+[37.801126] (-) TimerEvent: {}
+[37.901400] (-) TimerEvent: {}
+[38.001692] (-) TimerEvent: {}
+[38.101952] (-) TimerEvent: {}
+[38.202221] (-) TimerEvent: {}
+[38.302445] (-) TimerEvent: {}
+[38.402713] (-) TimerEvent: {}
+[38.502991] (-) TimerEvent: {}
+[38.603265] (-) TimerEvent: {}
+[38.703567] (-) TimerEvent: {}
+[38.803873] (-) TimerEvent: {}
+[38.904183] (-) TimerEvent: {}
+[39.004454] (-) TimerEvent: {}
+[39.104718] (-) TimerEvent: {}
+[39.204984] (-) TimerEvent: {}
+[39.305257] (-) TimerEvent: {}
+[39.405548] (-) TimerEvent: {}
+[39.505876] (-) TimerEvent: {}
+[39.606148] (-) TimerEvent: {}
+[39.706431] (-) TimerEvent: {}
+[39.806707] (-) TimerEvent: {}
+[39.906976] (-) TimerEvent: {}
+[40.007244] (-) TimerEvent: {}
+[40.107525] (-) TimerEvent: {}
+[40.207826] (-) TimerEvent: {}
+[40.308092] (-) TimerEvent: {}
+[40.408379] (-) TimerEvent: {}
+[40.508660] (-) TimerEvent: {}
+[40.608919] (-) TimerEvent: {}
+[40.709178] (-) TimerEvent: {}
+[40.809448] (-) TimerEvent: {}
+[40.909715] (-) TimerEvent: {}
+[41.010001] (-) TimerEvent: {}
+[41.110277] (-) TimerEvent: {}
+[41.210602] (-) TimerEvent: {}
+[41.310884] (-) TimerEvent: {}
+[41.411161] (-) TimerEvent: {}
+[41.511430] (-) TimerEvent: {}
+[41.611684] (-) TimerEvent: {}
+[41.711943] (-) TimerEvent: {}
+[41.812213] (-) TimerEvent: {}
+[41.912497] (-) TimerEvent: {}
+[42.012759] (-) TimerEvent: {}
+[42.113019] (-) TimerEvent: {}
+[42.213284] (-) TimerEvent: {}
+[42.313557] (-) TimerEvent: {}
+[42.413819] (-) TimerEvent: {}
+[42.514077] (-) TimerEvent: {}
+[42.614339] (-) TimerEvent: {}
+[42.714612] (-) TimerEvent: {}
+[42.814886] (-) TimerEvent: {}
+[42.915167] (-) TimerEvent: {}
+[43.015435] (-) TimerEvent: {}
+[43.115692] (-) TimerEvent: {}
+[43.215960] (-) TimerEvent: {}
+[43.316280] (-) TimerEvent: {}
+[43.416580] (-) TimerEvent: {}
+[43.516865] (-) TimerEvent: {}
+[43.524109] (unitree_ros2_example) StdoutLine: {'line': b'[ 21%] \x1b[32m\x1b[1mLinking CXX executable read_motion_state\x1b[0m\n'}
+[43.616970] (-) TimerEvent: {}
+[43.717243] (-) TimerEvent: {}
+[43.817545] (-) TimerEvent: {}
+[43.820540] (unitree_ros2_example) StdoutLine: {'line': b'[ 21%] Built target read_motion_state\n'}
+[43.842163] (unitree_ros2_example) StdoutLine: {'line': b'[ 22%] \x1b[32mBuilding CXX object CMakeFiles/read_wireless_controller.dir/src/read_wireless_controller.cpp.o\x1b[0m\n'}
+[43.917629] (-) TimerEvent: {}
+[44.017880] (-) TimerEvent: {}
+[44.118138] (-) TimerEvent: {}
+[44.218419] (-) TimerEvent: {}
+[44.318692] (-) TimerEvent: {}
+[44.418970] (-) TimerEvent: {}
+[44.519251] (-) TimerEvent: {}
+[44.619541] (-) TimerEvent: {}
+[44.719813] (-) TimerEvent: {}
+[44.820087] (-) TimerEvent: {}
+[44.920360] (-) TimerEvent: {}
+[45.020639] (-) TimerEvent: {}
+[45.120921] (-) TimerEvent: {}
+[45.221177] (-) TimerEvent: {}
+[45.321437] (-) TimerEvent: {}
+[45.421710] (-) TimerEvent: {}
+[45.521978] (-) TimerEvent: {}
+[45.622254] (-) TimerEvent: {}
+[45.722533] (-) TimerEvent: {}
+[45.822808] (-) TimerEvent: {}
+[45.923081] (-) TimerEvent: {}
+[46.023353] (-) TimerEvent: {}
+[46.123634] (-) TimerEvent: {}
+[46.223915] (-) TimerEvent: {}
+[46.324551] (-) TimerEvent: {}
+[46.425139] (-) TimerEvent: {}
+[46.525438] (-) TimerEvent: {}
+[46.626011] (-) TimerEvent: {}
+[46.726287] (-) TimerEvent: {}
+[46.826610] (-) TimerEvent: {}
+[46.926901] (-) TimerEvent: {}
+[47.027168] (-) TimerEvent: {}
+[47.127440] (-) TimerEvent: {}
+[47.227716] (-) TimerEvent: {}
+[47.327969] (-) TimerEvent: {}
+[47.428231] (-) TimerEvent: {}
+[47.528812] (-) TimerEvent: {}
+[47.629089] (-) TimerEvent: {}
+[47.729343] (-) TimerEvent: {}
+[47.829604] (-) TimerEvent: {}
+[47.929869] (-) TimerEvent: {}
+[48.030149] (-) TimerEvent: {}
+[48.130457] (-) TimerEvent: {}
+[48.230716] (-) TimerEvent: {}
+[48.330969] (-) TimerEvent: {}
+[48.431249] (-) TimerEvent: {}
+[48.531513] (-) TimerEvent: {}
+[48.631767] (-) TimerEvent: {}
+[48.732020] (-) TimerEvent: {}
+[48.832276] (-) TimerEvent: {}
+[48.932538] (-) TimerEvent: {}
+[49.032791] (-) TimerEvent: {}
+[49.133044] (-) TimerEvent: {}
+[49.233298] (-) TimerEvent: {}
+[49.333588] (-) TimerEvent: {}
+[49.433868] (-) TimerEvent: {}
+[49.534129] (-) TimerEvent: {}
+[49.634429] (-) TimerEvent: {}
+[49.734783] (-) TimerEvent: {}
+[49.780334] (unitree_ros2_example) StdoutLine: {'line': b'[ 23%] \x1b[32m\x1b[1mLinking CXX executable read_wireless_controller\x1b[0m\n'}
+[49.834862] (-) TimerEvent: {}
+[49.935106] (-) TimerEvent: {}
+[50.035353] (-) TimerEvent: {}
+[50.076999] (unitree_ros2_example) StdoutLine: {'line': b'[ 23%] Built target read_wireless_controller\n'}
+[50.096965] (unitree_ros2_example) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/go2_sport_client.dir/src/go2/go2_sport_client.cpp.o\x1b[0m\n'}
+[50.135547] (-) TimerEvent: {}
+[50.235836] (-) TimerEvent: {}
+[50.336080] (-) TimerEvent: {}
+[50.436325] (-) TimerEvent: {}
+[50.536615] (-) TimerEvent: {}
+[50.636878] (-) TimerEvent: {}
+[50.737149] (-) TimerEvent: {}
+[50.837416] (-) TimerEvent: {}
+[50.937692] (-) TimerEvent: {}
+[51.037959] (-) TimerEvent: {}
+[51.138229] (-) TimerEvent: {}
+[51.238532] (-) TimerEvent: {}
+[51.338796] (-) TimerEvent: {}
+[51.439063] (-) TimerEvent: {}
+[51.539361] (-) TimerEvent: {}
+[51.639648] (-) TimerEvent: {}
+[51.739934] (-) TimerEvent: {}
+[51.840218] (-) TimerEvent: {}
+[51.940495] (-) TimerEvent: {}
+[52.040775] (-) TimerEvent: {}
+[52.141036] (-) TimerEvent: {}
+[52.241310] (-) TimerEvent: {}
+[52.341599] (-) TimerEvent: {}
+[52.441869] (-) TimerEvent: {}
+[52.542138] (-) TimerEvent: {}
+[52.642415] (-) TimerEvent: {}
+[52.742680] (-) TimerEvent: {}
+[52.842934] (-) TimerEvent: {}
+[52.943195] (-) TimerEvent: {}
+[53.043470] (-) TimerEvent: {}
+[53.143765] (-) TimerEvent: {}
+[53.244030] (-) TimerEvent: {}
+[53.344301] (-) TimerEvent: {}
+[53.444570] (-) TimerEvent: {}
+[53.544827] (-) TimerEvent: {}
+[53.645078] (-) TimerEvent: {}
+[53.745329] (-) TimerEvent: {}
+[53.845598] (-) TimerEvent: {}
+[53.945869] (-) TimerEvent: {}
+[54.046139] (-) TimerEvent: {}
+[54.146420] (-) TimerEvent: {}
+[54.246691] (-) TimerEvent: {}
+[54.346957] (-) TimerEvent: {}
+[54.447213] (-) TimerEvent: {}
+[54.547487] (-) TimerEvent: {}
+[54.647744] (-) TimerEvent: {}
+[54.748005] (-) TimerEvent: {}
+[54.848273] (-) TimerEvent: {}
+[54.948554] (-) TimerEvent: {}
+[55.048817] (-) TimerEvent: {}
+[55.149079] (-) TimerEvent: {}
+[55.249319] (-) TimerEvent: {}
+[55.349591] (-) TimerEvent: {}
+[55.449871] (-) TimerEvent: {}
+[55.550155] (-) TimerEvent: {}
+[55.650438] (-) TimerEvent: {}
+[55.750697] (-) TimerEvent: {}
+[55.850939] (-) TimerEvent: {}
+[55.951197] (-) TimerEvent: {}
+[56.051452] (-) TimerEvent: {}
+[56.151709] (-) TimerEvent: {}
+[56.251966] (-) TimerEvent: {}
+[56.352225] (-) TimerEvent: {}
+[56.452503] (-) TimerEvent: {}
+[56.552761] (-) TimerEvent: {}
+[56.653016] (-) TimerEvent: {}
+[56.753272] (-) TimerEvent: {}
+[56.853536] (-) TimerEvent: {}
+[56.953800] (-) TimerEvent: {}
+[57.054085] (-) TimerEvent: {}
+[57.154405] (-) TimerEvent: {}
+[57.254684] (-) TimerEvent: {}
+[57.354971] (-) TimerEvent: {}
+[57.364611] (unitree_ros2_example) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o\x1b[0m\n'}
+[57.455078] (-) TimerEvent: {}
+[57.555336] (-) TimerEvent: {}
+[57.655649] (-) TimerEvent: {}
+[57.755914] (-) TimerEvent: {}
+[57.856179] (-) TimerEvent: {}
+[57.956476] (-) TimerEvent: {}
+[58.056773] (-) TimerEvent: {}
+[58.157380] (-) TimerEvent: {}
+[58.257665] (-) TimerEvent: {}
+[58.357932] (-) TimerEvent: {}
+[58.458205] (-) TimerEvent: {}
+[58.558459] (-) TimerEvent: {}
+[58.658768] (-) TimerEvent: {}
+[58.759038] (-) TimerEvent: {}
+[58.859291] (-) TimerEvent: {}
+[58.959568] (-) TimerEvent: {}
+[59.059850] (-) TimerEvent: {}
+[59.160174] (-) TimerEvent: {}
+[59.260448] (-) TimerEvent: {}
+[59.360705] (-) TimerEvent: {}
+[59.460973] (-) TimerEvent: {}
+[59.561238] (-) TimerEvent: {}
+[59.661520] (-) TimerEvent: {}
+[59.761814] (-) TimerEvent: {}
+[59.862090] (-) TimerEvent: {}
+[59.962351] (-) TimerEvent: {}
+[60.062628] (-) TimerEvent: {}
+[60.162894] (-) TimerEvent: {}
+[60.263166] (-) TimerEvent: {}
+[60.363447] (-) TimerEvent: {}
+[60.463741] (-) TimerEvent: {}
+[60.564018] (-) TimerEvent: {}
+[60.664310] (-) TimerEvent: {}
+[60.764690] (-) TimerEvent: {}
+[60.864952] (-) TimerEvent: {}
+[60.965200] (-) TimerEvent: {}
+[61.065460] (-) TimerEvent: {}
+[61.165749] (-) TimerEvent: {}
+[61.232369] (unitree_ros2_example) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/go2_sport_client.dir/build.make:90: CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o] Interrupt\n'}
+[61.232549] (unitree_ros2_example) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:369: CMakeFiles/go2_sport_client.dir/all] Interrupt\n'}
+[61.232764] (unitree_ros2_example) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Interrupt\n'}
+[61.265854] (-) TimerEvent: {}
+[61.275897] (unitree_ros2_example) CommandEnded: {'returncode': -2}
+[61.284094] (unitree_ros2_example) JobEnded: {'identifier': 'unitree_ros2_example', 'rc': 'SIGINT'}
+[61.284562] (-) EventReactorShutdown: {}

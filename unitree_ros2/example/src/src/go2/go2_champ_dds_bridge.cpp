@@ -44,7 +44,11 @@ constexpr float kVelStop = 16000.0F;
 constexpr uint16_t kTargetsPort = 17610;
 constexpr uint16_t kFeedbackPort = 17611;
 constexpr size_t kTargetsFloats = 36;   // 12 q + 12 kp + 12 kd
-constexpr size_t kFeedbackFloats = 22;  // 12 q + 4 quat + 3 gyro + 3 accel
+constexpr size_t kFeedbackFloats = 28;  // 12 leg q + 4 quat + 3 gyro + 3 accel
+                                        // + 6 arm q (rt/lowstate motors 12..17)
+constexpr size_t kFeedbackLegacyFloats = 22;  // pre-arm packet, still accepted
+constexpr int kNumArmMotors = 6;
+constexpr int kFirstArmMotor = 12;  // legs 0..11, D1 arm 12..17 in LowState
 uint32_t crc32_core(uint32_t *ptr, uint32_t length) {
   uint32_t crc = 0xFFFFFFFF;
   constexpr uint32_t polynomial = 0x04c11db7;
@@ -71,6 +75,7 @@ struct BridgeState {
   std::array<float, 4> imu_quat{1.0F, 0.0F, 0.0F, 0.0F};
   std::array<float, 3> imu_gyro{};
   std::array<float, 3> imu_acc{};
+  std::array<float, kNumArmMotors> arm_q{};
   std::atomic_bool have_low_state{false};
   unitree_go::msg::dds_::LowCmd_ low_cmd{};
   unitree::robot::ChannelPublisherPtr<unitree_go::msg::dds_::LowCmd_> pub;
@@ -82,6 +87,10 @@ static void handleLowState(BridgeState *s, const void *message) {
   std::lock_guard<std::mutex> lock(s->mutex);
   for (int i = 0; i < kNumLegMotors; ++i)
     s->measured_q[i] = state.motor_state()[i].q();
+  // D1 arm joints live at LowState motors 12..17 on both sim (MuJoCo
+  // d1_joint*_pos sensors) and the real Go2+D1 — 1:1 sim-to-real.
+  for (int i = 0; i < kNumArmMotors; ++i)
+    s->arm_q[i] = state.motor_state()[kFirstArmMotor + i].q();
   s->imu_quat[0] = state.imu_state().quaternion()[0];
   s->imu_quat[1] = state.imu_state().quaternion()[1];
   s->imu_quat[2] = state.imu_state().quaternion()[2];
@@ -210,6 +219,8 @@ int main(int argc, char **argv) {
         tx_buf[19] = state.imu_acc[0];
         tx_buf[20] = state.imu_acc[1];
         tx_buf[21] = state.imu_acc[2];
+        for (int i = 0; i < kNumArmMotors; ++i)
+          tx_buf[22 + i] = state.arm_q[i];
       }
       ::sendto(tx_fd, tx_buf.data(), tx_buf.size() * sizeof(float), 0,
                reinterpret_cast<sockaddr *>(&tx_addr), sizeof(tx_addr));

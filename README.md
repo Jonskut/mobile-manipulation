@@ -14,7 +14,7 @@ cd /workspace/unitree_mujoco/simulate
 ./build/unitree_mujoco -r go2 -s scene_terrain.xml
 ```
 
-Terminal 2
+Terminal 2 ARM
 ```bash
 cd /workspace/unitree_ros2/cyclonedds_ws
 source /opt/ros/humble/setup.bash
@@ -40,7 +40,7 @@ The controller uses the native Unitree DDS topic names `rt/lowcmd`,
 `rt/lowstate`, and `rt/arm_Command`, so the same command and feedback topics
 are used with MuJoCo and the physical robot.
 
-Champ 
+Terminal 3 Champ 
 ```bash 
 cd /workspace/unitree_ros2/example
 export MAKEFLAGS="-j 1"
@@ -53,7 +53,7 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export ROS_DOMAIN_ID=1
 export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'
 
-ros2 launch unitree_ros2_example go2_champ_walk.launch.pyz
+ros2 launch unitree_ros2_example go2_champ_walk.launch.py
 # or: 
 ros2 launch unitree_ros2_example go2_champ_walk.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
 ```

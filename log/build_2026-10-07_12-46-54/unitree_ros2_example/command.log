@@ -1,0 +1,4 @@
+Invoking command in '/workspace/build/unitree_ros2_example': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /workspace/unitree_ros2/example/src -DCMAKE_INSTALL_PREFIX=/workspace/install/unitree_ros2_example
+Invoked command in '/workspace/build/unitree_ros2_example' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /workspace/unitree_ros2/example/src -DCMAKE_INSTALL_PREFIX=/workspace/install/unitree_ros2_example
+Invoking command in '/workspace/build/unitree_ros2_example': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspace/build/unitree_ros2_example
+Invoked command in '/workspace/build/unitree_ros2_example' returned '-2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspace/build/unitree_ros2_example

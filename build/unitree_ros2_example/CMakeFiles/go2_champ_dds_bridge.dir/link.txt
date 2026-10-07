@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/go2_champ_dds_bridge.dir/src/go2/go2_champ_dds_bridge.cpp.o -o go2_champ_dds_bridge   -L/workspace/unitree_ros2/example/src/src  -L/opt/unitree_robotics/lib  -Wl,-rpath,/workspace/unitree_ros2/example/src/src:/opt/unitree_robotics/lib: /opt/unitree_robotics/lib/libunitree_sdk2.a -lddsc -lddscxx 

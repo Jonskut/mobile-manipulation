@@ -12,11 +12,15 @@
 #include <chrono>
 #include <cmath>
 #include <cstdint>
+#include <cstring>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
 #include <vector>
+
+#include <Eigen/Dense>
+#include <Eigen/Geometry>
 
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
@@ -25,6 +29,7 @@
 #include "sensor_msgs/msg/imu.hpp"
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
 #include "trajectory_msgs/msg/joint_trajectory_point.hpp"
+#include "unitree_arm/msg/pub_servo_info.hpp"
 
 #include <arpa/inet.h>
 #include <fcntl.h>
@@ -35,12 +40,22 @@
 #include <champ/body_controller/body_controller.h>
 #include <champ/leg_controller/leg_controller.h>
 #include <champ/kinematics/kinematics.h>
+#include <champ/payload/arm_com_estimator.h>
+
+#include <geometry_msgs/msg/point_stamped.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
 
 namespace {
 constexpr int kNumLegMotors = 12;
+constexpr int kNumArmJoints = 6;
 constexpr uint16_t kTargetsPort = 17610;
 constexpr uint16_t kFeedbackPort = 17611;
 constexpr double kControlPeriod = 0.002;
+// Extended feedback: 12 leg q + 4 quat + 3 gyro + 3 accel + 6 arm q.
+// Legacy 22-float packets (pre-arm) are still accepted.
+constexpr size_t kFeedbackFloats = 28;
+constexpr size_t kFeedbackLegacyFloats = 22;
+constexpr double kDeg2Rad = 0.017453292519943295;
 constexpr std::array<int, kNumLegMotors> kChampToUnitreeMotor = {
     3, 4, 5, 0, 1, 2, 9, 10, 11, 6, 7, 8,
 };
@@ -93,6 +108,21 @@ class Go2ChampWalkController : public rclcpp::Node {
     declare_parameter("publish_imu", true);
     declare_parameter("publish_joint_control", true);
     declare_parameter("motor_signs", std::vector<double>(12, 1.0));
+    // Payload-aware CoM compensation (D1 arm, tucked-carry default).
+    declare_parameter("payload.enable", true);
+    declare_parameter("payload.com_alpha", 0.08);
+    declare_parameter("payload.com_max", 0.05);
+    declare_parameter("payload.com_rate_limit", 0.02);
+    declare_parameter("payload.arm_timeout", 1.0);
+    declare_parameter("payload.tucked_q_deg",
+                      std::vector<double>({0.0, -60.0, 60.0, 0.0, 30.0, 0.0}));
+    declare_parameter("payload.base_com_x", 0.021112);
+    declare_parameter("payload.pitch_gain", 0.5);
+    declare_parameter("payload.lateral_gain", 1.0);
+    declare_parameter("imu_pitch_feedback.enable", false);
+    declare_parameter("imu_pitch_feedback.kp", 0.3);
+    declare_parameter("imu_pitch_feedback.kd", 0.05);
+    declare_parameter("imu_pitch_feedback.max", 0.08);
     loadParams();
     gait_config_.knee_orientation = knee_orientation_.c_str();
     setLegGeometry();
@@ -183,6 +213,46 @@ class Go2ChampWalkController : public rclcpp::Node {
     joint_commands_pub_ =
         create_publisher<trajectory_msgs::msg::JointTrajectory>(
             "joint_commands", 10);
+    payload_com_pub_ = create_publisher<geometry_msgs::msg::PointStamped>(
+        "payload_com", 10);
+    // Applied trims for tuning: [com_x_translation, trim_y, trim_z,
+    // trim_pitch_ff, trim_pitch_imu, pitch_measured] at the same 50 Hz.
+    payload_trims_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>(
+        "payload_trims", 10);
+    arm_joint_sub_ = create_subscription<sensor_msgs::msg::JointState>(
+        "d1_joint_states", 10,
+        [this](const sensor_msgs::msg::JointState::SharedPtr msg) {
+          // Redundant ROS path A: external /d1_joint_states, radians.
+          if (msg->position.size() < static_cast<size_t>(kNumArmJoints)) return;
+          std::lock_guard<std::mutex> lock(state_mutex_);
+          for (int i = 0; i < kNumArmJoints; ++i)
+            arm_q_ros_[i] = static_cast<float>(msg->position[i]);
+          arm_ros_received_ = true;
+          last_arm_ros_ = std::chrono::steady_clock::now();
+        });
+    // Redundant ROS path B: D1 arm feedback topic (degrees). Published by
+    // unitree_mujoco's bridge AND by the real D1 controller — this is the
+    // only reliable arm source on the real robot (Go2 LowState arm slots
+    // are only filled by the simulator). ROS msg type name matches the
+    // Unitree DDS type (unitree_arm::msg::dds_::PubServoInfo_), so
+    // rmw_cyclonedds_cpp sees the raw Unitree topic on the same domain.
+    // NOTE: subscription lives here (ROS-only process), NOT in
+    // go2_d1_stand_controller: that binary loads Unitree's libddsc and
+    // adding rclcpp to it would hit the CycloneDDS clash (CMakeLists).
+    current_servo_angle_sub_ =
+        create_subscription<unitree_arm::msg::PubServoInfo>(
+            "current_servo_angle", 10,
+            [this](const unitree_arm::msg::PubServoInfo::SharedPtr msg) {
+              std::lock_guard<std::mutex> lock(state_mutex_);
+              arm_q_ros_[0] = msg->servo0_data * kDeg2Rad;
+              arm_q_ros_[1] = msg->servo1_data * kDeg2Rad;
+              arm_q_ros_[2] = msg->servo2_data * kDeg2Rad;
+              arm_q_ros_[3] = msg->servo3_data * kDeg2Rad;
+              arm_q_ros_[4] = msg->servo4_data * kDeg2Rad;
+              arm_q_ros_[5] = msg->servo5_data * kDeg2Rad;
+              arm_ros_received_ = true;
+              last_arm_ros_ = std::chrono::steady_clock::now();
+            });
     RCLCPP_INFO(get_logger(), "CHAMP gait planner ready (ROS-only)");
     control_thread_ = std::thread([this]() { controlLoop(); });
   }
@@ -218,6 +288,38 @@ class Go2ChampWalkController : public rclcpp::Node {
     if (motor_signs.size() == 12) {
       for (int i = 0; i < 12; ++i) motor_signs_[i] = motor_signs[i];
     }
+    get_parameter("payload.enable", payload_enable_);
+    get_parameter("payload.com_alpha", payload_alpha_);
+    get_parameter("payload.com_max", payload_com_max_);
+    get_parameter("payload.com_rate_limit", payload_rate_limit_);
+    get_parameter("payload.arm_timeout", payload_arm_timeout_);
+    get_parameter("payload.base_com_x", payload_base_com_x_);
+    get_parameter("payload.pitch_gain", payload_pitch_gain_);
+    get_parameter("payload.lateral_gain", payload_lateral_gain_);
+    std::vector<double> tucked(6, 0.0);
+    get_parameter("payload.tucked_q_deg", tucked);
+    if (tucked.size() == 6) {
+      for (int i = 0; i < 6; ++i)
+        tucked_q_rad_[i] = static_cast<float>(tucked[i] * M_PI / 180.0);
+    } else {
+      tucked_q_rad_ = champ::payload::tuckedQRad();
+    }
+    // Seed the filter at the tucked CoM so startup is bumpless.
+    {
+      const Eigen::Vector3f c0 =
+          champ::payload::computeTotalCom(tucked_q_rad_);
+      filt_com_x_ = static_cast<double>(c0.x()) - payload_base_com_x_;
+      filt_com_y_ = static_cast<double>(c0.y());
+      filt_com_z_ = static_cast<double>(c0.z());
+      tucked_com_z_ = static_cast<double>(c0.z());
+      // yaml static baseline is preserved; live knob = base + filtered delta.
+      com_x_base_ = gait_config_.com_x_translation;
+      nominal_height_base_ = gait_config_.nominal_height;
+    }
+    get_parameter("imu_pitch_feedback.enable", imu_fb_enable_);
+    get_parameter("imu_pitch_feedback.kp", imu_fb_kp_);
+    get_parameter("imu_pitch_feedback.kd", imu_fb_kd_);
+    get_parameter("imu_pitch_feedback.max", imu_fb_max_);
   }
   void setLegGeometry() {
     struct LegOrigin { float hip_x, hip_y, thigh_y; };
@@ -260,19 +362,42 @@ class Go2ChampWalkController : public rclcpp::Node {
       std::this_thread::sleep_until(next_tick);
     }
   }
-  // Drain bridge feedback datagrams: 12 q + 4 quat + 3 gyro + 3 accel.
+  // Drain bridge feedback datagrams: 12 leg q + 4 quat + 3 gyro + 3 accel
+  // (+ 6 arm q when the extended 28-float packet is present).
   // Also republishes joint_states_measured / imu_measured for introspection.
   void pollBridgeFeedback() {
     if (!udp_ok_) return;
-    std::array<float, 22> buf{};
+    // Accept both legacy (22) and extended (28) packets; newest wins.
+    std::array<float, kFeedbackFloats> buf28{};
+    std::array<float, kFeedbackLegacyFloats> buf22{};
     bool got = false;
+    bool got_arm = false;
     for (;;) {
-      const ssize_t n =
-          ::recv(udp_rx_fd_, buf.data(), buf.size() * sizeof(float), 0);
-      if (n != static_cast<ssize_t>(buf.size() * sizeof(float))) break;
-      got = true;
+      char raw[kFeedbackFloats * sizeof(float)];
+      const ssize_t n = ::recv(udp_rx_fd_, raw, sizeof(raw), 0);
+      if (n == static_cast<ssize_t>(kFeedbackFloats * sizeof(float))) {
+        std::memcpy(buf28.data(), raw, sizeof(raw));
+        got = true;
+        got_arm = true;
+      } else if (n == static_cast<ssize_t>(kFeedbackLegacyFloats *
+                                           sizeof(float))) {
+        std::memcpy(buf22.data(), raw,
+                    kFeedbackLegacyFloats * sizeof(float));
+        got = true;
+      } else {
+        break;
+      }
     }
     if (!got) return;
+    // Normalize to the 28-float view for the rest of the pipeline.
+    std::array<float, kFeedbackFloats> buf{};
+    if (got_arm) {
+      buf = buf28;
+    } else {
+      for (size_t i = 0; i < kFeedbackLegacyFloats; ++i) buf[i] = buf22[i];
+      std::lock_guard<std::mutex> lock(state_mutex_);
+      for (int i = 0; i < kNumArmJoints; ++i) buf[22 + i] = arm_q_udp_[i];
+    }
     {
       std::lock_guard<std::mutex> lock(state_mutex_);
       for (int i = 0; i < kNumLegMotors; ++i) measured_q_[i] = buf[i];
@@ -286,6 +411,11 @@ class Go2ChampWalkController : public rclcpp::Node {
       imu_acc_[0] = buf[19];
       imu_acc_[1] = buf[20];
       imu_acc_[2] = buf[21];
+      if (got_arm) {
+        for (int i = 0; i < kNumArmJoints; ++i) arm_q_udp_[i] = buf[22 + i];
+        arm_udp_received_ = true;
+        last_arm_udp_ = std::chrono::steady_clock::now();
+      }
     }
     have_state_.store(true, std::memory_order_release);
     const rclcpp::Time stamp = now();
@@ -313,6 +443,7 @@ class Go2ChampWalkController : public rclcpp::Node {
     float target_joints[kNumLegMotors];
     geometry::Transformation target_feet[4];
     if (!have_state_.load(std::memory_order_acquire)) return;
+    applyPayloadCompensation();
     champ::Velocities vel;
     champ::Pose pose;
     bool vel_fresh;
@@ -320,6 +451,13 @@ class Go2ChampWalkController : public rclcpp::Node {
       std::lock_guard<std::mutex> lock(cmd_mutex_);
       vel = req_vel_;
       pose = req_pose_;
+      // Payload trims (computed in applyPayloadCompensation from live arm q):
+      // Δx shifts the support polygon via com_x_translation (live knob),
+      // Δy shifts the body laterally, Δz/pitch trims height and lean.
+      pose.position.y += static_cast<float>(payload_trim_y_);
+      pose.position.z += static_cast<float>(payload_trim_z_);
+      pose.orientation.pitch +=
+          static_cast<float>(payload_trim_pitch_ + imu_trim_pitch_);
       const auto steady_now = std::chrono::steady_clock::now();
       vel_fresh = std::chrono::duration<double>(steady_now - last_cmd_vel_steady_).count() <=
                   cmd_vel_timeout_;
@@ -354,6 +492,118 @@ class Go2ChampWalkController : public rclcpp::Node {
     targets_msg.position.assign(unitree_targets.begin(), unitree_targets.end());
     joint_targets_pub_->publish(targets_msg);
     publishFeedback(target_joints);
+  }
+
+  // Payload-aware CoM compensation @500Hz (quasi-static, tucked-optimized).
+  // FK over live arm q -> total CoM in base frame -> low-pass -> clamped,
+  // rate-limited trims. gait_config_ is pointer-shared to all 4 legs, so
+  // com_x_translation takes effect on the very next poseCommand().
+  // Fusion: freshest valid of (UDP LowState arm q, ROS arm feedback) else
+  // tucked hold.
+  void applyPayloadCompensation() {
+    if (!payload_enable_) {
+      payload_trim_y_ = payload_trim_z_ = payload_trim_pitch_ = 0.0;
+      imu_trim_pitch_ = 0.0;
+      return;
+    }
+    // Source fusion: UDP/LowState arm q (sim) vs ROS arm feedback (real
+    // robot; sim publishes it too). Freshness decides; an all-zero UDP arm
+    // packet is treated as "LowState slots not filled" (real Go2 leaves
+    // motor_state[12..17] at 0). Tucked hold when both are stale/absent.
+    std::array<float, kNumArmJoints> q{};
+    {
+      std::lock_guard<std::mutex> lock(state_mutex_);
+      const auto now = std::chrono::steady_clock::now();
+      const double age_udp =
+          std::chrono::duration<double>(now - last_arm_udp_).count();
+      const double age_ros =
+          std::chrono::duration<double>(now - last_arm_ros_).count();
+      bool udp_valid = arm_udp_received_ && age_udp <= payload_arm_timeout_;
+      if (udp_valid) {
+        udp_valid = false;
+        for (const float v : arm_q_udp_) {
+          if (std::fabs(v) > 1.0e-6F) {
+            udp_valid = true;
+            break;
+          }
+        }
+      }
+      const bool ros_valid =
+          arm_ros_received_ && age_ros <= payload_arm_timeout_;
+      if (udp_valid && (!ros_valid || age_udp <= age_ros)) {
+        q = arm_q_udp_;
+      } else if (ros_valid) {
+        q = arm_q_ros_;
+      } else {
+        q = tucked_q_rad_;
+      }
+    }
+    const Eigen::Vector3f com = champ::payload::computeTotalCom(q);
+    // Compensate relative to the bare-torso CoM so the yaml static baseline
+    // keeps working: filtered Δ from base_com_x drives the live knob.
+    const double raw_dx = static_cast<double>(com.x()) - payload_base_com_x_;
+    const double raw_dy = static_cast<double>(com.y());
+    const double raw_dz = static_cast<double>(com.z());
+    const double a = std::min(std::max(payload_alpha_, 0.0), 1.0);
+    filt_com_x_ += a * (raw_dx - filt_com_x_);
+    filt_com_y_ += a * (raw_dy - filt_com_y_);
+    filt_com_z_ += a * (raw_dz - filt_com_z_);
+    const double max_step = payload_rate_limit_ * kControlPeriod;
+    double dx = filt_com_x_;
+    dx = std::min(std::max(dx, -payload_com_max_), payload_com_max_);
+    double step = dx - prev_com_x_applied_;
+    step = std::min(std::max(step, -max_step), max_step);
+    dx = prev_com_x_applied_ + step;
+    prev_com_x_applied_ = dx;
+    gait_config_.com_x_translation =
+        static_cast<float>(com_x_base_ + dx);
+    payload_trim_y_ =
+        -std::min(std::max(filt_com_y_ * payload_lateral_gain_,
+                           -payload_com_max_),
+                  payload_com_max_);
+    payload_trim_z_ =
+        std::min(std::max((filt_com_z_ - tucked_com_z_) * 0.5,
+                          -payload_com_max_ * 0.5),
+                 payload_com_max_ * 0.5);
+    payload_trim_pitch_ =
+        std::min(std::max(-dx * payload_pitch_gain_, -0.08), 0.08);
+    // Optional IMU pitch regulator (uses already-available bridge IMU).
+    if (imu_fb_enable_) {
+      double roll, pitch, yaw;
+      double gyro_y;
+      {
+        std::lock_guard<std::mutex> lock(state_mutex_);
+        quaternionToRpy(imu_quat_[1], imu_quat_[2], imu_quat_[3],
+                        imu_quat_[0], roll, pitch, yaw);
+        gyro_y = static_cast<double>(imu_gyro_[1]);
+      }
+      double cmd = -(imu_fb_kp_ * pitch + imu_fb_kd_ * gyro_y);
+      imu_trim_pitch_ = std::min(std::max(cmd, -imu_fb_max_), imu_fb_max_);
+    } else {
+      imu_trim_pitch_ = 0.0;
+    }
+    // Debug CoM + applied-trim topics, throttled to ~50 Hz (loop runs 500 Hz).
+    if (++payload_dbg_div_ >= 10) {
+      payload_dbg_div_ = 0;
+      geometry_msgs::msg::PointStamped dbg;
+      dbg.header.stamp = now();
+      dbg.header.frame_id = "base_link";
+      dbg.point.x = com.x();
+      dbg.point.y = com.y();
+      dbg.point.z = com.z();
+      payload_com_pub_->publish(dbg);
+      double roll = 0.0, pitch = 0.0, yaw = 0.0;
+      {
+        std::lock_guard<std::mutex> lock(state_mutex_);
+        quaternionToRpy(imu_quat_[1], imu_quat_[2], imu_quat_[3],
+                        imu_quat_[0], roll, pitch, yaw);
+      }
+      std_msgs::msg::Float64MultiArray trims;
+      trims.data = {static_cast<double>(gait_config_.com_x_translation),
+                    payload_trim_y_, payload_trim_z_, payload_trim_pitch_,
+                    imu_trim_pitch_, pitch};
+      payload_trims_pub_->publish(trims);
+    }
   }
 
   // 12 q + 12 kp + 12 kd floats to the bridge over loopback UDP.
@@ -444,6 +694,45 @@ class Go2ChampWalkController : public rclcpp::Node {
   std::array<float, 3> imu_gyro_{};
   std::array<float, 3> imu_acc_{};
   std::atomic_bool have_state_{false};
+  // --- Payload-aware CoM compensation state (D1 arm) ---
+  // Two live sources, each with its own stamp; fused in
+  // applyPayloadCompensation() (freshest-valid wins, else tucked hold).
+  std::array<float, kNumArmJoints> arm_q_udp_{};  // from bridge UDP (radians)
+  std::array<float, kNumArmJoints> arm_q_ros_{};  // from ROS topics (radians)
+  bool arm_udp_received_ = false;
+  bool arm_ros_received_ = false;
+  std::chrono::steady_clock::time_point last_arm_udp_{};
+  std::chrono::steady_clock::time_point last_arm_ros_{};
+  bool payload_enable_ = true;
+  double payload_alpha_ = 0.08;
+  double payload_com_max_ = 0.05;
+  double payload_rate_limit_ = 0.02;
+  double payload_arm_timeout_ = 1.0;
+  double payload_base_com_x_ = 0.021112;
+  double payload_pitch_gain_ = 0.5;
+  double payload_lateral_gain_ = 1.0;
+  std::array<float, kNumArmJoints> tucked_q_rad_{};
+  // Baseline captured after loadParams(): yaml static value + tucked CoM.
+  double com_x_base_ = 0.0;
+  double tucked_com_z_ = 0.0;
+  double nominal_height_base_ = 0.225;
+  // Low-pass filtered CoM deltas from the bare torso CoM.
+  double filt_com_x_ = 0.0;
+  double filt_com_y_ = 0.0;
+  double filt_com_z_ = 0.0;
+  double prev_com_x_applied_ = 0.0;
+  // Trims consumed by stepOnce() under cmd_mutex_.
+  double payload_trim_y_ = 0.0;
+  double payload_trim_z_ = 0.0;
+  double payload_trim_pitch_ = 0.0;
+  double imu_trim_pitch_ = 0.0;
+  // IMU pitch regulator (Phase 3, enabled by default: the forward-walk
+  // pitch-back is a dynamic gait effect the feed-forward cannot see).
+  bool imu_fb_enable_ = false;
+  double imu_fb_kp_ = 0.3;
+  double imu_fb_kd_ = 0.05;
+  double imu_fb_max_ = 0.08;
+  int payload_dbg_div_ = 0;
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_targets_pub_;
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr measured_pub_;
   rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_measured_pub_;
@@ -454,6 +743,12 @@ class Go2ChampWalkController : public rclcpp::Node {
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_states_pub_;
   rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
   rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr joint_commands_pub_;
+  rclcpp::Publisher<geometry_msgs::msg::PointStamped>::SharedPtr payload_com_pub_;
+  rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr
+      payload_trims_pub_;
+  rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr arm_joint_sub_;
+  rclcpp::Subscription<unitree_arm::msg::PubServoInfo>::SharedPtr
+      current_servo_angle_sub_;
   std::mutex state_mutex_;
   std::mutex cmd_mutex_;
   std::atomic_bool running_{true};

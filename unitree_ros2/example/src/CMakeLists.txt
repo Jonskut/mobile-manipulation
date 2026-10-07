@@ -133,6 +133,8 @@ ament_target_dependencies(go2_sport_client ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_stand_example ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_d1_stand_controller ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_champ_gait_planner ${DEPENDENCY_LIST})
+# Eigen for the payload CoM estimator (header-only FK).
+target_include_directories(go2_champ_gait_planner PRIVATE ${EIGEN3_INCLUDE_DIR})
 # NOTE: go2_champ_dds_bridge intentionally has NO ament_target_dependencies:
 # it must stay ROS-free (Unitree's bundled CycloneDDS clashes with ROS's
 # rmw_cyclonedds_cpp inside one process). It talks to the gait planner
