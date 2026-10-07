@@ -1,8 +1,17 @@
-/* CHAMP DDS bridge: pure-DDS half of the Go2 CHAMP split (no rclcpp).
- * Subscribes joint_targets (ROS) -> writes rt/lowcmd (Unitree DDS) at 500Hz,
- * forwards rt/lowstate + IMU to joint_states_measured + imu_measured (ROS).
- * Must run as its own process: Unitree ChannelFactory cannot share a process
- * with rclcpp on the same DDS domain.
+/* CHAMP DDS bridge: pure-DDS half of the Go2 CHAMP split (no ROS at all).
+ * Receives joint targets over loopback UDP from go2_champ_gait_planner,
+ * writes rt/lowcmd (Unitree DDS) at 500Hz, and forwards rt/lowstate + IMU
+ * back over loopback UDP.
+ * Must stay ROS-free: this process loads Unitree's bundled CycloneDDS
+ * (/opt/unitree_robotics), while ROS's rmw_cyclonedds_cpp loads Humble's
+ * CycloneDDS -- mixing both in one process breaks DDS domain creation.
+ *
+ * UDP protocol (all little-endian floats, host order on x86_64):
+ *   planner -> bridge (port 17610): 12 x float q targets, then 12 x float kp,
+ *                                    then 12 x float kd  (36 floats total).
+ *   bridge -> planner (port 17611): 12 x float measured q, then 4 x float
+ *                                    imu quat (w,x,y,z), 3 x float gyro,
+ *                                    3 x float accel (22 floats total).
  */
 #include <algorithm>
 #include <array>
@@ -17,28 +26,25 @@
 #include <thread>
 #include <vector>
 
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
 #include <unitree/idl/go2/LowCmd_.hpp>
 #include <unitree/idl/go2/LowState_.hpp>
 #include <unitree/robot/channel/channel_factory.hpp>
 #include <unitree/robot/channel/channel_publisher.hpp>
 #include <unitree/robot/channel/channel_subscriber.hpp>
-#include "rcl/rcl.h"
-#include "rcl/node.h"
-#include "rcl/publisher.h"
-#include "rcl/subscription.h"
-#include "rcl/wait.h"
-#include "rcutils/allocator.h"
-#include "rosidl_runtime_c/message_type_support_struct.h"
-#include "rosidl_runtime_c/string.h"
-#include "rosidl_runtime_c/string_functions.h"
-#include "rosidl_runtime_c/primitives_sequence_functions.h"
-#include "sensor_msgs/msg/joint_state.h"
-#include "sensor_msgs/msg/imu.h"
 namespace {
 constexpr int kNumLegMotors = 12;
 constexpr double kControlPeriod = 0.002;
 constexpr float kPosStop = 2.146E+9F;
 constexpr float kVelStop = 16000.0F;
+constexpr uint16_t kTargetsPort = 17610;
+constexpr uint16_t kFeedbackPort = 17611;
+constexpr size_t kTargetsFloats = 36;   // 12 q + 12 kp + 12 kd
+constexpr size_t kFeedbackFloats = 22;  // 12 q + 4 quat + 3 gyro + 3 accel
 uint32_t crc32_core(uint32_t *ptr, uint32_t length) {
   uint32_t crc = 0xFFFFFFFF;
   constexpr uint32_t polynomial = 0x04c11db7;
@@ -134,113 +140,84 @@ int main(int argc, char **argv) {
       unitree::robot::ChannelSubscriber<unitree_go::msg::dds_::LowState_>>("rt/lowstate");
   state.sub->InitChannel([&state](const void *msg) { handleLowState(&state, msg); }, 1);
 
-  rcl_allocator_t allocator = rcl_get_default_allocator();
-  rcl_init_options_t init_options = rcl_get_zero_initialized_init_options();
-  rcl_init_options_init(&init_options, allocator);
-  rcl_context_t context = rcl_get_zero_initialized_context();
-  if (rcl_init(argc, argv, &init_options, &context) != RCL_RET_OK) {
-    std::cerr << "[champ_bridge] rcl_init failed" << std::endl;
+  // Loopback UDP sockets (no ROS in this process by design).
+  const int rx_fd = ::socket(AF_INET, SOCK_DGRAM, 0);
+  const int tx_fd = ::socket(AF_INET, SOCK_DGRAM, 0);
+  if (rx_fd < 0 || tx_fd < 0) {
+    std::cerr << "[champ_bridge] socket() failed" << std::endl;
     return 1;
   }
-  rcl_node_options_t node_options = rcl_node_get_default_options();
-  rcl_node_t node = rcl_get_zero_initialized_node();
-  if (rcl_node_init(&node, "go2_champ_dds_bridge", "", &context, &node_options) != RCL_RET_OK) {
-    std::cerr << "[champ_bridge] rcl_node_init failed" << std::endl;
+  sockaddr_in rx_addr{};
+  rx_addr.sin_family = AF_INET;
+  rx_addr.sin_port = htons(kTargetsPort);
+  rx_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+  if (::bind(rx_fd, reinterpret_cast<sockaddr *>(&rx_addr), sizeof(rx_addr)) != 0) {
+    std::cerr << "[champ_bridge] bind(17610) failed" << std::endl;
     return 1;
   }
-  const rosidl_message_type_support_t *joint_state_ts =
-      ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, JointState);
-  const rosidl_message_type_support_t *imu_ts =
-      ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu);
-  rcl_publisher_options_t pub_options = rcl_publisher_get_default_options();
-  rcl_publisher_t measured_pub = rcl_get_zero_initialized_publisher();
-  rcl_publisher_t imu_pub = rcl_get_zero_initialized_publisher();
-  rcl_subscription_options_t sub_options = rcl_subscription_get_default_options();
-  rcl_subscription_t targets_sub = rcl_get_zero_initialized_subscription();
-  rcl_publisher_init(&measured_pub, &node, joint_state_ts, "joint_states_measured", &pub_options);
-  rcl_publisher_init(&imu_pub, &node, imu_ts, "imu_measured", &pub_options);
-  rcl_subscription_init(&targets_sub, &node, joint_state_ts, "joint_targets", &sub_options);
-  std::cout << "[champ_bridge] ready" << std::endl;
+  ::fcntl(rx_fd, F_SETFL, O_NONBLOCK);
+  sockaddr_in tx_addr{};
+  tx_addr.sin_family = AF_INET;
+  tx_addr.sin_port = htons(kFeedbackPort);
+  tx_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+  std::cout << "[champ_bridge] ready (udp 17610/17611)" << std::endl;
 
   auto next_tick = std::chrono::steady_clock::now();
-  rcl_wait_set_t wait_set = rcl_get_zero_initialized_wait_set();
-  rcl_wait_set_init(&wait_set, 1, 0, 0, 0, 0, 0, &context, allocator);
   int pub_counter = 0;
-  while (state.running.load() && rcl_context_is_valid(&context)) {
+  std::array<float, kTargetsFloats> rx_buf{};
+  std::array<float, kFeedbackFloats> tx_buf{};
+  while (state.running.load()) {
     next_tick += std::chrono::duration_cast<std::chrono::steady_clock::duration>(
         std::chrono::duration<double>(kControlPeriod));
-    rcl_wait_set_clear(&wait_set);
-    size_t idx = 0;
-    rcl_wait_set_add_subscription(&wait_set, &targets_sub, &idx);
-    if (rcl_wait(&wait_set, RCL_MS_TO_NS(1)) == RCL_RET_OK && wait_set.subscriptions[0]) {
-      sensor_msgs__msg__JointState incoming;
-      sensor_msgs__msg__JointState__init(&incoming);
-      rmw_message_info_t info;
-      if (rcl_take(&targets_sub, &incoming, &info, nullptr) == RCL_RET_OK) {
-        std::lock_guard<std::mutex> lock(state.mutex);
-        int n = std::min<int>(kNumLegMotors, incoming.position.size);
-        for (int i = 0; i < n; ++i) state.targets[i] = static_cast<float>(incoming.position.data[i]);
-        if (incoming.effort.size >= kNumLegMotors) {
-          for (int i = 0; i < kNumLegMotors; ++i) state.kp[i] = incoming.effort.data[i];
-          state.kd.fill(kd);
-        }
-        state.have_targets.store(true, std::memory_order_release);
+    // Drain target datagrams (newest wins).
+    for (;;) {
+      const ssize_t n = ::recv(rx_fd, rx_buf.data(), rx_buf.size() * sizeof(float), 0);
+      if (n != static_cast<ssize_t>(rx_buf.size() * sizeof(float))) break;
+      std::lock_guard<std::mutex> lock(state.mutex);
+      for (int i = 0; i < kNumLegMotors; ++i) {
+        state.targets[i] = rx_buf[i];
+        state.kp[i] = rx_buf[12 + i];
+        state.kd[i] = rx_buf[24 + i];
       }
-      sensor_msgs__msg__JointState__fini(&incoming);
+      state.have_targets.store(true, std::memory_order_release);
     }
     {
-      std::lock_guard<std::mutex> lock(state.mutex);
+      const bool have = state.have_targets.load(std::memory_order_acquire);
       for (int motor = 0; motor < kNumLegMotors; ++motor) {
         auto &mc = state.low_cmd.motor_cmd()[motor];
         mc.mode() = 0x01;
-        mc.q() = state.have_targets.load() ? state.targets[motor] : kPosStop;
-        mc.kp() = state.have_targets.load() ? static_cast<float>(state.kp[motor]) : 0.0F;
+        mc.q() = have ? state.targets[motor] : kPosStop;
+        mc.kp() = have ? static_cast<float>(state.kp[motor]) : 0.0F;
         mc.dq() = 0.0F;
-        mc.kd() = state.have_targets.load() ? static_cast<float>(state.kd[motor]) : 0.0F;
+        mc.kd() = have ? static_cast<float>(state.kd[motor]) : 0.0F;
         mc.tau() = 0.0F;
       }
     }
     state.low_cmd.crc() = crc32_core(reinterpret_cast<uint32_t *>(&state.low_cmd),
                                      (sizeof(state.low_cmd) >> 2) - 1);
     state.pub->Write(state.low_cmd);
-    if (++pub_counter % 10 == 0 && state.have_low_state.load()) {
-      sensor_msgs__msg__JointState measured;
-      sensor_msgs__msg__JointState__init(&measured);
-      rosidl_runtime_c__String__Sequence__init(&measured.name, kNumLegMotors);
-      rosidl_runtime_c__double__Sequence__init(&measured.position, kNumLegMotors);
-      static const char *names[12] = {"fr_hip_joint", "fr_thigh_joint", "fr_calf_joint",
-                                      "fl_hip_joint", "fl_thigh_joint", "fl_calf_joint",
-                                      "rr_hip_joint", "rr_thigh_joint", "rr_calf_joint",
-                                      "rl_hip_joint", "rl_thigh_joint", "rl_calf_joint"};
-      std::lock_guard<std::mutex> lock(state.mutex);
-      for (int i = 0; i < kNumLegMotors; ++i) {
-        rosidl_runtime_c__String__assign(&measured.name.data[i], names[i]);
-        measured.position.data[i] = state.measured_q[i];
+    if (++pub_counter % 10 == 0 && state.have_low_state.load(std::memory_order_acquire)) {
+      {
+        std::lock_guard<std::mutex> lock(state.mutex);
+        for (int i = 0; i < kNumLegMotors; ++i) tx_buf[i] = state.measured_q[i];
+        tx_buf[12] = state.imu_quat[0];
+        tx_buf[13] = state.imu_quat[1];
+        tx_buf[14] = state.imu_quat[2];
+        tx_buf[15] = state.imu_quat[3];
+        tx_buf[16] = state.imu_gyro[0];
+        tx_buf[17] = state.imu_gyro[1];
+        tx_buf[18] = state.imu_gyro[2];
+        tx_buf[19] = state.imu_acc[0];
+        tx_buf[20] = state.imu_acc[1];
+        tx_buf[21] = state.imu_acc[2];
       }
-      rcl_publish(&measured_pub, &measured, nullptr);
-      sensor_msgs__msg__JointState__fini(&measured);
-      sensor_msgs__msg__Imu imu_msg;
-      sensor_msgs__msg__Imu__init(&imu_msg);
-      imu_msg.orientation.w = state.imu_quat[0];
-      imu_msg.orientation.x = state.imu_quat[1];
-      imu_msg.orientation.y = state.imu_quat[2];
-      imu_msg.orientation.z = state.imu_quat[3];
-      imu_msg.angular_velocity.x = state.imu_gyro[0];
-      imu_msg.angular_velocity.y = state.imu_gyro[1];
-      imu_msg.angular_velocity.z = state.imu_gyro[2];
-      imu_msg.linear_acceleration.x = state.imu_acc[0];
-      imu_msg.linear_acceleration.y = state.imu_acc[1];
-      imu_msg.linear_acceleration.z = state.imu_acc[2];
-      rcl_publish(&imu_pub, &imu_msg, nullptr);
-      sensor_msgs__msg__Imu__fini(&imu_msg);
+      ::sendto(tx_fd, tx_buf.data(), tx_buf.size() * sizeof(float), 0,
+               reinterpret_cast<sockaddr *>(&tx_addr), sizeof(tx_addr));
     }
     std::this_thread::sleep_until(next_tick);
   }
-  rcl_subscription_fini(&targets_sub, &node);
-  rcl_publisher_fini(&measured_pub, &node);
-  rcl_publisher_fini(&imu_pub, &node);
-  rcl_node_fini(&node);
-  rcl_shutdown(&context);
+  ::close(rx_fd);
+  ::close(tx_fd);
   return 0;
 }
 

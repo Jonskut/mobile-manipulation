@@ -49,9 +49,6 @@ find_package(rosbag2_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(unitree_arm REQUIRED)
 find_package(unitree_sdk2 REQUIRED)
-find_package(rcl REQUIRED)
-find_package(rcutils REQUIRED)
-find_package(rosidl_runtime_c REQUIRED)
 
 add_executable(low_level_ctrl src/low_level_ctrl.cpp src/common/motor_crc.cpp)
 add_executable(low_level_ctrl_hg src/h1-2/lowlevel/low_level_ctrl_hg.cpp src/common/motor_crc_hg.cpp)
@@ -136,7 +133,10 @@ ament_target_dependencies(go2_sport_client ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_stand_example ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_d1_stand_controller ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_champ_gait_planner ${DEPENDENCY_LIST})
-ament_target_dependencies(go2_champ_dds_bridge rcl rcutils rosidl_runtime_c sensor_msgs)
+# NOTE: go2_champ_dds_bridge intentionally has NO ament_target_dependencies:
+# it must stay ROS-free (Unitree's bundled CycloneDDS clashes with ROS's
+# rmw_cyclonedds_cpp inside one process). It talks to the gait planner
+# over loopback UDP instead.
 
 
 ament_target_dependencies(go2_robot_state_client ${DEPENDENCY_LIST})

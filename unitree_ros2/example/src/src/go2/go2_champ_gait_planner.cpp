@@ -1,6 +1,10 @@
 /* CHAMP gait planner: ROS-only half of the Go2 CHAMP split.
- * Publishes joint_targets, subscribes joint_states_measured + imu_measured.
- * No Unitree DDS here (that lives in go2_champ_dds_bridge).
+ * Sends joint targets to go2_champ_dds_bridge over loopback UDP (port 17610),
+ * receives rt/lowstate feedback over loopback UDP (port 17611), and republishes
+ * it as joint_states_measured / imu_measured for introspection.
+ * No Unitree DDS here (that lives in the bridge process, which must stay
+ * ROS-free: Unitree's bundled CycloneDDS clashes with ROS's rmw_cyclonedds_cpp
+ * inside one process).
  */
 #include <algorithm>
 #include <array>
@@ -22,12 +26,20 @@
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
 #include "trajectory_msgs/msg/joint_trajectory_point.hpp"
 
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
+
 #include <champ/body_controller/body_controller.h>
 #include <champ/leg_controller/leg_controller.h>
 #include <champ/kinematics/kinematics.h>
 
 namespace {
 constexpr int kNumLegMotors = 12;
+constexpr uint16_t kTargetsPort = 17610;
+constexpr uint16_t kFeedbackPort = 17611;
 constexpr double kControlPeriod = 0.002;
 constexpr std::array<int, kNumLegMotors> kChampToUnitreeMotor = {
     3, 4, 5, 0, 1, 2, 9, 10, 11, 6, 7, 8,
@@ -86,19 +98,46 @@ class Go2ChampWalkController : public rclcpp::Node {
     setLegGeometry();
     base_.setGaitConfig(gait_config_);
     req_pose_.position.z = gait_config_.nominal_height;
+    // Loopback UDP to the DDS bridge (separate process).
+    udp_tx_fd_ = ::socket(AF_INET, SOCK_DGRAM, 0);
+    udp_rx_fd_ = ::socket(AF_INET, SOCK_DGRAM, 0);
+    if (udp_tx_fd_ >= 0 && udp_rx_fd_ >= 0) {
+      sockaddr_in rx_addr{};
+      rx_addr.sin_family = AF_INET;
+      rx_addr.sin_port = htons(kFeedbackPort);
+      rx_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+      if (::bind(udp_rx_fd_, reinterpret_cast<sockaddr *>(&rx_addr), sizeof(rx_addr)) == 0) {
+        ::fcntl(udp_rx_fd_, F_SETFL, O_NONBLOCK);
+        udp_targets_addr_.sin_family = AF_INET;
+        udp_targets_addr_.sin_port = htons(kTargetsPort);
+        udp_targets_addr_.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+        udp_ok_ = true;
+      } else {
+        RCLCPP_WARN(get_logger(), "UDP bind(17611) failed; bridge feedback unavailable");
+      }
+    }
     joint_targets_pub_ =
         create_publisher<sensor_msgs::msg::JointState>("joint_targets", 10);
+    measured_pub_ =
+        create_publisher<sensor_msgs::msg::JointState>("joint_states_measured", 10);
+    imu_measured_pub_ =
+        create_publisher<sensor_msgs::msg::Imu>("imu_measured", 10);
     measured_sub_ = create_subscription<sensor_msgs::msg::JointState>(
         "joint_states_measured", 10,
         [this](const sensor_msgs::msg::JointState::SharedPtr msg) {
-          if (msg->position.size() < kNumLegMotors) return;
-          std::lock_guard<std::mutex> lock(state_mutex_);
-          for (int i = 0; i < kNumLegMotors; ++i)
-            measured_q_[i] = static_cast<float>(msg->position[i]);
-          have_state_.store(true, std::memory_order_release);
+          // Debug/introspection republish path (see pollBridgeFeedback):
+          // external joint_states_measured still honoured when UDP is down.
+          if (!udp_ok_) {
+            if (msg->position.size() < kNumLegMotors) return;
+            std::lock_guard<std::mutex> lock(state_mutex_);
+            for (int i = 0; i < kNumLegMotors; ++i)
+              measured_q_[i] = static_cast<float>(msg->position[i]);
+            have_state_.store(true, std::memory_order_release);
+          }
         });
     imu_measured_sub_ = create_subscription<sensor_msgs::msg::Imu>(
         "imu_measured", 10, [this](const sensor_msgs::msg::Imu::SharedPtr msg) {
+          if (udp_ok_) return;
           std::lock_guard<std::mutex> lock(state_mutex_);
           imu_quat_[0] = static_cast<float>(msg->orientation.w);
           imu_quat_[1] = static_cast<float>(msg->orientation.x);
@@ -118,7 +157,7 @@ class Go2ChampWalkController : public rclcpp::Node {
           req_vel_.linear.x = static_cast<float>(msg->linear.x);
           req_vel_.linear.y = static_cast<float>(msg->linear.y);
           req_vel_.angular.z = static_cast<float>(msg->angular.z);
-          last_cmd_vel_time_ = now();
+          last_cmd_vel_steady_ = std::chrono::steady_clock::now();
         });
 
 
@@ -150,6 +189,8 @@ class Go2ChampWalkController : public rclcpp::Node {
   ~Go2ChampWalkController() override {
     running_ = false;
     if (control_thread_.joinable()) control_thread_.join();
+    if (udp_tx_fd_ >= 0) ::close(udp_tx_fd_);
+    if (udp_rx_fd_ >= 0) ::close(udp_rx_fd_);
   }
 
  private:
@@ -195,8 +236,9 @@ class Go2ChampWalkController : public rclcpp::Node {
     }
   }
   void controlLoop() {
-    RCLCPP_INFO(get_logger(), "Waiting for joint_states_measured ...");
+    RCLCPP_INFO(get_logger(), "Waiting for bridge feedback (UDP 17611) ...");
     while (running_ && !have_state_.load(std::memory_order_acquire)) {
+      pollBridgeFeedback();
       std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
     if (!running_) return;
@@ -204,15 +246,68 @@ class Go2ChampWalkController : public rclcpp::Node {
       std::lock_guard<std::mutex> lock(state_mutex_);
       for (int i = 0; i < kNumLegMotors; ++i) start_pose_[i] = measured_q_[i];
     }
-    last_cmd_vel_time_ = now();
+    last_cmd_vel_steady_ = std::chrono::steady_clock::now();
+    last_joint_states_steady_ = std::chrono::steady_clock::now() - std::chrono::seconds(10);
+    last_imu_steady_ = last_joint_states_steady_;
+    last_joint_commands_steady_ = last_joint_states_steady_;
     RCLCPP_INFO(get_logger(), "Feedback received, ramping to stance ...");
     auto next_tick = std::chrono::steady_clock::now();
     while (running_ && rclcpp::ok()) {
       next_tick += std::chrono::duration_cast<std::chrono::steady_clock::duration>(
           std::chrono::duration<double>(kControlPeriod));
+      pollBridgeFeedback();
       stepOnce();
       std::this_thread::sleep_until(next_tick);
     }
+  }
+  // Drain bridge feedback datagrams: 12 q + 4 quat + 3 gyro + 3 accel.
+  // Also republishes joint_states_measured / imu_measured for introspection.
+  void pollBridgeFeedback() {
+    if (!udp_ok_) return;
+    std::array<float, 22> buf{};
+    bool got = false;
+    for (;;) {
+      const ssize_t n =
+          ::recv(udp_rx_fd_, buf.data(), buf.size() * sizeof(float), 0);
+      if (n != static_cast<ssize_t>(buf.size() * sizeof(float))) break;
+      got = true;
+    }
+    if (!got) return;
+    {
+      std::lock_guard<std::mutex> lock(state_mutex_);
+      for (int i = 0; i < kNumLegMotors; ++i) measured_q_[i] = buf[i];
+      imu_quat_[0] = buf[12];
+      imu_quat_[1] = buf[13];
+      imu_quat_[2] = buf[14];
+      imu_quat_[3] = buf[15];
+      imu_gyro_[0] = buf[16];
+      imu_gyro_[1] = buf[17];
+      imu_gyro_[2] = buf[18];
+      imu_acc_[0] = buf[19];
+      imu_acc_[1] = buf[20];
+      imu_acc_[2] = buf[21];
+    }
+    have_state_.store(true, std::memory_order_release);
+    const rclcpp::Time stamp = now();
+    sensor_msgs::msg::JointState js;
+    js.header.stamp = stamp;
+    js.name = kUnitreeJointNames;
+    js.position.assign(buf.begin(), buf.begin() + kNumLegMotors);
+    measured_pub_->publish(js);
+    sensor_msgs::msg::Imu imu;
+    imu.header.stamp = stamp;
+    imu.header.frame_id = "imu_link";
+    imu.orientation.w = buf[12];
+    imu.orientation.x = buf[13];
+    imu.orientation.y = buf[14];
+    imu.orientation.z = buf[15];
+    imu.angular_velocity.x = buf[16];
+    imu.angular_velocity.y = buf[17];
+    imu.angular_velocity.z = buf[18];
+    imu.linear_acceleration.x = buf[19];
+    imu.linear_acceleration.y = buf[20];
+    imu.linear_acceleration.z = buf[21];
+    imu_measured_pub_->publish(imu);
   }
   void stepOnce() {
     float target_joints[kNumLegMotors];
@@ -225,7 +320,9 @@ class Go2ChampWalkController : public rclcpp::Node {
       std::lock_guard<std::mutex> lock(cmd_mutex_);
       vel = req_vel_;
       pose = req_pose_;
-      vel_fresh = (now() - last_cmd_vel_time_).seconds() <= cmd_vel_timeout_;
+      const auto steady_now = std::chrono::steady_clock::now();
+      vel_fresh = std::chrono::duration<double>(steady_now - last_cmd_vel_steady_).count() <=
+                  cmd_vel_timeout_;
     }
     if (!vel_fresh) {
       vel.linear.x = 0.0F;
@@ -250,6 +347,7 @@ class Go2ChampWalkController : public rclcpp::Node {
       unitree_targets[motor] = interpolate(start_pose_[motor], target, stand_progress);
     }
     motion_time_ += kControlPeriod;
+    sendTargetsToBridge(unitree_targets);
     sensor_msgs::msg::JointState targets_msg;
     targets_msg.header.stamp = now();
     targets_msg.name = kUnitreeJointNames;
@@ -258,10 +356,25 @@ class Go2ChampWalkController : public rclcpp::Node {
     publishFeedback(target_joints);
   }
 
+  // 12 q + 12 kp + 12 kd floats to the bridge over loopback UDP.
+  void sendTargetsToBridge(const std::array<float, kNumLegMotors> &unitree_targets) {
+    if (!udp_ok_) return;
+    std::array<float, 36> buf{};
+    for (int i = 0; i < kNumLegMotors; ++i) {
+      buf[i] = unitree_targets[i];
+      buf[12 + i] = static_cast<float>(kp_);
+      buf[24 + i] = static_cast<float>(kd_);
+    }
+    ::sendto(udp_tx_fd_, buf.data(), buf.size() * sizeof(float), 0,
+             reinterpret_cast<sockaddr *>(&udp_targets_addr_), sizeof(udp_targets_addr_));
+  }
+
   void publishFeedback(const float target_joints[kNumLegMotors]) {
     const rclcpp::Time stamp = now();
-    if (publish_joint_states_ && (stamp - last_joint_states_time_).seconds() >= 0.02) {
-      last_joint_states_time_ = stamp;
+    const auto steady_now = std::chrono::steady_clock::now();
+    if (publish_joint_states_ &&
+        std::chrono::duration<double>(steady_now - last_joint_states_steady_).count() >= 0.02) {
+      last_joint_states_steady_ = steady_now;
       sensor_msgs::msg::JointState msg;
       msg.header.stamp = stamp;
       msg.name = kChampJointNames;
@@ -273,8 +386,9 @@ class Go2ChampWalkController : public rclcpp::Node {
       }
       joint_states_pub_->publish(msg);
     }
-    if (publish_imu_ && (stamp - last_imu_time_).seconds() >= 0.02) {
-      last_imu_time_ = stamp;
+    if (publish_imu_ &&
+        std::chrono::duration<double>(steady_now - last_imu_steady_).count() >= 0.02) {
+      last_imu_steady_ = steady_now;
       sensor_msgs::msg::Imu msg;
       msg.header.stamp = stamp;
       msg.header.frame_id = "imu_link";
@@ -291,8 +405,9 @@ class Go2ChampWalkController : public rclcpp::Node {
       msg.linear_acceleration.z = imu_acc_[2];
       imu_pub_->publish(msg);
     }
-    if (publish_joint_control_ && (stamp - last_joint_commands_time_).seconds() >= 0.02) {
-      last_joint_commands_time_ = stamp;
+    if (publish_joint_control_ &&
+        std::chrono::duration<double>(steady_now - last_joint_commands_steady_).count() >= 0.02) {
+      last_joint_commands_steady_ = steady_now;
       trajectory_msgs::msg::JointTrajectory msg;
       msg.header.stamp = stamp;
       msg.joint_names = kChampJointNames;
@@ -330,6 +445,8 @@ class Go2ChampWalkController : public rclcpp::Node {
   std::array<float, 3> imu_acc_{};
   std::atomic_bool have_state_{false};
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_targets_pub_;
+  rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr measured_pub_;
+  rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_measured_pub_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr measured_sub_;
   rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr imu_measured_sub_;
   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_sub_;
@@ -341,11 +458,16 @@ class Go2ChampWalkController : public rclcpp::Node {
   std::mutex cmd_mutex_;
   std::atomic_bool running_{true};
   std::thread control_thread_;
+  int udp_tx_fd_{-1};
+  int udp_rx_fd_{-1};
+  sockaddr_in udp_targets_addr_{};
+  bool udp_ok_{false};
   double motion_time_ = 0.0;
-  rclcpp::Time last_cmd_vel_time_;
-  rclcpp::Time last_joint_states_time_;
-  rclcpp::Time last_imu_time_;
-  rclcpp::Time last_joint_commands_time_;
+  std::chrono::steady_clock::time_point last_cmd_vel_steady_{std::chrono::steady_clock::now()};
+  std::chrono::steady_clock::time_point last_joint_states_steady_{std::chrono::steady_clock::now()};
+  std::chrono::steady_clock::time_point last_imu_steady_{std::chrono::steady_clock::now()};
+  std::chrono::steady_clock::time_point last_joint_commands_steady_{
+      std::chrono::steady_clock::now()};
 };
 const std::vector<std::string> Go2ChampWalkController::kChampJointNames = {
     "lf_hip_joint", "lf_upper_leg_joint", "lf_lower_leg_joint",

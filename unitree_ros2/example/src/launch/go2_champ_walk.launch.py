@@ -35,9 +35,10 @@ def generate_launch_description():
                 output="screen",
                 parameters=[config],
             ),
-            # Pure-DDS bridge (Unitree ChannelFactory + raw rcl C API).
-            # Must be its own process: ChannelFactory cannot share a process
-            # with rclcpp on the same DDS domain. Positional args:
+            # Pure-DDS bridge (Unitree ChannelFactory only, NO ROS inside).
+            # It must stay ROS-free: Unitree's bundled CycloneDDS clashes with
+            # ROS's rmw_cyclonedds_cpp in one process. Talks to the planner
+            # over loopback UDP (17610/17611). Positional args:
             #   <dds_domain_id> <dds_interface> <kp> <kd>
             # (anything after --ros-args is ignored by its arg parser).
             Node(
