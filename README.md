@@ -54,7 +54,9 @@ export ROS_DOMAIN_ID=1
 export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'
 
 ros2 launch unitree_ros2_example go2_champ_walk.launch.py
-# or: 
+```
+or:
+```bash 
 ros2 launch unitree_ros2_example go2_champ_walk.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
 ```
 
