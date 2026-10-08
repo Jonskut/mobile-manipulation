@@ -11,7 +11,6 @@
 #include <string>
 #include <thread>
 
-#include <unitree/idl/go2/LowState_.hpp>
 #include <unitree/robot/channel/channel_factory.hpp>
 #include <unitree/robot/channel/channel_publisher.hpp>
 #include <unitree/robot/channel/channel_subscriber.hpp>
@@ -20,13 +19,19 @@
 #include "PubServoInfo_.hpp"
 
 namespace {
-constexpr int kLegMotorCount = 12;  // kept for lowstate motor indexing
 constexpr int kArmJointCount = 7;
 constexpr double kArmMoveDuration = 2.0;
-constexpr double kRadiansToDegrees = 57.29577951308232;
-// NOTE: leg motors 0-11 are owned by go2_champ_walk_controller. This node is
-// arm-only: it must not publish rt/lowcmd, or the two writers will fight.
+// NOTE: leg motors 0-11 (rt/lowstate motor_state) are owned by the Go2
+// controller/bridge. This node is arm-only and must not subscribe to
+// rt/lowstate: that topic is reserved for the Go2. Arm startup feedback comes
+// from the D1 SDK topics (see /workspace/d1_sdk/src/get_arm_joint_angle.cpp):
+//   - "current_servo_angle" (PubServoInfo_, servo0..6 in degrees)
+//   - "arm_Feedback" (ArmString_, status JSON)
 constexpr double kControlPeriodMs = 20.0;
+constexpr double kArmWaitTimeoutSec = 3.0;
+constexpr char kArmCommandTopic[] = "rt/arm_Command";
+constexpr char kArmServoTopic[] = "current_servo_angle";
+constexpr char kArmFeedbackTopic[] = "arm_Feedback";
 constexpr std::array<double, kArmJointCount> kArmHomeAngles = {
     0.0, -60.0, 60.0, 0.0, 30.0, 0.0, 0.0};
 
@@ -37,11 +42,6 @@ float interpolate_arm(float start, float target, double progress) {
   return static_cast<float>((1.0 - progress) * start + progress * target);
 }
 
-//}  // namespace
-
-float interpolate(float start, float target, double progress) {
-  return static_cast<float>((1.0 - progress) * start + progress * target);
-}
 }  // namespace
 
 class Go2D1StandController final {
@@ -49,30 +49,36 @@ class Go2D1StandController final {
   Go2D1StandController(int domain_id, const std::string &interface_name) {
     unitree::robot::ChannelFactory::Instance()->Init(domain_id, interface_name);
 
-    low_state_sub_ = std::make_shared<
-        unitree::robot::ChannelSubscriber<unitree_go::msg::dds_::LowState_>>(
-        "rt/lowstate");
-    low_state_sub_->InitChannel(
-        [this](const void *message) { handleLowState(message); }, 1);
-
     arm_command_pub_ = std::make_shared<
         unitree::robot::ChannelPublisher<unitree_arm::msg::dds_::ArmString_>>(
-        "rt/arm_Command");
+        kArmCommandTopic);
     arm_command_pub_->InitChannel();
     arm_state_sub_ = std::make_shared<
         unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::PubServoInfo_>>(
-        "current_servo_angle");
+        kArmServoTopic);
     arm_state_sub_->InitChannel(
         [this](const void *message) { handleArmState(message); }, 1);
+    arm_feedback_sub_ = std::make_shared<
+        unitree::robot::ChannelSubscriber<unitree_arm::msg::dds_::ArmString_>>(
+        kArmFeedbackTopic);
+    arm_feedback_sub_->InitChannel(
+        [this](const void *message) { handleArmFeedback(message); }, 1);
 
-    // Arm-only node: the leg path (initialize_command / low_cmd_pub_) was
-    // removed. Leg motors 0-11 are owned by go2_champ_walk_controller;
-    // publishing rt/lowcmd from two writers makes the bridge flap.
+    // Arm-only node: rt/lowstate + rt/lowcmd are reserved for the Go2
+    // controller/bridge; this node only uses the D1 SDK topics above.
   }
 
   void run() {
-    while (!low_state_received_.load()) {
+    const auto deadline = std::chrono::steady_clock::now() +
+                          std::chrono::duration<double>(kArmWaitTimeoutSec);
+    while (!arm_state_received_.load() &&
+           std::chrono::steady_clock::now() < deadline) {
       std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+    if (!arm_state_received_.load()) {
+      std::cerr << "[go2_d1_stand_controller] no " << kArmServoTopic
+                << " feedback after " << kArmWaitTimeoutSec
+                << "s; starting from home pose." << std::endl;
     }
     initialize_targets();
     publish_arm_enable(true);
@@ -84,32 +90,30 @@ class Go2D1StandController final {
   }
 
  private:
-  void handleLowState(const void *message) {
-    std::lock_guard<std::mutex> lock(state_mutex_);
-    low_state_ = *static_cast<const unitree_go::msg::dds_::LowState_ *>(message);
-    low_state_received_ = true;
-  }
-
   void handleArmState(const void *message) {
     const auto &state =
         *static_cast<const unitree_arm::msg::dds_::PubServoInfo_ *>(message);
     std::lock_guard<std::mutex> lock(state_mutex_);
-    arm_start_angles_ = {state.servo0_data_(), state.servo1_data_(),
-                         state.servo2_data_(), state.servo3_data_(),
-                         state.servo4_data_(), state.servo5_data_(),
-                         state.servo6_data_()};
+    arm_current_angles_ = {state.servo0_data_(), state.servo1_data_(),
+                           state.servo2_data_(), state.servo3_data_(),
+                           state.servo4_data_(), state.servo5_data_(),
+                           state.servo6_data_()};
     arm_state_received_ = true;
+  }
+
+  void handleArmFeedback(const void *message) {
+    const auto &feedback =
+        *static_cast<const unitree_arm::msg::dds_::ArmString_ *>(message);
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    last_arm_feedback_ = feedback.data_();
   }
 
   void initialize_targets() {
     std::lock_guard<std::mutex> lock(state_mutex_);
-    if (!arm_state_received_) {
-      for (int index = 0; index < kArmJointCount - 1; ++index) {
-        arm_start_angles_[index] =
-            low_state_.motor_state()[kLegMotorCount + index].q() *
-            kRadiansToDegrees;
-      }
-      arm_start_angles_[kArmJointCount - 1] = 0.0;
+    if (arm_state_received_.load()) {
+      arm_start_angles_ = arm_current_angles_;
+    } else {
+      arm_start_angles_ = kArmHomeAngles;
     }
   }
 
@@ -144,15 +148,15 @@ class Go2D1StandController final {
     arm_command_pub_->Write(command);
   }
 
-  unitree_go::msg::dds_::LowState_ low_state_;
   std::array<double, kArmJointCount> arm_start_angles_{};
-  unitree::robot::ChannelSubscriberPtr<unitree_go::msg::dds_::LowState_> low_state_sub_;
+  std::array<double, kArmJointCount> arm_current_angles_{};
+  std::string last_arm_feedback_;
   unitree::robot::ChannelPublisherPtr<unitree_arm::msg::dds_::ArmString_> arm_command_pub_;
   unitree::robot::ChannelSubscriberPtr<unitree_arm::msg::dds_::PubServoInfo_> arm_state_sub_;
+  unitree::robot::ChannelSubscriberPtr<unitree_arm::msg::dds_::ArmString_> arm_feedback_sub_;
   std::mutex state_mutex_;
   std::atomic_bool running_{true};
-  std::atomic_bool low_state_received_{false};
-  bool arm_state_received_ = false;
+  std::atomic_bool arm_state_received_{false};
   double motion_time_ = 0.0;
   int sequence_ = 1;
 };

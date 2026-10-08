@@ -36,9 +36,11 @@ source install/setup.bash
 ros2 run unitree_ros2_example go2_d1_stand_controller
 ```
 
-The controller uses the native Unitree DDS topic names `rt/lowcmd`,
-`rt/lowstate`, and `rt/arm_Command`, so the same command and feedback topics
-are used with MuJoCo and the physical robot.
+The Go2 bridge/controller uses the native Unitree DDS topic names `rt/lowcmd`
+and `rt/lowstate` (reserved for the Go2 leg motors). The D1 arm stand
+controller is arm-only and uses the D1 SDK topics `rt/arm_Command`,
+`current_servo_angle`, and `arm_Feedback`, so the same command and feedback
+topics are used with MuJoCo and the physical robot.
 
 Terminal 3 Champ 
 ```bash 
