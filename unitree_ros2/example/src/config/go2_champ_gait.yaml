@@ -5,18 +5,16 @@
       knee_orientation : ">>"
       pantograph_leg : false
       odom_scaler: 0.9
-      max_linear_velocity_x : 0.3
+      max_linear_velocity_x : 0.5
       max_linear_velocity_y : 0.25
-      max_angular_velocity_z : 0.5
+      max_angular_velocity_z : 1.0
       # Static CoM bias baseline: the live payload compensation (below) adds
       # a filtered delta on top of this value at 500 Hz.
       com_x_translation: 0.0
-      # Tucked-carry gait: higher swing + taller stance clear the ground
-      # better with the arm mass shifting the support margins.
-      swing_height : 0.06
-      stance_depth : 0.01
+      swing_height : 0.04
+      stance_depth : 0.0
       stance_duration : 0.25
-      nominal_height : 0.24
+      nominal_height : 0.20
 
     # Low-level servo gains for the 12 leg motors (mirrors the
     # go2_d1_stand_controller defaults). kp 80: stiffer stance with payload.
