@@ -305,16 +305,17 @@ class Go2ChampWalkController : public rclcpp::Node {
       tucked_q_rad_ = champ::payload::tuckedQRad();
     }
     // Seed the filter at zero delta so startup is bumpless: the live knob only
-    // reacts to motion AWAY from the tucked pose. Seeding with the absolute
-    // tucked CoM would inject a constant rearward bias (tucked CoM sits ~8mm
-    // behind the bare-torso CoM) even on the no-arm model, dragging every
-    // step rearward.
+    // reacts to motion AWAY from the tucked pose. The tucked arm mass sits
+    // ~8mm behind the bare-torso CoM, so the tucked pose itself must read as
+    // zero delta — otherwise a constant rearward bias leaks in even on the
+    // no-arm model, dragging every step rearward.
     {
       const Eigen::Vector3f c0 =
           champ::payload::computeTotalCom(tucked_q_rad_);
       filt_com_x_ = 0.0;
       filt_com_y_ = 0.0;
       filt_com_z_ = static_cast<double>(c0.z());
+      tucked_com_x_ = static_cast<double>(c0.x());
       tucked_com_z_ = static_cast<double>(c0.z());
       // yaml static baseline is preserved; live knob = base + filtered delta.
       com_x_base_ = gait_config_.com_x_translation;
@@ -543,9 +544,11 @@ class Go2ChampWalkController : public rclcpp::Node {
       }
     }
     const Eigen::Vector3f com = champ::payload::computeTotalCom(q);
-    // Compensate relative to the bare-torso CoM so the yaml static baseline
-    // keeps working: filtered Δ from base_com_x drives the live knob.
-    const double raw_dx = static_cast<double>(com.x()) - payload_base_com_x_;
+    // Delta is measured from the TUCKED pose, not the bare torso: the tucked
+    // arm mass is the normal operating point, so holding tucked must read as
+    // zero trim. (Bare-torso reference would inject a constant ~8mm rearward
+    // bias — the residual drift you saw even on the no-arm model.)
+    const double raw_dx = static_cast<double>(com.x()) - tucked_com_x_;
     const double raw_dy = static_cast<double>(com.y());
     const double raw_dz = static_cast<double>(com.z());
     const double a = std::min(std::max(payload_alpha_, 0.0), 1.0);
@@ -718,9 +721,10 @@ class Go2ChampWalkController : public rclcpp::Node {
   std::array<float, kNumArmJoints> tucked_q_rad_{};
   // Baseline captured after loadParams(): yaml static value + tucked CoM.
   double com_x_base_ = 0.0;
+  double tucked_com_x_ = 0.021112;
   double tucked_com_z_ = 0.0;
   double nominal_height_base_ = 0.225;
-  // Low-pass filtered CoM deltas from the bare torso CoM.
+  // Low-pass filtered CoM deltas from the tucked pose (normal operating point).
   double filt_com_x_ = 0.0;
   double filt_com_y_ = 0.0;
   double filt_com_z_ = 0.0;
