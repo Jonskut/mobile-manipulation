@@ -16,7 +16,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 
-include_directories(include include/common include/nlohmann)
+include_directories(include include/common include/nlohmann include/d1_sdk/src)
 link_directories(src)
 
 set (
@@ -55,6 +55,9 @@ target_compile_features(go2_sport_client PRIVATE cxx_std_20)
 add_executable(go2_stand_example src/go2/go2_stand_example.cpp src/common/motor_crc.cpp)
 target_compile_features(go2_stand_example PRIVATE cxx_std_20)
 add_executable(go2_d1_stand_controller src/go2/go2_d1_stand_controller.cpp src/common/motor_crc.cpp)
+target_compile_features(go2_d1_stand_controller PRIVATE cxx_std_20)
+
+add_executable(go2_arm_example src/go2/go2_arm_example.cpp)
 target_compile_features(go2_d1_stand_controller PRIVATE cxx_std_20)
 
 add_executable(go2_robot_state_client src/go2/go2_robot_state_client.cpp src/common/motor_crc.cpp) 
@@ -108,6 +111,7 @@ ament_target_dependencies(read_wireless_controller ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_sport_client ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_stand_example ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_d1_stand_controller ${DEPENDENCY_LIST})
+ament_target_dependencies(go2_arm_example ${DEPENDENCY_LIST})
 
 
 ament_target_dependencies(go2_robot_state_client ${DEPENDENCY_LIST})
@@ -152,6 +156,7 @@ install(TARGETS
         go2_sport_client
         go2_stand_example
         go2_d1_stand_controller
+        go2_arm_example
         DESTINATION lib/${PROJECT_NAME}
         )
 
