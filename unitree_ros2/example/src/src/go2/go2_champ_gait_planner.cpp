@@ -304,12 +304,16 @@ class Go2ChampWalkController : public rclcpp::Node {
     } else {
       tucked_q_rad_ = champ::payload::tuckedQRad();
     }
-    // Seed the filter at the tucked CoM so startup is bumpless.
+    // Seed the filter at zero delta so startup is bumpless: the live knob only
+    // reacts to motion AWAY from the tucked pose. Seeding with the absolute
+    // tucked CoM would inject a constant rearward bias (tucked CoM sits ~8mm
+    // behind the bare-torso CoM) even on the no-arm model, dragging every
+    // step rearward.
     {
       const Eigen::Vector3f c0 =
           champ::payload::computeTotalCom(tucked_q_rad_);
-      filt_com_x_ = static_cast<double>(c0.x()) - payload_base_com_x_;
-      filt_com_y_ = static_cast<double>(c0.y());
+      filt_com_x_ = 0.0;
+      filt_com_y_ = 0.0;
       filt_com_z_ = static_cast<double>(c0.z());
       tucked_com_z_ = static_cast<double>(c0.z());
       // yaml static baseline is preserved; live knob = base + filtered delta.

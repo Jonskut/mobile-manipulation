@@ -9,10 +9,15 @@
       max_linear_velocity_y : 0.25
       max_angular_velocity_z : 1.0
       # Static CoM bias baseline: the live payload compensation (below) adds
-      # a filtered delta on top of this value at 500 Hz.
+      # a filtered delta on top of this value at 500 Hz. Keep at 0: the
+      # tucked arm mass already shifts the support rearward, and any static
+      # rearward bias here drags every step (slow forward walk, backward
+      # drift while turning).
       com_x_translation: 0.0
-      swing_height : 0.04
-      stance_depth : 0.0
+      # Swing 0.06 clears the ground on the 0.20m stance; stance_depth 0.01
+      # keeps light ground pressure. The previous 0.04/0.0 combo scraped.
+      swing_height : 0.06
+      stance_depth : 0.01
       stance_duration : 0.25
       nominal_height : 0.20
 
