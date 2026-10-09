@@ -1,20 +1,24 @@
-Required ros2 humble and vs code dev containers
+# Mobile manipulation
+#### Required ros2 humble and vs code dev containers
 
-Open in dev containers (shift+ctrl+P) -> rebuild and reopen in container
+#### Open in dev containers (shift+ctrl+P) -> rebuild and reopen in container
 
-Terminal 1
-
+### Terminal 1
+Build
 ```bash
 cd /workspace/unitree_mujoco/simulate
 rm -rf build
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel
-
+```
+Run
+```bash
 cd /workspace/unitree_mujoco/simulate
 ./build/unitree_mujoco -r go2 -s scene_terrain.xml
 ```
 
-Terminal 2 ARM
+### Terminal 2 ARM
+Build
 ```bash
 cd /workspace/unitree_ros2/cyclonedds_ws
 source /opt/ros/humble/setup.bash
@@ -25,8 +29,9 @@ source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
 cd /workspace/unitree_ros2/example
 export MAKEFLAGS="-j 1"
 colcon build --packages-select unitree_ros2_example --executor sequential
-
-
+```
+Run
+```bash
 cd /workspace/unitree_ros2/cyclonedds_ws
 source /opt/ros/humble/setup.bash
 source install/setup.bash
@@ -42,12 +47,15 @@ controller is arm-only and uses the D1 SDK topics `rt/arm_Command`,
 `current_servo_angle`, and `arm_Feedback`, so the same command and feedback
 topics are used with MuJoCo and the physical robot.
 
-Terminal 3 Champ 
+### Terminal 3 Champ 
+Build
 ```bash 
 cd /workspace/unitree_ros2/example
 export MAKEFLAGS="-j 1"
 colcon build --packages-select unitree_ros2_example --executor sequential
-
+```
+Run
+```bash
 source /opt/ros/humble/setup.bash
 source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
 source /workspace/unitree_ros2/example/install/setup.bash
@@ -62,7 +70,7 @@ or:
 ros2 launch unitree_ros2_example go2_champ_walk.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
 ```
 
-Send twist messages
+#### Send twist messages
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
