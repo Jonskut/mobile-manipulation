@@ -63,46 +63,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/low_level_ctrl_hg")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/low_level_ctrl_hg")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_low_level_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/g1_low_level_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state")
     file(RPATH_CHECK
@@ -118,26 +78,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/read_low_state_hg")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/read_low_state_hg")
     endif()
   endif()
 endif()
@@ -283,181 +223,41 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_arm_sdk_dds_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/go2_d1_stand_controller")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller"
+         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:/opt/unitree_robotics/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_sdk_dds_example")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_stand_controller")
     endif()
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_arm_action_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/go2_d1_arm_poses")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses"
+         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:/opt/unitree_robotics/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_arm_action_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_dex3_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dex3_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_loco_client_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_loco_client_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_ankle_swing_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_ankle_swing_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_dual_arm_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_dual_arm_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/g1_audio_client_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/g1_audio_client_example")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/h2_loco_client")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_loco_client")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/h2_ankle_swing_example")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example"
-         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/h2_ankle_swing_example")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_d1_arm_poses")
     endif()
   endif()
 endif()

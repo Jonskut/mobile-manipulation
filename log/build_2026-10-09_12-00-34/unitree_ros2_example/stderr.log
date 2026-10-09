@@ -1,0 +1,199 @@
+In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_dds_bridge.cpp:36:
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  123 | #define UT_THROW(ExceptionType, args...)    \
+      |                                     ^~~
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+      |                                                   ^~~
+In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_d1_stand_controller.cpp:14:
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  123 | #define UT_THROW(ExceptionType, args...)    \
+      |                                     ^~~
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+      |                                                   ^~~
+In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_d1_arm_poses.cpp:33:
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  123 | #define UT_THROW(ExceptionType, args...)    \
+      |                                     ^~~
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+      |                                                   ^~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Point::Point(const geometry::Point&)’:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:65: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+      |                                                                 ^~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Rotation::Rotation(const geometry::Rotation&)’:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:71: warning: implicitly-declared ‘constexpr geometry::Rotation& geometry::Rotation::operator=(const geometry::Rotation&)’ is deprecated [-Wdeprecated-copy]
+   91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }
+      |                                                                       ^~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:13: note: because ‘geometry::Rotation’ has user-provided ‘geometry::Rotation::Rotation(const geometry::Rotation&)’
+   91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }
+      |             ^~~~~~~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Transformation::Transformation(const geometry::Transformation&)’:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:67: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |                                                                   ^~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateX(float)’:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:273:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+  273 |                 p = tmp;
+      |                     ^~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateY(float)’:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:287:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+  287 |                 p = tmp;
+      |                     ^~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateZ(float)’:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:301:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+  301 |                 p = tmp;
+      |                     ^~~
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+      |             ^~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:32,
+                 from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,
+                 from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h: At global scope:
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:103:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+  103 |             const float x() const
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:108:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+  108 |             const float y() const
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:113:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+  113 |             const float z() const
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:118:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+  118 |             const float roll() const
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:123:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+  123 |             const float pitch() const
+      |             ^~~~~
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:128:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+  128 |             const float yaw() const
+      |             ^~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,
+                 from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h: In member function ‘geometry::Transformation champ::QuadrupedLeg::foot_from_base()’:
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:95:51: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+   95 |                 foot_position.p = foot_from_hip().p;
+      |                                                   ^
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+      |             ^~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h: In member function ‘void champ::QuadrupedBase::getFootPositions(geometry::Transformation*)’:
+/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:94:65: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+   94 |                     foot_positions[i] = legs[i]->foot_from_base();
+      |                                                                 ^
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h: In static member function ‘static void champ::BodyController::poseCommand(geometry::Transformation&, champ::QuadrupedLeg&, const champ::Pose&)’:
+/workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:80:49: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+   80 |                 foot_position = leg.zero_stance();
+      |                                                 ^
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h: In member function ‘void champ::TrajectoryPlanner::generate(geometry::Transformation&, float, float, float, float)’:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:110:43: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+  110 |                     prev_foot_position_ = foot_position;
+      |                                           ^~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:116:43: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+  116 |                     prev_foot_position_ = foot_position;
+      |                                           ^~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:156:37: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+  156 |                     foot_position = prev_foot_position_;
+      |                                     ^~~~~~~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:159:39: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+  159 |                 prev_foot_position_ = foot_position;
+      |                                       ^~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+  230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+      |             ^~~~~~~~~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/kinematics/kinematics.h:36,
+                 from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:34,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In static member function ‘static champ::PhaseGenerator::Time champ::PhaseGenerator::now()’:
+/workspace/unitree_ros2/example/src/include/champ/macros/macros.h:34:23: warning: ISO C++ forbids braced-groups within expressions [-Wpedantic]
+   34 |     #define time_us() ({ \
+      |                       ^
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:40:47: note: in expansion of macro ‘time_us’
+   40 |             static inline Time now() { return time_us(); }
+      |                                               ^~~~~~~
+In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:35,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In member function ‘void champ::PhaseGenerator::run(float, float, champ::PhaseGenerator::Time)’:
+/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:60:51: warning: unused parameter ‘step_length’ [-Wunused-parameter]
+   60 |             void run(float target_velocity, float step_length, Time time = now())
+      |                                             ~~~~~~^~~~~~~~~~~

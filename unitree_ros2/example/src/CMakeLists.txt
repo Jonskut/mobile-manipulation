@@ -67,6 +67,13 @@ add_executable(go2_d1_stand_controller
 )
 target_compile_features(go2_d1_stand_controller PRIVATE cxx_std_20)
 target_link_libraries(go2_d1_stand_controller unitree_sdk2)
+add_executable(go2_d1_arm_poses
+  src/go2/go2_d1_arm_poses.cpp
+  "${CMAKE_CURRENT_SOURCE_DIR}/../../../d1_sdk/src/msg/ArmString_.cpp"
+  "${CMAKE_CURRENT_SOURCE_DIR}/../../../d1_sdk/src/msg/PubServoInfo_.cpp"
+)
+target_compile_features(go2_d1_arm_poses PRIVATE cxx_std_20)
+target_link_libraries(go2_d1_arm_poses unitree_sdk2)
 
 add_executable(go2_champ_dds_bridge
   src/go2/go2_champ_dds_bridge.cpp
@@ -102,6 +109,7 @@ ament_target_dependencies(read_wireless_controller ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_sport_client ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_stand_example ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_d1_stand_controller ${DEPENDENCY_LIST})
+ament_target_dependencies(go2_d1_arm_poses ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_champ_gait_planner ${DEPENDENCY_LIST})
 # Eigen for the payload CoM estimator (header-only FK).
 target_include_directories(go2_champ_gait_planner PRIVATE ${EIGEN3_INCLUDE_DIR})
@@ -128,6 +136,7 @@ install(TARGETS
 
 install(TARGETS go2_robot_state_client)
 install(TARGETS go2_d1_stand_controller)
+install(TARGETS go2_d1_arm_poses)
 
 
 

@@ -110,6 +110,9 @@ function colcon_package_source_powershell_script {
 # the prefix is two levels up from the package specific share directory
 $env:COLCON_CURRENT_PREFIX=(Get-Item $PSCommandPath).Directory.Parent.Parent.FullName
 
+colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX/share/unitree_ros2_example/hook/cmake_prefix_path.ps1"
+colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX/share/unitree_ros2_example/hook/path.ps1"
+colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX/share/unitree_ros2_example/hook/pythonscriptspath.ps1"
 colcon_package_source_powershell_script "$env:COLCON_CURRENT_PREFIX/share/unitree_ros2_example/local_setup.ps1"
 
 Remove-Item Env:\COLCON_CURRENT_PREFIX

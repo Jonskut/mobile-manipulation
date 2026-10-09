@@ -1,0 +1,630 @@
+[0.000000] (-) TimerEvent: {}
+[0.000430] (-) JobUnselected: {'identifier': 'd1_description'}
+[0.000456] (-) JobUnselected: {'identifier': 'marm_code'}
+[0.000472] (-) JobUnselected: {'identifier': 'stand_go2'}
+[0.000487] (-) JobUnselected: {'identifier': 'stand_go2'}
+[0.000507] (-) JobUnselected: {'identifier': 'unitree_api'}
+[0.000531] (-) JobUnselected: {'identifier': 'unitree_arm'}
+[0.000551] (-) JobUnselected: {'identifier': 'unitree_go'}
+[0.000567] (-) JobUnselected: {'identifier': 'unitree_hg'}
+[0.000582] (-) JobUnselected: {'identifier': 'unitree_mujoco'}
+[0.000595] (-) JobUnselected: {'identifier': 'unitree_sdk2'}
+[0.000611] (unitree_ros2_example) JobQueued: {'identifier': 'unitree_ros2_example', 'dependencies': OrderedDict([('unitree_api', '/workspace/install/unitree_api'), ('unitree_arm', '/workspace/install/unitree_arm'), ('unitree_go', '/workspace/install/unitree_go'), ('unitree_hg', '/workspace/install/unitree_hg')])}
+[0.000633] (unitree_ros2_example) JobStarted: {'identifier': 'unitree_ros2_example'}
+[0.009153] (unitree_ros2_example) JobProgress: {'identifier': 'unitree_ros2_example', 'progress': 'cmake'}
+[0.009609] (unitree_ros2_example) JobProgress: {'identifier': 'unitree_ros2_example', 'progress': 'build'}
+[0.010126] (unitree_ros2_example) Command: {'cmd': ['/usr/bin/cmake', '--build', '/workspace/build/unitree_ros2_example', '--', '-j16', '-l16'], 'cwd': '/workspace/build/unitree_ros2_example', 'env': OrderedDict([('HOSTNAME', 'jone-ubuntu'), ('GIT_ASKPASS', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/unitree_robotics/lib:/opt/unitree_robotics/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/unitree_robotics/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/bin/helpers/browser.sh'), ('AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS', '1'), ('HOME', '/root'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'), ('OLDPWD', '/workspace'), ('TERM_PROGRAM_VERSION', '1.140.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-b57565bb-3887-490d-bdb9-555a5e506650.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('DEBUGINFOD_URLS', ''), ('COLCON_PREFIX_PATH', '/workspace/unitree_ros2/example/install:/workspace/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-82b03e98-04d8-4f29-acf7-dc78f12ff55f.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('CODELLDB_LAUNCH_CONNECT_FILE', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/vadimcn.vscode-lldb/rpcaddress.txt'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/extensions/vadimcn.vscode-lldb-1.12.3/bin:/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/bin/remote-cli:/workspace/unitree_ros2/example/install/unitree_ros2_example/bin:/opt/ros/humble/bin:/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-82b03e98-04d8-4f29-acf7-dc78f12ff55f.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':1'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-67010de64c06442c.txt'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/ms-python.python/pythonrc.py'), ('CLINE_ACTIVE', 'true'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('XAUTHORITY', '/tmp/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-d17c21cc56.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-82b03e98-04d8-4f29-acf7-dc78f12ff55f.sock'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/workspace/unitree_ros2/example/install/unitree_ros2_example:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('CXX', '/usr/bin/g++'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/workspace/build/unitree_ros2_example'), ('COPILOT_DEBUG_NONCE', '14871ab2a743eddea9b07310fe2b64d6'), ('PYTHONPATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('TZ', 'UTC'), ('CC', '/usr/bin/gcc'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/unitree_robotics:/opt/unitree_robotics:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/workspace/unitree_ros2/example/install/unitree_ros2_example:/opt/unitree_robotics::/opt/ros/humble')]), 'shell': False}
+[0.036441] (unitree_ros2_example) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.099616] (-) TimerEvent: {}
+[0.137910] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_go: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/share/unitree_go/cmake)\n'}
+[0.159284] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.161193] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.166253] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.175268] (unitree_ros2_example) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.184628] (unitree_ros2_example) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.199727] (-) TimerEvent: {}
+[0.223846] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_hg: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/share/unitree_hg/cmake)\n'}
+[0.232780] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_api: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/share/unitree_api/cmake)\n'}
+[0.241824] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.261825] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.262988] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rmw_cyclonedds_cpp: 1.3.5 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)\n'}
+[0.277645] (unitree_ros2_example) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_cyclonedds_cpp' as default\n"}
+[0.299846] (-) TimerEvent: {}
+[0.309503] (unitree_ros2_example) StdoutLine: {'line': b'-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[0.322488] (unitree_ros2_example) StdoutLine: {'line': b'-- Found trajectory_msgs: 4.9.2 (/opt/ros/humble/share/trajectory_msgs/cmake)\n'}
+[0.335795] (unitree_ros2_example) StdoutLine: {'line': b'-- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)\n'}
+[0.362725] (unitree_ros2_example) StdoutLine: {'line': b'-- Found unitree_arm: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/share/unitree_arm/cmake)\n'}
+[0.399974] (-) TimerEvent: {}
+[0.401305] (unitree_ros2_example) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[0.484527] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[0.500066] (-) TimerEvent: {}
+[0.515617] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[0.517501] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /workspace/unitree_ros2/example/src/include;/workspace/unitree_ros2/example/src/include/common;/workspace/unitree_ros2/example/src/include/nlohmann;/workspace/unitree_ros2/example/src/include/champ;/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include;/workspace/unitree_ros2/example/src/../../../d1_sdk/src/msg\n'}
+[0.517613] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[0.548356] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[0.548518] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[0.552290] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[0.559802] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[0.563661] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[0.592709] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[0.592863] (unitree_ros2_example) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[0.597011] (unitree_ros2_example) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[0.597760] (unitree_ros2_example) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.600144] (-) TimerEvent: {}
+[0.656571] (unitree_ros2_example) StdoutLine: {'line': b'-- Generating done\n'}
+[0.675266] (unitree_ros2_example) StdoutLine: {'line': b'-- Build files have been written to: /workspace/build/unitree_ros2_example\n'}
+[0.700319] (-) TimerEvent: {}
+[0.711382] (unitree_ros2_example) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target read_low_state\n'}
+[0.711808] (unitree_ros2_example) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target read_wireless_controller\n'}
+[0.711995] (unitree_ros2_example) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target read_motion_state\n'}
+[0.712639] (unitree_ros2_example) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target go2_sport_client\n'}
+[0.712812] (unitree_ros2_example) StdoutLine: {'line': b'Consolidate compiler generated dependencies of target low_level_ctrl\n'}
+[0.722278] (unitree_ros2_example) StdoutLine: {'line': b'[ 16%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.o\n'}
+[0.722584] (unitree_ros2_example) StdoutLine: {'line': b'[ 16%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.o\n'}
+[0.722756] (unitree_ros2_example) StdoutLine: {'line': b'[ 16%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/src/go2/go2_d1_stand_controller.cpp.o\n'}
+[0.723681] (unitree_ros2_example) StdoutLine: {'line': b'[ 16%] Building CXX object CMakeFiles/go2_stand_example.dir/src/go2/go2_stand_example.cpp.o\n'}
+[0.723864] (unitree_ros2_example) StdoutLine: {'line': b'[ 23%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/go2/go2_robot_state_client.cpp.o\n'}
+[0.725479] (unitree_ros2_example) StdoutLine: {'line': b'[ 26%] Building CXX object CMakeFiles/go2_champ_gait_planner.dir/src/go2/go2_champ_gait_planner.cpp.o\n'}
+[0.726260] (unitree_ros2_example) StdoutLine: {'line': b'[ 26%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o\n'}
+[0.726463] (unitree_ros2_example) StdoutLine: {'line': b'[ 30%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.o\n'}
+[0.726558] (unitree_ros2_example) StdoutLine: {'line': b'[ 36%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o\n'}
+[0.726647] (unitree_ros2_example) StdoutLine: {'line': b'[ 36%] Building CXX object CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.o\n'}
+[0.729640] (unitree_ros2_example) StdoutLine: {'line': b'[ 36%] Building CXX object CMakeFiles/go2_champ_dds_bridge.dir/src/go2/go2_champ_dds_bridge.cpp.o\n'}
+[0.741027] (unitree_ros2_example) StdoutLine: {'line': b'[ 40%] Building CXX object CMakeFiles/read_low_state.dir/src/read_low_state.cpp.o\n'}
+[0.749003] (unitree_ros2_example) StdoutLine: {'line': b'[ 43%] Building CXX object CMakeFiles/read_wireless_controller.dir/src/read_wireless_controller.cpp.o\n'}
+[0.749233] (unitree_ros2_example) StdoutLine: {'line': b'[ 46%] Building CXX object CMakeFiles/go2_sport_client.dir/src/go2/go2_sport_client.cpp.o\n'}
+[0.749349] (unitree_ros2_example) StdoutLine: {'line': b'[ 50%] Building CXX object CMakeFiles/read_motion_state.dir/src/read_motion_state.cpp.o\n'}
+[0.749444] (unitree_ros2_example) StdoutLine: {'line': b'[ 53%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/low_level_ctrl.cpp.o\n'}
+[0.800436] (-) TimerEvent: {}
+[0.900774] (-) TimerEvent: {}
+[0.923487] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,\n'}
+[0.923845] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,\n'}
+[0.923984] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,\n'}
+[0.924085] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,\n'}
+[0.924173] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,\n'}
+[0.924258] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,\n'}
+[0.924340] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,\n'}
+[0.924423] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_dds_bridge.cpp:36:\n'}
+[0.924503] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]\n'}
+[0.924589] (unitree_ros2_example) StderrLine: {'line': b'  123 | #define UT_THROW(ExceptionType, args...)    \\\n'}
+[0.924669] (unitree_ros2_example) StderrLine: {'line': b'      |                                     ^~~\n'}
+[0.924876] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]\n'}
+[0.924979] (unitree_ros2_example) StderrLine: {'line': b'  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \\\n'}
+[0.925062] (unitree_ros2_example) StderrLine: {'line': b'      |                                                   ^~~\n'}
+[1.000910] (-) TimerEvent: {}
+[1.101165] (-) TimerEvent: {}
+[1.149740] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,\n'}
+[1.150288] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,\n'}
+[1.150445] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,\n'}
+[1.150568] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,\n'}
+[1.150667] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,\n'}
+[1.150780] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,\n'}
+[1.150874] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,\n'}
+[1.150964] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_d1_stand_controller.cpp:14:\n'}
+[1.151049] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]\n'}
+[1.151163] (unitree_ros2_example) StderrLine: {'line': b'  123 | #define UT_THROW(ExceptionType, args...)    \\\n'}
+[1.151252] (unitree_ros2_example) StderrLine: {'line': b'      |                                     ^~~\n'}
+[1.151333] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]\n'}
+[1.151418] (unitree_ros2_example) StderrLine: {'line': b'  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \\\n'}
+[1.151499] (unitree_ros2_example) StderrLine: {'line': b'      |                                                   ^~~\n'}
+[1.203805] (-) TimerEvent: {}
+[1.304117] (-) TimerEvent: {}
+[1.349783] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,\n'}
+[1.354036] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,\n'}
+[1.354304] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,\n'}
+[1.354505] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,\n'}
+[1.354674] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,\n'}
+[1.354842] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,\n'}
+[1.354982] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,\n'}
+[1.355108] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_d1_arm_poses.cpp:33:\n'}
+[1.355240] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]\n'}
+[1.355356] (unitree_ros2_example) StderrLine: {'line': b'  123 | #define UT_THROW(ExceptionType, args...)    \\\n'}
+[1.355469] (unitree_ros2_example) StderrLine: {'line': b'      |                                     ^~~\n'}
+[1.355578] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]\n'}
+[1.355687] (unitree_ros2_example) StderrLine: {'line': b'  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \\\n'}
+[1.355808] (unitree_ros2_example) StderrLine: {'line': b'      |                                                   ^~~\n'}
+[1.404276] (-) TimerEvent: {}
+[1.506014] (-) TimerEvent: {}
+[1.608843] (-) TimerEvent: {}
+[1.709192] (-) TimerEvent: {}
+[1.810853] (-) TimerEvent: {}
+[1.911211] (-) TimerEvent: {}
+[2.016856] (-) TimerEvent: {}
+[2.117245] (-) TimerEvent: {}
+[2.193865] (unitree_ros2_example) StdoutLine: {'line': b'[ 56%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o\n'}
+[2.217410] (-) TimerEvent: {}
+[2.314194] (unitree_ros2_example) StdoutLine: {'line': b'[ 60%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.o\n'}
+[2.317541] (-) TimerEvent: {}
+[2.419294] (-) TimerEvent: {}
+[2.481450] (unitree_ros2_example) StdoutLine: {'line': b'[ 63%] Building CXX object CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o\n'}
+[2.520827] (-) TimerEvent: {}
+[2.621127] (-) TimerEvent: {}
+[2.721876] (-) TimerEvent: {}
+[2.822216] (-) TimerEvent: {}
+[2.922834] (-) TimerEvent: {}
+[3.023909] (-) TimerEvent: {}
+[3.124262] (-) TimerEvent: {}
+[3.225905] (-) TimerEvent: {}
+[3.326258] (-) TimerEvent: {}
+[3.426788] (-) TimerEvent: {}
+[3.529816] (-) TimerEvent: {}
+[3.630176] (-) TimerEvent: {}
+[3.731828] (-) TimerEvent: {}
+[3.832239] (-) TimerEvent: {}
+[3.932674] (-) TimerEvent: {}
+[4.033826] (-) TimerEvent: {}
+[4.134184] (-) TimerEvent: {}
+[4.237089] (-) TimerEvent: {}
+[4.337498] (-) TimerEvent: {}
+[4.437833] (-) TimerEvent: {}
+[4.538871] (-) TimerEvent: {}
+[4.639383] (-) TimerEvent: {}
+[4.741999] (-) TimerEvent: {}
+[4.842362] (-) TimerEvent: {}
+[4.942734] (-) TimerEvent: {}
+[5.043056] (-) TimerEvent: {}
+[5.145840] (-) TimerEvent: {}
+[5.246191] (-) TimerEvent: {}
+[5.346611] (-) TimerEvent: {}
+[5.447038] (-) TimerEvent: {}
+[5.547358] (-) TimerEvent: {}
+[5.650848] (-) TimerEvent: {}
+[5.751220] (-) TimerEvent: {}
+[5.851582] (-) TimerEvent: {}
+[5.951938] (-) TimerEvent: {}
+[6.052261] (-) TimerEvent: {}
+[6.152695] (-) TimerEvent: {}
+[6.253058] (-) TimerEvent: {}
+[6.355057] (-) TimerEvent: {}
+[6.455407] (-) TimerEvent: {}
+[6.555757] (-) TimerEvent: {}
+[6.656818] (-) TimerEvent: {}
+[6.757125] (-) TimerEvent: {}
+[6.857848] (-) TimerEvent: {}
+[6.958213] (-) TimerEvent: {}
+[7.058840] (-) TimerEvent: {}
+[7.160827] (-) TimerEvent: {}
+[7.261153] (-) TimerEvent: {}
+[7.361660] (-) TimerEvent: {}
+[7.464024] (-) TimerEvent: {}
+[7.564359] (-) TimerEvent: {}
+[7.664994] (-) TimerEvent: {}
+[7.765321] (-) TimerEvent: {}
+[7.865869] (-) TimerEvent: {}
+[7.966893] (-) TimerEvent: {}
+[8.067238] (-) TimerEvent: {}
+[8.167759] (-) TimerEvent: {}
+[8.268817] (-) TimerEvent: {}
+[8.369307] (-) TimerEvent: {}
+[8.470312] (-) TimerEvent: {}
+[8.511145] (unitree_ros2_example) StdoutLine: {'line': b'[ 66%] Linking CXX executable go2_champ_dds_bridge\n'}
+[8.572288] (-) TimerEvent: {}
+[8.607428] (unitree_ros2_example) StdoutLine: {'line': b'[ 70%] Linking CXX executable go2_d1_stand_controller\n'}
+[8.673793] (-) TimerEvent: {}
+[8.774100] (-) TimerEvent: {}
+[8.874521] (-) TimerEvent: {}
+[8.975006] (-) TimerEvent: {}
+[8.975495] (unitree_ros2_example) StdoutLine: {'line': b'[ 73%] Linking CXX executable go2_d1_arm_poses\n'}
+[9.075238] (-) TimerEvent: {}
+[9.109397] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.109915] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.110109] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor \xe2\x80\x98geometry::Point::Point(const geometry::Point&)\xe2\x80\x99:\n'}
+[9.110252] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:65: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.110357] (unitree_ros2_example) StderrLine: {'line': b'   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }\n'}
+[9.110432] (unitree_ros2_example) StderrLine: {'line': b'      |                                                                 ^~~\n'}
+[9.110505] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because \xe2\x80\x98geometry::Point\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Point::Point(const geometry::Point&)\xe2\x80\x99\n'}
+[9.110575] (unitree_ros2_example) StderrLine: {'line': b'   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }\n'}
+[9.110638] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.112678] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor \xe2\x80\x98geometry::Rotation::Rotation(const geometry::Rotation&)\xe2\x80\x99:\n'}
+[9.112916] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:71: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Rotation& geometry::Rotation::operator=(const geometry::Rotation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.113035] (unitree_ros2_example) StderrLine: {'line': b'   91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }\n'}
+[9.113114] (unitree_ros2_example) StderrLine: {'line': b'      |                                                                       ^~~\n'}
+[9.113681] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:13: note: because \xe2\x80\x98geometry::Rotation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Rotation::Rotation(const geometry::Rotation&)\xe2\x80\x99\n'}
+[9.113821] (unitree_ros2_example) StderrLine: {'line': b'   91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }\n'}
+[9.113896] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~\n'}
+[9.120944] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99:\n'}
+[9.121424] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:67: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.121687] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.121864] (unitree_ros2_example) StderrLine: {'line': b'      |                                                                   ^~~\n'}
+[9.123833] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.124062] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.124166] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.125204] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function \xe2\x80\x98geometry::Transformation& geometry::Transformation::RotateX(float)\xe2\x80\x99:\n'}
+[9.126251] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:273:21: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.126521] (unitree_ros2_example) StderrLine: {'line': b'  273 |                 p = tmp;\n'}
+[9.126742] (unitree_ros2_example) StderrLine: {'line': b'      |                     ^~~\n'}
+[9.130037] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because \xe2\x80\x98geometry::Point\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Point::Point(const geometry::Point&)\xe2\x80\x99\n'}
+[9.130228] (unitree_ros2_example) StderrLine: {'line': b'   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }\n'}
+[9.130361] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.130450] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function \xe2\x80\x98geometry::Transformation& geometry::Transformation::RotateY(float)\xe2\x80\x99:\n'}
+[9.130542] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:287:21: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.130616] (unitree_ros2_example) StderrLine: {'line': b'  287 |                 p = tmp;\n'}
+[9.130680] (unitree_ros2_example) StderrLine: {'line': b'      |                     ^~~\n'}
+[9.130765] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because \xe2\x80\x98geometry::Point\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Point::Point(const geometry::Point&)\xe2\x80\x99\n'}
+[9.130840] (unitree_ros2_example) StderrLine: {'line': b'   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }\n'}
+[9.130904] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.131731] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function \xe2\x80\x98geometry::Transformation& geometry::Transformation::RotateZ(float)\xe2\x80\x99:\n'}
+[9.131863] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:301:21: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.131939] (unitree_ros2_example) StderrLine: {'line': b'  301 |                 p = tmp;\n'}
+[9.132003] (unitree_ros2_example) StderrLine: {'line': b'      |                     ^~~\n'}
+[9.132064] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because \xe2\x80\x98geometry::Point\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Point::Point(const geometry::Point&)\xe2\x80\x99\n'}
+[9.132129] (unitree_ros2_example) StderrLine: {'line': b'   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }\n'}
+[9.132190] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.132857] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:32,\n'}
+[9.133162] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,\n'}
+[9.133356] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,\n'}
+[9.133540] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.133731] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h: At global scope:\n'}
+[9.133926] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:103:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]\n'}
+[9.134444] (unitree_ros2_example) StderrLine: {'line': b'  103 |             const float x() const\n'}
+[9.135057] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.135243] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:108:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]\n'}
+[9.135423] (unitree_ros2_example) StderrLine: {'line': b'  108 |             const float y() const\n'}
+[9.135597] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.135787] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:113:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]\n'}
+[9.135998] (unitree_ros2_example) StderrLine: {'line': b'  113 |             const float z() const\n'}
+[9.136170] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.136340] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:118:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]\n'}
+[9.136518] (unitree_ros2_example) StderrLine: {'line': b'  118 |             const float roll() const\n'}
+[9.136691] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.136841] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:123:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]\n'}
+[9.136933] (unitree_ros2_example) StderrLine: {'line': b'  123 |             const float pitch() const\n'}
+[9.136998] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.137060] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:128:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]\n'}
+[9.137123] (unitree_ros2_example) StderrLine: {'line': b'  128 |             const float yaw() const\n'}
+[9.137183] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.139511] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,\n'}
+[9.139726] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,\n'}
+[9.139830] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.139908] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h: In member function \xe2\x80\x98geometry::Transformation champ::QuadrupedLeg::foot_from_base()\xe2\x80\x99:\n'}
+[9.139978] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:95:51: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.140071] (unitree_ros2_example) StderrLine: {'line': b'   95 |                 foot_position.p = foot_from_hip().p;\n'}
+[9.140136] (unitree_ros2_example) StderrLine: {'line': b'      |                                                   ^\n'}
+[9.140198] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.140264] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.140326] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because \xe2\x80\x98geometry::Point\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Point::Point(const geometry::Point&)\xe2\x80\x99\n'}
+[9.140393] (unitree_ros2_example) StderrLine: {'line': b'   39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }\n'}
+[9.140456] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~\n'}
+[9.143916] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,\n'}
+[9.144184] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.144291] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h: In member function \xe2\x80\x98void champ::QuadrupedBase::getFootPositions(geometry::Transformation*)\xe2\x80\x99:\n'}
+[9.144383] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:94:65: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.144453] (unitree_ros2_example) StderrLine: {'line': b'   94 |                     foot_positions[i] = legs[i]->foot_from_base();\n'}
+[9.144512] (unitree_ros2_example) StderrLine: {'line': b'      |                                                                 ^\n'}
+[9.144565] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.144616] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.144671] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.144779] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.144854] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.149862] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.150197] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h: In static member function \xe2\x80\x98static void champ::BodyController::poseCommand(geometry::Transformation&, champ::QuadrupedLeg&, const champ::Pose&)\xe2\x80\x99:\n'}
+[9.150374] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:80:49: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.150494] (unitree_ros2_example) StderrLine: {'line': b'   80 |                 foot_position = leg.zero_stance();\n'}
+[9.150581] (unitree_ros2_example) StderrLine: {'line': b'      |                                                 ^\n'}
+[9.150658] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.150753] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.150837] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.150929] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.150997] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.153518] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,\n'}
+[9.153806] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:\n'}
+[9.153925] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h: In member function \xe2\x80\x98void champ::TrajectoryPlanner::generate(geometry::Transformation&, float, float, float, float)\xe2\x80\x99:\n'}
+[9.154032] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:110:43: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.154114] (unitree_ros2_example) StderrLine: {'line': b'  110 |                     prev_foot_position_ = foot_position;\n'}
+[9.154198] (unitree_ros2_example) StderrLine: {'line': b'      |                                           ^~~~~~~~~~~~~\n'}
+[9.154266] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.154334] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.154399] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.154482] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.154550] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.154617] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,\n'}
+[9.154681] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:\n'}
+[9.154768] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:116:43: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.154852] (unitree_ros2_example) StderrLine: {'line': b'  116 |                     prev_foot_position_ = foot_position;\n'}
+[9.154916] (unitree_ros2_example) StderrLine: {'line': b'      |                                           ^~~~~~~~~~~~~\n'}
+[9.154977] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.155041] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.155104] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.155168] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.155231] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.155291] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,\n'}
+[9.155355] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:\n'}
+[9.155407] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:156:37: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.155461] (unitree_ros2_example) StderrLine: {'line': b'  156 |                     foot_position = prev_foot_position_;\n'}
+[9.155520] (unitree_ros2_example) StderrLine: {'line': b'      |                                     ^~~~~~~~~~~~~~~~~~~\n'}
+[9.156519] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.156938] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.157207] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.157455] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.157697] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.157956] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,\n'}
+[9.158055] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:\n'}
+[9.158129] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:159:39: warning: implicitly-declared \xe2\x80\x98constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)\xe2\x80\x99 is deprecated [-Wdeprecated-copy]\n'}
+[9.158198] (unitree_ros2_example) StderrLine: {'line': b'  159 |                 prev_foot_position_ = foot_position;\n'}
+[9.158262] (unitree_ros2_example) StderrLine: {'line': b'      |                                       ^~~~~~~~~~~~~\n'}
+[9.158323] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,\n'}
+[9.158388] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.158449] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because \xe2\x80\x98geometry::Transformation\xe2\x80\x99 has user-provided \xe2\x80\x98geometry::Transformation::Transformation(const geometry::Transformation&)\xe2\x80\x99\n'}
+[9.158514] (unitree_ros2_example) StderrLine: {'line': b'  230 |             Transformation(const Transformation &obj) { (*this) = obj; }\n'}
+[9.158576] (unitree_ros2_example) StderrLine: {'line': b'      |             ^~~~~~~~~~~~~~\n'}
+[9.161020] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/kinematics/kinematics.h:36,\n'}
+[9.161230] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:34,\n'}
+[9.161311] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:40:\n'}
+[9.161376] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In static member function \xe2\x80\x98static champ::PhaseGenerator::Time champ::PhaseGenerator::now()\xe2\x80\x99:\n'}
+[9.161437] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/macros/macros.h:34:23: warning: ISO C++ forbids braced-groups within expressions [-Wpedantic]\n'}
+[9.161490] (unitree_ros2_example) StderrLine: {'line': b'   34 |     #define time_us() ({ \\\n'}
+[9.161540] (unitree_ros2_example) StderrLine: {'line': b'      |                       ^\n'}
+[9.161599] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:40:47: note: in expansion of macro \xe2\x80\x98time_us\xe2\x80\x99\n'}
+[9.161657] (unitree_ros2_example) StderrLine: {'line': b'   40 |             static inline Time now() { return time_us(); }\n'}
+[9.161733] (unitree_ros2_example) StderrLine: {'line': b'      |                                               ^~~~~~~\n'}
+[9.163418] (unitree_ros2_example) StderrLine: {'line': b'In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:35,\n'}
+[9.163662] (unitree_ros2_example) StderrLine: {'line': b'                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:\n'}
+[9.163772] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In member function \xe2\x80\x98void champ::PhaseGenerator::run(float, float, champ::PhaseGenerator::Time)\xe2\x80\x99:\n'}
+[9.163857] (unitree_ros2_example) StderrLine: {'line': b'/workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:60:51: warning: unused parameter \xe2\x80\x98step_length\xe2\x80\x99 [-Wunused-parameter]\n'}
+[9.164594] (unitree_ros2_example) StderrLine: {'line': b'   60 |             void run(float target_velocity, float step_length, Time time = now())\n'}
+[9.164676] (unitree_ros2_example) StderrLine: {'line': b'      |                                             ~~~~~~^~~~~~~~~~~\n'}
+[9.176304] (-) TimerEvent: {}
+[9.276957] (-) TimerEvent: {}
+[9.378689] (-) TimerEvent: {}
+[9.480931] (-) TimerEvent: {}
+[9.581905] (-) TimerEvent: {}
+[9.684934] (-) TimerEvent: {}
+[9.745690] (unitree_ros2_example) StdoutLine: {'line': b'[ 73%] Built target go2_champ_dds_bridge\n'}
+[9.785191] (-) TimerEvent: {}
+[9.887168] (-) TimerEvent: {}
+[9.938441] (unitree_ros2_example) StdoutLine: {'line': b'[ 76%] Linking CXX executable low_level_ctrl\n'}
+[9.988958] (-) TimerEvent: {}
+[10.089609] (-) TimerEvent: {}
+[10.190153] (-) TimerEvent: {}
+[10.290778] (-) TimerEvent: {}
+[10.391125] (-) TimerEvent: {}
+[10.446060] (unitree_ros2_example) StdoutLine: {'line': b'[ 76%] Built target low_level_ctrl\n'}
+[10.491280] (-) TimerEvent: {}
+[10.591579] (-) TimerEvent: {}
+[10.691896] (-) TimerEvent: {}
+[10.706596] (unitree_ros2_example) StdoutLine: {'line': b'[ 76%] Built target go2_d1_stand_controller\n'}
+[10.792039] (-) TimerEvent: {}
+[10.892333] (-) TimerEvent: {}
+[10.992666] (-) TimerEvent: {}
+[10.993306] (unitree_ros2_example) StdoutLine: {'line': b'[ 76%] Built target go2_d1_arm_poses\n'}
+[11.092829] (-) TimerEvent: {}
+[11.193197] (-) TimerEvent: {}
+[11.293552] (-) TimerEvent: {}
+[11.393938] (-) TimerEvent: {}
+[11.494192] (-) TimerEvent: {}
+[11.594434] (-) TimerEvent: {}
+[11.694694] (-) TimerEvent: {}
+[11.794969] (-) TimerEvent: {}
+[11.895238] (-) TimerEvent: {}
+[11.995502] (-) TimerEvent: {}
+[12.095794] (-) TimerEvent: {}
+[12.196098] (-) TimerEvent: {}
+[12.296393] (-) TimerEvent: {}
+[12.396669] (-) TimerEvent: {}
+[12.496948] (-) TimerEvent: {}
+[12.597202] (-) TimerEvent: {}
+[12.697455] (-) TimerEvent: {}
+[12.797762] (-) TimerEvent: {}
+[12.898032] (-) TimerEvent: {}
+[12.998293] (-) TimerEvent: {}
+[13.098556] (-) TimerEvent: {}
+[13.198835] (-) TimerEvent: {}
+[13.299127] (-) TimerEvent: {}
+[13.399417] (-) TimerEvent: {}
+[13.499732] (-) TimerEvent: {}
+[13.599999] (-) TimerEvent: {}
+[13.700291] (-) TimerEvent: {}
+[13.800622] (-) TimerEvent: {}
+[13.900925] (-) TimerEvent: {}
+[14.001205] (-) TimerEvent: {}
+[14.018774] (unitree_ros2_example) StdoutLine: {'line': b'[ 80%] Linking CXX executable read_motion_state\n'}
+[14.101363] (-) TimerEvent: {}
+[14.194505] (unitree_ros2_example) StdoutLine: {'line': b'[ 83%] Linking CXX executable read_low_state\n'}
+[14.201505] (-) TimerEvent: {}
+[14.301821] (-) TimerEvent: {}
+[14.402107] (-) TimerEvent: {}
+[14.502398] (-) TimerEvent: {}
+[14.529027] (unitree_ros2_example) StdoutLine: {'line': b'[ 86%] Linking CXX executable read_wireless_controller\n'}
+[14.581438] (unitree_ros2_example) StdoutLine: {'line': b'[ 86%] Built target read_motion_state\n'}
+[14.602533] (-) TimerEvent: {}
+[14.702832] (-) TimerEvent: {}
+[14.759128] (unitree_ros2_example) StdoutLine: {'line': b'[ 86%] Built target read_low_state\n'}
+[14.802960] (-) TimerEvent: {}
+[14.903239] (-) TimerEvent: {}
+[14.984026] (unitree_ros2_example) StdoutLine: {'line': b'[ 86%] Built target read_wireless_controller\n'}
+[15.003343] (-) TimerEvent: {}
+[15.103573] (-) TimerEvent: {}
+[15.203807] (-) TimerEvent: {}
+[15.304035] (-) TimerEvent: {}
+[15.404273] (-) TimerEvent: {}
+[15.504497] (-) TimerEvent: {}
+[15.530907] (unitree_ros2_example) StdoutLine: {'line': b'[ 90%] Linking CXX executable go2_stand_example\n'}
+[15.604652] (-) TimerEvent: {}
+[15.704908] (-) TimerEvent: {}
+[15.805189] (-) TimerEvent: {}
+[15.905461] (-) TimerEvent: {}
+[15.965052] (unitree_ros2_example) StdoutLine: {'line': b'[ 90%] Built target go2_stand_example\n'}
+[16.005600] (-) TimerEvent: {}
+[16.105857] (-) TimerEvent: {}
+[16.206059] (-) TimerEvent: {}
+[16.306256] (-) TimerEvent: {}
+[16.406447] (-) TimerEvent: {}
+[16.506642] (-) TimerEvent: {}
+[16.606847] (-) TimerEvent: {}
+[16.707032] (-) TimerEvent: {}
+[16.807220] (-) TimerEvent: {}
+[16.907421] (-) TimerEvent: {}
+[17.007616] (-) TimerEvent: {}
+[17.107779] (-) TimerEvent: {}
+[17.207998] (-) TimerEvent: {}
+[17.308234] (-) TimerEvent: {}
+[17.408465] (-) TimerEvent: {}
+[17.508734] (-) TimerEvent: {}
+[17.553824] (unitree_ros2_example) StdoutLine: {'line': b'[ 93%] Linking CXX executable go2_robot_state_client\n'}
+[17.608858] (-) TimerEvent: {}
+[17.709107] (-) TimerEvent: {}
+[17.735949] (unitree_ros2_example) StdoutLine: {'line': b'[ 96%] Linking CXX executable go2_sport_client\n'}
+[17.809227] (-) TimerEvent: {}
+[17.909431] (-) TimerEvent: {}
+[18.009615] (-) TimerEvent: {}
+[18.023503] (unitree_ros2_example) StdoutLine: {'line': b'[ 96%] Built target go2_robot_state_client\n'}
+[18.109729] (-) TimerEvent: {}
+[18.209919] (-) TimerEvent: {}
+[18.309720] (unitree_ros2_example) StdoutLine: {'line': b'[ 96%] Built target go2_sport_client\n'}
+[18.309984] (-) TimerEvent: {}
+[18.410132] (-) TimerEvent: {}
+[18.510326] (-) TimerEvent: {}
+[18.610508] (-) TimerEvent: {}
+[18.710699] (-) TimerEvent: {}
+[18.810892] (-) TimerEvent: {}
+[18.911086] (-) TimerEvent: {}
+[19.011307] (-) TimerEvent: {}
+[19.111533] (-) TimerEvent: {}
+[19.211727] (-) TimerEvent: {}
+[19.311919] (-) TimerEvent: {}
+[19.412110] (-) TimerEvent: {}
+[19.512301] (-) TimerEvent: {}
+[19.612495] (-) TimerEvent: {}
+[19.712689] (-) TimerEvent: {}
+[19.812920] (-) TimerEvent: {}
+[19.913123] (-) TimerEvent: {}
+[20.013330] (-) TimerEvent: {}
+[20.113521] (-) TimerEvent: {}
+[20.213741] (-) TimerEvent: {}
+[20.313944] (-) TimerEvent: {}
+[20.414165] (-) TimerEvent: {}
+[20.514360] (-) TimerEvent: {}
+[20.614559] (-) TimerEvent: {}
+[20.714762] (-) TimerEvent: {}
+[20.814953] (-) TimerEvent: {}
+[20.915140] (-) TimerEvent: {}
+[21.015323] (-) TimerEvent: {}
+[21.115506] (-) TimerEvent: {}
+[21.215687] (-) TimerEvent: {}
+[21.315896] (-) TimerEvent: {}
+[21.416090] (-) TimerEvent: {}
+[21.516281] (-) TimerEvent: {}
+[21.616470] (-) TimerEvent: {}
+[21.716659] (-) TimerEvent: {}
+[21.816858] (-) TimerEvent: {}
+[21.917057] (-) TimerEvent: {}
+[22.017272] (-) TimerEvent: {}
+[22.117464] (-) TimerEvent: {}
+[22.217652] (-) TimerEvent: {}
+[22.317850] (-) TimerEvent: {}
+[22.418039] (-) TimerEvent: {}
+[22.518229] (-) TimerEvent: {}
+[22.618431] (-) TimerEvent: {}
+[22.718612] (-) TimerEvent: {}
+[22.818767] (-) TimerEvent: {}
+[22.918947] (-) TimerEvent: {}
+[23.019142] (-) TimerEvent: {}
+[23.119323] (-) TimerEvent: {}
+[23.219501] (-) TimerEvent: {}
+[23.319687] (-) TimerEvent: {}
+[23.419882] (-) TimerEvent: {}
+[23.520066] (-) TimerEvent: {}
+[23.620261] (-) TimerEvent: {}
+[23.720446] (-) TimerEvent: {}
+[23.820644] (-) TimerEvent: {}
+[23.920843] (-) TimerEvent: {}
+[24.021031] (-) TimerEvent: {}
+[24.121196] (-) TimerEvent: {}
+[24.221377] (-) TimerEvent: {}
+[24.321555] (-) TimerEvent: {}
+[24.421747] (-) TimerEvent: {}
+[24.521928] (-) TimerEvent: {}
+[24.622115] (-) TimerEvent: {}
+[24.722301] (-) TimerEvent: {}
+[24.822489] (-) TimerEvent: {}
+[24.922677] (-) TimerEvent: {}
+[25.022880] (-) TimerEvent: {}
+[25.123060] (-) TimerEvent: {}
+[25.223251] (-) TimerEvent: {}
+[25.323430] (-) TimerEvent: {}
+[25.423612] (-) TimerEvent: {}
+[25.523777] (-) TimerEvent: {}
+[25.623982] (-) TimerEvent: {}
+[25.724184] (-) TimerEvent: {}
+[25.824370] (-) TimerEvent: {}
+[25.924574] (-) TimerEvent: {}
+[26.024765] (-) TimerEvent: {}
+[26.124957] (-) TimerEvent: {}
+[26.225156] (-) TimerEvent: {}
+[26.325346] (-) TimerEvent: {}
+[26.425532] (-) TimerEvent: {}
+[26.525732] (-) TimerEvent: {}
+[26.625924] (-) TimerEvent: {}
+[26.726133] (-) TimerEvent: {}
+[26.826336] (-) TimerEvent: {}
+[26.926539] (-) TimerEvent: {}
+[27.026748] (-) TimerEvent: {}
+[27.126963] (-) TimerEvent: {}
+[27.227161] (-) TimerEvent: {}
+[27.327394] (-) TimerEvent: {}
+[27.427614] (-) TimerEvent: {}
+[27.527769] (-) TimerEvent: {}
+[27.627980] (-) TimerEvent: {}
+[27.728177] (-) TimerEvent: {}
+[27.828375] (-) TimerEvent: {}
+[27.928596] (-) TimerEvent: {}
+[27.931857] (unitree_ros2_example) StdoutLine: {'line': b'[100%] Linking CXX executable go2_champ_gait_planner\n'}
+[28.028693] (-) TimerEvent: {}
+[28.128896] (-) TimerEvent: {}
+[28.229113] (-) TimerEvent: {}
+[28.329366] (-) TimerEvent: {}
+[28.429589] (-) TimerEvent: {}
+[28.529800] (-) TimerEvent: {}
+[28.630012] (-) TimerEvent: {}
+[28.730199] (-) TimerEvent: {}
+[28.830384] (-) TimerEvent: {}
+[28.909732] (unitree_ros2_example) StdoutLine: {'line': b'[100%] Built target go2_champ_gait_planner\n'}
+[28.921570] (unitree_ros2_example) CommandEnded: {'returncode': 0}
+[28.922163] (unitree_ros2_example) JobProgress: {'identifier': 'unitree_ros2_example', 'progress': 'install'}
+[28.930474] (-) TimerEvent: {}
+[28.931323] (unitree_ros2_example) Command: {'cmd': ['/usr/bin/cmake', '--install', '/workspace/build/unitree_ros2_example'], 'cwd': '/workspace/build/unitree_ros2_example', 'env': OrderedDict([('HOSTNAME', 'jone-ubuntu'), ('GIT_ASKPASS', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/unitree_robotics/lib:/opt/unitree_robotics/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/opt/unitree_robotics/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/bin/helpers/browser.sh'), ('AMENT_CPPCHECK_ALLOW_SLOW_VERSIONS', '1'), ('HOME', '/root'), ('CYCLONEDDS_URI', '<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'), ('OLDPWD', '/workspace'), ('TERM_PROGRAM_VERSION', '1.140.0'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-b57565bb-3887-490d-bdb9-555a5e506650.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('DEBUGINFOD_URLS', ''), ('COLCON_PREFIX_PATH', '/workspace/unitree_ros2/example/install:/workspace/unitree_ros2/cyclonedds_ws/install'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-82b03e98-04d8-4f29-acf7-dc78f12ff55f.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('LIBGL_ALWAYS_INDIRECT', '0'), ('ROS_LOCALHOST_ONLY', '0'), ('CODELLDB_LAUNCH_CONNECT_FILE', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/vadimcn.vscode-lldb/rpcaddress.txt'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/root/.vscode-server/extensions/vadimcn.vscode-lldb-1.12.3/bin:/vscode/vscode-server/bin/linux-x64/07f806f999227108933c2e30515b26eecc1fda74/bin/remote-cli:/workspace/unitree_ros2/example/install/unitree_ros2_example/bin:/opt/ros/humble/bin:/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-82b03e98-04d8-4f29-acf7-dc78f12ff55f.sock","/root/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':1'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2026.6.0-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-67010de64c06442c.txt'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/root/.vscode-server/data/User/workspaceStorage/a66b570d19217c522ae496082be64022/ms-python.python/pythonrc.py'), ('CLINE_ACTIVE', 'true'), ('RMW_IMPLEMENTATION', 'rmw_cyclonedds_cpp'), ('XAUTHORITY', '/tmp/.Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-d17c21cc56.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-82b03e98-04d8-4f29-acf7-dc78f12ff55f.sock'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/workspace/unitree_ros2/example/install/unitree_ros2_example:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('CXX', '/usr/bin/g++'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/workspace/build/unitree_ros2_example'), ('COPILOT_DEBUG_NONCE', '14871ab2a743eddea9b07310fe2b64d6'), ('PYTHONPATH', '/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib/python3.10/site-packages:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('TZ', 'UTC'), ('CC', '/usr/bin/gcc'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/unitree_robotics:/opt/unitree_robotics:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api:/workspace/unitree_ros2/example/install/unitree_ros2_example:/opt/unitree_robotics::/opt/ros/humble')]), 'shell': False}
+[28.939936] (unitree_ros2_example) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[28.940152] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/low_level_ctrl\n'}
+[28.941513] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/low_level_ctrl" to ""\n'}
+[28.941652] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_low_state\n'}
+[28.945633] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_low_state" to ""\n'}
+[28.945749] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_motion_state\n'}
+[28.949739] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_motion_state" to ""\n'}
+[28.949826] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_wireless_controller\n'}
+[28.953657] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_wireless_controller" to ""\n'}
+[28.953863] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_sport_client\n'}
+[28.961472] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_sport_client" to ""\n'}
+[28.961614] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example\n'}
+[28.965594] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example" to ""\n'}
+[28.965774] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge\n'}
+[28.970059] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge" to ""\n'}
+[28.970263] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner\n'}
+[28.983725] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner" to ""\n'}
+[28.983863] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/bin/go2_robot_state_client\n'}
+[28.988805] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_robot_state_client" to ""\n'}
+[28.988989] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller\n'}
+[28.993371] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller" to ""\n'}
+[28.993552] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses\n'}
+[28.997806] (unitree_ros2_example) StdoutLine: {'line': b'-- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses" to ""\n'}
+[28.998006] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config\n'}
+[28.998188] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config/go2_champ_gait.yaml\n'}
+[28.998335] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch\n'}
+[28.998523] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_walk.launch.py\n'}
+[28.999018] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/package_run_dependencies/unitree_ros2_example\n'}
+[28.999412] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/parent_prefix_path/unitree_ros2_example\n'}
+[28.999647] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.sh\n'}
+[28.999800] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.dsv\n'}
+[29.000016] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/path.sh\n'}
+[29.000148] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/path.dsv\n'}
+[29.000382] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.bash\n'}
+[29.001148] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.sh\n'}
+[29.001489] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.zsh\n'}
+[29.001829] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.dsv\n'}
+[29.001995] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/package.dsv\n'}
+[29.002307] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/packages/unitree_ros2_example\n'}
+[29.002464] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/cmake/unitree_ros2_exampleConfig.cmake\n'}
+[29.002621] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/cmake/unitree_ros2_exampleConfig-version.cmake\n'}
+[29.002798] (unitree_ros2_example) StdoutLine: {'line': b'-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/package.xml\n'}
+[29.004555] (unitree_ros2_example) CommandEnded: {'returncode': 0}
+[29.026492] (unitree_ros2_example) JobEnded: {'identifier': 'unitree_ros2_example', 'rc': 0}
+[29.027089] (-) EventReactorShutdown: {}

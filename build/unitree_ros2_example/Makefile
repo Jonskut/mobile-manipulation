@@ -211,32 +211,6 @@ low_level_ctrl/fast:
 .PHONY : low_level_ctrl/fast
 
 #=============================================================================
-# Target rules for targets named low_level_ctrl_hg
-
-# Build rule for target.
-low_level_ctrl_hg: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 low_level_ctrl_hg
-.PHONY : low_level_ctrl_hg
-
-# fast build rule for target.
-low_level_ctrl_hg/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/build
-.PHONY : low_level_ctrl_hg/fast
-
-#=============================================================================
-# Target rules for targets named g1_low_level_example
-
-# Build rule for target.
-g1_low_level_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_low_level_example
-.PHONY : g1_low_level_example
-
-# fast build rule for target.
-g1_low_level_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/build
-.PHONY : g1_low_level_example/fast
-
-#=============================================================================
 # Target rules for targets named read_low_state
 
 # Build rule for target.
@@ -248,19 +222,6 @@ read_low_state: cmake_check_build_system
 read_low_state/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state.dir/build.make CMakeFiles/read_low_state.dir/build
 .PHONY : read_low_state/fast
-
-#=============================================================================
-# Target rules for targets named read_low_state_hg
-
-# Build rule for target.
-read_low_state_hg: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 read_low_state_hg
-.PHONY : read_low_state_hg
-
-# fast build rule for target.
-read_low_state_hg/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state_hg.dir/build.make CMakeFiles/read_low_state_hg.dir/build
-.PHONY : read_low_state_hg/fast
 
 #=============================================================================
 # Target rules for targets named read_motion_state
@@ -328,6 +289,19 @@ go2_d1_stand_controller/fast:
 .PHONY : go2_d1_stand_controller/fast
 
 #=============================================================================
+# Target rules for targets named go2_d1_arm_poses
+
+# Build rule for target.
+go2_d1_arm_poses: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 go2_d1_arm_poses
+.PHONY : go2_d1_arm_poses
+
+# fast build rule for target.
+go2_d1_arm_poses/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/build
+.PHONY : go2_d1_arm_poses/fast
+
+#=============================================================================
 # Target rules for targets named go2_champ_dds_bridge
 
 # Build rule for target.
@@ -366,271 +340,6 @@ go2_robot_state_client/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/build
 .PHONY : go2_robot_state_client/fast
 
-#=============================================================================
-# Target rules for targets named g1_arm_sdk_dds_example
-
-# Build rule for target.
-g1_arm_sdk_dds_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_arm_sdk_dds_example
-.PHONY : g1_arm_sdk_dds_example
-
-# fast build rule for target.
-g1_arm_sdk_dds_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/build
-.PHONY : g1_arm_sdk_dds_example/fast
-
-#=============================================================================
-# Target rules for targets named g1_arm_action_example
-
-# Build rule for target.
-g1_arm_action_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_arm_action_example
-.PHONY : g1_arm_action_example
-
-# fast build rule for target.
-g1_arm_action_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/build
-.PHONY : g1_arm_action_example/fast
-
-#=============================================================================
-# Target rules for targets named g1_dex3_example
-
-# Build rule for target.
-g1_dex3_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_dex3_example
-.PHONY : g1_dex3_example
-
-# fast build rule for target.
-g1_dex3_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/build
-.PHONY : g1_dex3_example/fast
-
-#=============================================================================
-# Target rules for targets named g1_loco_client_example
-
-# Build rule for target.
-g1_loco_client_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_loco_client_example
-.PHONY : g1_loco_client_example
-
-# fast build rule for target.
-g1_loco_client_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/build
-.PHONY : g1_loco_client_example/fast
-
-#=============================================================================
-# Target rules for targets named g1_ankle_swing_example
-
-# Build rule for target.
-g1_ankle_swing_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_ankle_swing_example
-.PHONY : g1_ankle_swing_example
-
-# fast build rule for target.
-g1_ankle_swing_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/build
-.PHONY : g1_ankle_swing_example/fast
-
-#=============================================================================
-# Target rules for targets named g1_audio_client_example
-
-# Build rule for target.
-g1_audio_client_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_audio_client_example
-.PHONY : g1_audio_client_example
-
-# fast build rule for target.
-g1_audio_client_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_audio_client_example.dir/build.make CMakeFiles/g1_audio_client_example.dir/build
-.PHONY : g1_audio_client_example/fast
-
-#=============================================================================
-# Target rules for targets named b2w_sport_client
-
-# Build rule for target.
-b2w_sport_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 b2w_sport_client
-.PHONY : b2w_sport_client
-
-# fast build rule for target.
-b2w_sport_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/build
-.PHONY : b2w_sport_client/fast
-
-#=============================================================================
-# Target rules for targets named b2w_stand_example
-
-# Build rule for target.
-b2w_stand_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 b2w_stand_example
-.PHONY : b2w_stand_example
-
-# fast build rule for target.
-b2w_stand_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/build
-.PHONY : b2w_stand_example/fast
-
-#=============================================================================
-# Target rules for targets named b2_stand_example
-
-# Build rule for target.
-b2_stand_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 b2_stand_example
-.PHONY : b2_stand_example
-
-# fast build rule for target.
-b2_stand_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/build
-.PHONY : b2_stand_example/fast
-
-#=============================================================================
-# Target rules for targets named b2_sport_client
-
-# Build rule for target.
-b2_sport_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 b2_sport_client
-.PHONY : b2_sport_client
-
-# fast build rule for target.
-b2_sport_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/build
-.PHONY : b2_sport_client/fast
-
-#=============================================================================
-# Target rules for targets named h2_loco_client
-
-# Build rule for target.
-h2_loco_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 h2_loco_client
-.PHONY : h2_loco_client
-
-# fast build rule for target.
-h2_loco_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_loco_client.dir/build.make CMakeFiles/h2_loco_client.dir/build
-.PHONY : h2_loco_client/fast
-
-#=============================================================================
-# Target rules for targets named h2_ankle_swing_example
-
-# Build rule for target.
-h2_ankle_swing_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 h2_ankle_swing_example
-.PHONY : h2_ankle_swing_example
-
-# fast build rule for target.
-h2_ankle_swing_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/build
-.PHONY : h2_ankle_swing_example/fast
-
-#=============================================================================
-# Target rules for targets named g1_dual_arm_example
-
-# Build rule for target.
-g1_dual_arm_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 g1_dual_arm_example
-.PHONY : g1_dual_arm_example
-
-# fast build rule for target.
-g1_dual_arm_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/build
-.PHONY : g1_dual_arm_example/fast
-
-src/b2/b2_sport_client.o: src/b2/b2_sport_client.cpp.o
-.PHONY : src/b2/b2_sport_client.o
-
-# target to build an object file
-src/b2/b2_sport_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/src/b2/b2_sport_client.cpp.o
-.PHONY : src/b2/b2_sport_client.cpp.o
-
-src/b2/b2_sport_client.i: src/b2/b2_sport_client.cpp.i
-.PHONY : src/b2/b2_sport_client.i
-
-# target to preprocess a source file
-src/b2/b2_sport_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/src/b2/b2_sport_client.cpp.i
-.PHONY : src/b2/b2_sport_client.cpp.i
-
-src/b2/b2_sport_client.s: src/b2/b2_sport_client.cpp.s
-.PHONY : src/b2/b2_sport_client.s
-
-# target to generate assembly for a file
-src/b2/b2_sport_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/src/b2/b2_sport_client.cpp.s
-.PHONY : src/b2/b2_sport_client.cpp.s
-
-src/b2/b2_stand_example.o: src/b2/b2_stand_example.cpp.o
-.PHONY : src/b2/b2_stand_example.o
-
-# target to build an object file
-src/b2/b2_stand_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/src/b2/b2_stand_example.cpp.o
-.PHONY : src/b2/b2_stand_example.cpp.o
-
-src/b2/b2_stand_example.i: src/b2/b2_stand_example.cpp.i
-.PHONY : src/b2/b2_stand_example.i
-
-# target to preprocess a source file
-src/b2/b2_stand_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/src/b2/b2_stand_example.cpp.i
-.PHONY : src/b2/b2_stand_example.cpp.i
-
-src/b2/b2_stand_example.s: src/b2/b2_stand_example.cpp.s
-.PHONY : src/b2/b2_stand_example.s
-
-# target to generate assembly for a file
-src/b2/b2_stand_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/src/b2/b2_stand_example.cpp.s
-.PHONY : src/b2/b2_stand_example.cpp.s
-
-src/b2w/b2w_sport_client.o: src/b2w/b2w_sport_client.cpp.o
-.PHONY : src/b2w/b2w_sport_client.o
-
-# target to build an object file
-src/b2w/b2w_sport_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/src/b2w/b2w_sport_client.cpp.o
-.PHONY : src/b2w/b2w_sport_client.cpp.o
-
-src/b2w/b2w_sport_client.i: src/b2w/b2w_sport_client.cpp.i
-.PHONY : src/b2w/b2w_sport_client.i
-
-# target to preprocess a source file
-src/b2w/b2w_sport_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/src/b2w/b2w_sport_client.cpp.i
-.PHONY : src/b2w/b2w_sport_client.cpp.i
-
-src/b2w/b2w_sport_client.s: src/b2w/b2w_sport_client.cpp.s
-.PHONY : src/b2w/b2w_sport_client.s
-
-# target to generate assembly for a file
-src/b2w/b2w_sport_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/src/b2w/b2w_sport_client.cpp.s
-.PHONY : src/b2w/b2w_sport_client.cpp.s
-
-src/b2w/b2w_stand_example.o: src/b2w/b2w_stand_example.cpp.o
-.PHONY : src/b2w/b2w_stand_example.o
-
-# target to build an object file
-src/b2w/b2w_stand_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/src/b2w/b2w_stand_example.cpp.o
-.PHONY : src/b2w/b2w_stand_example.cpp.o
-
-src/b2w/b2w_stand_example.i: src/b2w/b2w_stand_example.cpp.i
-.PHONY : src/b2w/b2w_stand_example.i
-
-# target to preprocess a source file
-src/b2w/b2w_stand_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/src/b2w/b2w_stand_example.cpp.i
-.PHONY : src/b2w/b2w_stand_example.cpp.i
-
-src/b2w/b2w_stand_example.s: src/b2w/b2w_stand_example.cpp.s
-.PHONY : src/b2w/b2w_stand_example.s
-
-# target to generate assembly for a file
-src/b2w/b2w_stand_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/src/b2w/b2w_stand_example.cpp.s
-.PHONY : src/b2w/b2w_stand_example.cpp.s
-
 src/common/motor_crc.o: src/common/motor_crc.cpp.o
 .PHONY : src/common/motor_crc.o
 
@@ -639,12 +348,6 @@ src/common/motor_crc.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/src/common/motor_crc.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/src/common/motor_crc.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/src/common/motor_crc.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/src/common/motor_crc.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/src/common/motor_crc.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/src/common/motor_crc.cpp.o
 .PHONY : src/common/motor_crc.cpp.o
 
 src/common/motor_crc.i: src/common/motor_crc.cpp.i
@@ -655,12 +358,6 @@ src/common/motor_crc.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/src/common/motor_crc.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/src/common/motor_crc.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/src/common/motor_crc.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/src/common/motor_crc.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/src/common/motor_crc.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/src/common/motor_crc.cpp.i
 .PHONY : src/common/motor_crc.cpp.i
 
 src/common/motor_crc.s: src/common/motor_crc.cpp.s
@@ -671,76 +368,7 @@ src/common/motor_crc.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/src/common/motor_crc.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/src/common/motor_crc.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/src/common/motor_crc.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/src/common/motor_crc.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_stand_example.dir/build.make CMakeFiles/b2w_stand_example.dir/src/common/motor_crc.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_stand_example.dir/build.make CMakeFiles/b2_stand_example.dir/src/common/motor_crc.cpp.s
 .PHONY : src/common/motor_crc.cpp.s
-
-src/common/motor_crc_hg.o: src/common/motor_crc_hg.cpp.o
-.PHONY : src/common/motor_crc_hg.o
-
-# target to build an object file
-src/common/motor_crc_hg.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/src/common/motor_crc_hg.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/src/common/motor_crc_hg.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/src/common/motor_crc_hg.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/src/common/motor_crc_hg.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/src/common/motor_crc_hg.cpp.o
-.PHONY : src/common/motor_crc_hg.cpp.o
-
-src/common/motor_crc_hg.i: src/common/motor_crc_hg.cpp.i
-.PHONY : src/common/motor_crc_hg.i
-
-# target to preprocess a source file
-src/common/motor_crc_hg.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/src/common/motor_crc_hg.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/src/common/motor_crc_hg.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/src/common/motor_crc_hg.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/src/common/motor_crc_hg.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/src/common/motor_crc_hg.cpp.i
-.PHONY : src/common/motor_crc_hg.cpp.i
-
-src/common/motor_crc_hg.s: src/common/motor_crc_hg.cpp.s
-.PHONY : src/common/motor_crc_hg.s
-
-# target to generate assembly for a file
-src/common/motor_crc_hg.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/src/common/motor_crc_hg.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/src/common/motor_crc_hg.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/src/common/motor_crc_hg.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/src/common/motor_crc_hg.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/src/common/motor_crc_hg.cpp.s
-.PHONY : src/common/motor_crc_hg.cpp.s
-
-src/common/ros2_b2_sport_client.o: src/common/ros2_b2_sport_client.cpp.o
-.PHONY : src/common/ros2_b2_sport_client.o
-
-# target to build an object file
-src/common/ros2_b2_sport_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/src/common/ros2_b2_sport_client.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/src/common/ros2_b2_sport_client.cpp.o
-.PHONY : src/common/ros2_b2_sport_client.cpp.o
-
-src/common/ros2_b2_sport_client.i: src/common/ros2_b2_sport_client.cpp.i
-.PHONY : src/common/ros2_b2_sport_client.i
-
-# target to preprocess a source file
-src/common/ros2_b2_sport_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/src/common/ros2_b2_sport_client.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/src/common/ros2_b2_sport_client.cpp.i
-.PHONY : src/common/ros2_b2_sport_client.cpp.i
-
-src/common/ros2_b2_sport_client.s: src/common/ros2_b2_sport_client.cpp.s
-.PHONY : src/common/ros2_b2_sport_client.s
-
-# target to generate assembly for a file
-src/common/ros2_b2_sport_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2w_sport_client.dir/build.make CMakeFiles/b2w_sport_client.dir/src/common/ros2_b2_sport_client.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/b2_sport_client.dir/build.make CMakeFiles/b2_sport_client.dir/src/common/ros2_b2_sport_client.cpp.s
-.PHONY : src/common/ros2_b2_sport_client.cpp.s
 
 src/common/ros2_sport_client.o: src/common/ros2_sport_client.cpp.o
 .PHONY : src/common/ros2_sport_client.o
@@ -765,198 +393,6 @@ src/common/ros2_sport_client.s: src/common/ros2_sport_client.cpp.s
 src/common/ros2_sport_client.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_sport_client.dir/build.make CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.s
 .PHONY : src/common/ros2_sport_client.cpp.s
-
-src/g1/audio_client/g1_audio_client_example.o: src/g1/audio_client/g1_audio_client_example.cpp.o
-.PHONY : src/g1/audio_client/g1_audio_client_example.o
-
-# target to build an object file
-src/g1/audio_client/g1_audio_client_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_audio_client_example.dir/build.make CMakeFiles/g1_audio_client_example.dir/src/g1/audio_client/g1_audio_client_example.cpp.o
-.PHONY : src/g1/audio_client/g1_audio_client_example.cpp.o
-
-src/g1/audio_client/g1_audio_client_example.i: src/g1/audio_client/g1_audio_client_example.cpp.i
-.PHONY : src/g1/audio_client/g1_audio_client_example.i
-
-# target to preprocess a source file
-src/g1/audio_client/g1_audio_client_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_audio_client_example.dir/build.make CMakeFiles/g1_audio_client_example.dir/src/g1/audio_client/g1_audio_client_example.cpp.i
-.PHONY : src/g1/audio_client/g1_audio_client_example.cpp.i
-
-src/g1/audio_client/g1_audio_client_example.s: src/g1/audio_client/g1_audio_client_example.cpp.s
-.PHONY : src/g1/audio_client/g1_audio_client_example.s
-
-# target to generate assembly for a file
-src/g1/audio_client/g1_audio_client_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_audio_client_example.dir/build.make CMakeFiles/g1_audio_client_example.dir/src/g1/audio_client/g1_audio_client_example.cpp.s
-.PHONY : src/g1/audio_client/g1_audio_client_example.cpp.s
-
-src/g1/dex3/g1_dex3_example.o: src/g1/dex3/g1_dex3_example.cpp.o
-.PHONY : src/g1/dex3/g1_dex3_example.o
-
-# target to build an object file
-src/g1/dex3/g1_dex3_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/src/g1/dex3/g1_dex3_example.cpp.o
-.PHONY : src/g1/dex3/g1_dex3_example.cpp.o
-
-src/g1/dex3/g1_dex3_example.i: src/g1/dex3/g1_dex3_example.cpp.i
-.PHONY : src/g1/dex3/g1_dex3_example.i
-
-# target to preprocess a source file
-src/g1/dex3/g1_dex3_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/src/g1/dex3/g1_dex3_example.cpp.i
-.PHONY : src/g1/dex3/g1_dex3_example.cpp.i
-
-src/g1/dex3/g1_dex3_example.s: src/g1/dex3/g1_dex3_example.cpp.s
-.PHONY : src/g1/dex3/g1_dex3_example.s
-
-# target to generate assembly for a file
-src/g1/dex3/g1_dex3_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dex3_example.dir/build.make CMakeFiles/g1_dex3_example.dir/src/g1/dex3/g1_dex3_example.cpp.s
-.PHONY : src/g1/dex3/g1_dex3_example.cpp.s
-
-src/g1/high_level/g1_arm_action_example.o: src/g1/high_level/g1_arm_action_example.cpp.o
-.PHONY : src/g1/high_level/g1_arm_action_example.o
-
-# target to build an object file
-src/g1/high_level/g1_arm_action_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/src/g1/high_level/g1_arm_action_example.cpp.o
-.PHONY : src/g1/high_level/g1_arm_action_example.cpp.o
-
-src/g1/high_level/g1_arm_action_example.i: src/g1/high_level/g1_arm_action_example.cpp.i
-.PHONY : src/g1/high_level/g1_arm_action_example.i
-
-# target to preprocess a source file
-src/g1/high_level/g1_arm_action_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/src/g1/high_level/g1_arm_action_example.cpp.i
-.PHONY : src/g1/high_level/g1_arm_action_example.cpp.i
-
-src/g1/high_level/g1_arm_action_example.s: src/g1/high_level/g1_arm_action_example.cpp.s
-.PHONY : src/g1/high_level/g1_arm_action_example.s
-
-# target to generate assembly for a file
-src/g1/high_level/g1_arm_action_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_action_example.dir/build.make CMakeFiles/g1_arm_action_example.dir/src/g1/high_level/g1_arm_action_example.cpp.s
-.PHONY : src/g1/high_level/g1_arm_action_example.cpp.s
-
-src/g1/high_level/g1_arm_sdk_dds_example.o: src/g1/high_level/g1_arm_sdk_dds_example.cpp.o
-.PHONY : src/g1/high_level/g1_arm_sdk_dds_example.o
-
-# target to build an object file
-src/g1/high_level/g1_arm_sdk_dds_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/src/g1/high_level/g1_arm_sdk_dds_example.cpp.o
-.PHONY : src/g1/high_level/g1_arm_sdk_dds_example.cpp.o
-
-src/g1/high_level/g1_arm_sdk_dds_example.i: src/g1/high_level/g1_arm_sdk_dds_example.cpp.i
-.PHONY : src/g1/high_level/g1_arm_sdk_dds_example.i
-
-# target to preprocess a source file
-src/g1/high_level/g1_arm_sdk_dds_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/src/g1/high_level/g1_arm_sdk_dds_example.cpp.i
-.PHONY : src/g1/high_level/g1_arm_sdk_dds_example.cpp.i
-
-src/g1/high_level/g1_arm_sdk_dds_example.s: src/g1/high_level/g1_arm_sdk_dds_example.cpp.s
-.PHONY : src/g1/high_level/g1_arm_sdk_dds_example.s
-
-# target to generate assembly for a file
-src/g1/high_level/g1_arm_sdk_dds_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_arm_sdk_dds_example.dir/build.make CMakeFiles/g1_arm_sdk_dds_example.dir/src/g1/high_level/g1_arm_sdk_dds_example.cpp.s
-.PHONY : src/g1/high_level/g1_arm_sdk_dds_example.cpp.s
-
-src/g1/high_level/loco_client_example.o: src/g1/high_level/loco_client_example.cpp.o
-.PHONY : src/g1/high_level/loco_client_example.o
-
-# target to build an object file
-src/g1/high_level/loco_client_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/src/g1/high_level/loco_client_example.cpp.o
-.PHONY : src/g1/high_level/loco_client_example.cpp.o
-
-src/g1/high_level/loco_client_example.i: src/g1/high_level/loco_client_example.cpp.i
-.PHONY : src/g1/high_level/loco_client_example.i
-
-# target to preprocess a source file
-src/g1/high_level/loco_client_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/src/g1/high_level/loco_client_example.cpp.i
-.PHONY : src/g1/high_level/loco_client_example.cpp.i
-
-src/g1/high_level/loco_client_example.s: src/g1/high_level/loco_client_example.cpp.s
-.PHONY : src/g1/high_level/loco_client_example.s
-
-# target to generate assembly for a file
-src/g1/high_level/loco_client_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_loco_client_example.dir/build.make CMakeFiles/g1_loco_client_example.dir/src/g1/high_level/loco_client_example.cpp.s
-.PHONY : src/g1/high_level/loco_client_example.cpp.s
-
-src/g1/lowlevel/g1_ankle_swing_example.o: src/g1/lowlevel/g1_ankle_swing_example.cpp.o
-.PHONY : src/g1/lowlevel/g1_ankle_swing_example.o
-
-# target to build an object file
-src/g1/lowlevel/g1_ankle_swing_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/src/g1/lowlevel/g1_ankle_swing_example.cpp.o
-.PHONY : src/g1/lowlevel/g1_ankle_swing_example.cpp.o
-
-src/g1/lowlevel/g1_ankle_swing_example.i: src/g1/lowlevel/g1_ankle_swing_example.cpp.i
-.PHONY : src/g1/lowlevel/g1_ankle_swing_example.i
-
-# target to preprocess a source file
-src/g1/lowlevel/g1_ankle_swing_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/src/g1/lowlevel/g1_ankle_swing_example.cpp.i
-.PHONY : src/g1/lowlevel/g1_ankle_swing_example.cpp.i
-
-src/g1/lowlevel/g1_ankle_swing_example.s: src/g1/lowlevel/g1_ankle_swing_example.cpp.s
-.PHONY : src/g1/lowlevel/g1_ankle_swing_example.s
-
-# target to generate assembly for a file
-src/g1/lowlevel/g1_ankle_swing_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_ankle_swing_example.dir/build.make CMakeFiles/g1_ankle_swing_example.dir/src/g1/lowlevel/g1_ankle_swing_example.cpp.s
-.PHONY : src/g1/lowlevel/g1_ankle_swing_example.cpp.s
-
-src/g1/lowlevel/g1_dual_arm_example.o: src/g1/lowlevel/g1_dual_arm_example.cpp.o
-.PHONY : src/g1/lowlevel/g1_dual_arm_example.o
-
-# target to build an object file
-src/g1/lowlevel/g1_dual_arm_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/src/g1/lowlevel/g1_dual_arm_example.cpp.o
-.PHONY : src/g1/lowlevel/g1_dual_arm_example.cpp.o
-
-src/g1/lowlevel/g1_dual_arm_example.i: src/g1/lowlevel/g1_dual_arm_example.cpp.i
-.PHONY : src/g1/lowlevel/g1_dual_arm_example.i
-
-# target to preprocess a source file
-src/g1/lowlevel/g1_dual_arm_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/src/g1/lowlevel/g1_dual_arm_example.cpp.i
-.PHONY : src/g1/lowlevel/g1_dual_arm_example.cpp.i
-
-src/g1/lowlevel/g1_dual_arm_example.s: src/g1/lowlevel/g1_dual_arm_example.cpp.s
-.PHONY : src/g1/lowlevel/g1_dual_arm_example.s
-
-# target to generate assembly for a file
-src/g1/lowlevel/g1_dual_arm_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_dual_arm_example.dir/build.make CMakeFiles/g1_dual_arm_example.dir/src/g1/lowlevel/g1_dual_arm_example.cpp.s
-.PHONY : src/g1/lowlevel/g1_dual_arm_example.cpp.s
-
-src/g1/lowlevel/g1_low_level_example.o: src/g1/lowlevel/g1_low_level_example.cpp.o
-.PHONY : src/g1/lowlevel/g1_low_level_example.o
-
-# target to build an object file
-src/g1/lowlevel/g1_low_level_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/src/g1/lowlevel/g1_low_level_example.cpp.o
-.PHONY : src/g1/lowlevel/g1_low_level_example.cpp.o
-
-src/g1/lowlevel/g1_low_level_example.i: src/g1/lowlevel/g1_low_level_example.cpp.i
-.PHONY : src/g1/lowlevel/g1_low_level_example.i
-
-# target to preprocess a source file
-src/g1/lowlevel/g1_low_level_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/src/g1/lowlevel/g1_low_level_example.cpp.i
-.PHONY : src/g1/lowlevel/g1_low_level_example.cpp.i
-
-src/g1/lowlevel/g1_low_level_example.s: src/g1/lowlevel/g1_low_level_example.cpp.s
-.PHONY : src/g1/lowlevel/g1_low_level_example.s
-
-# target to generate assembly for a file
-src/g1/lowlevel/g1_low_level_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/g1_low_level_example.dir/build.make CMakeFiles/g1_low_level_example.dir/src/g1/lowlevel/g1_low_level_example.cpp.s
-.PHONY : src/g1/lowlevel/g1_low_level_example.cpp.s
 
 src/go2/go2_champ_dds_bridge.o: src/go2/go2_champ_dds_bridge.cpp.o
 .PHONY : src/go2/go2_champ_dds_bridge.o
@@ -1005,6 +441,30 @@ src/go2/go2_champ_gait_planner.s: src/go2/go2_champ_gait_planner.cpp.s
 src/go2/go2_champ_gait_planner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_gait_planner.dir/build.make CMakeFiles/go2_champ_gait_planner.dir/src/go2/go2_champ_gait_planner.cpp.s
 .PHONY : src/go2/go2_champ_gait_planner.cpp.s
+
+src/go2/go2_d1_arm_poses.o: src/go2/go2_d1_arm_poses.cpp.o
+.PHONY : src/go2/go2_d1_arm_poses.o
+
+# target to build an object file
+src/go2/go2_d1_arm_poses.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.o
+.PHONY : src/go2/go2_d1_arm_poses.cpp.o
+
+src/go2/go2_d1_arm_poses.i: src/go2/go2_d1_arm_poses.cpp.i
+.PHONY : src/go2/go2_d1_arm_poses.i
+
+# target to preprocess a source file
+src/go2/go2_d1_arm_poses.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.i
+.PHONY : src/go2/go2_d1_arm_poses.cpp.i
+
+src/go2/go2_d1_arm_poses.s: src/go2/go2_d1_arm_poses.cpp.s
+.PHONY : src/go2/go2_d1_arm_poses.s
+
+# target to generate assembly for a file
+src/go2/go2_d1_arm_poses.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.s
+.PHONY : src/go2/go2_d1_arm_poses.cpp.s
 
 src/go2/go2_d1_stand_controller.o: src/go2/go2_d1_stand_controller.cpp.o
 .PHONY : src/go2/go2_d1_stand_controller.o
@@ -1102,78 +562,6 @@ src/go2/go2_stand_example.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/go2/go2_stand_example.cpp.s
 .PHONY : src/go2/go2_stand_example.cpp.s
 
-src/h1-2/lowlevel/low_level_ctrl_hg.o: src/h1-2/lowlevel/low_level_ctrl_hg.cpp.o
-.PHONY : src/h1-2/lowlevel/low_level_ctrl_hg.o
-
-# target to build an object file
-src/h1-2/lowlevel/low_level_ctrl_hg.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/src/h1-2/lowlevel/low_level_ctrl_hg.cpp.o
-.PHONY : src/h1-2/lowlevel/low_level_ctrl_hg.cpp.o
-
-src/h1-2/lowlevel/low_level_ctrl_hg.i: src/h1-2/lowlevel/low_level_ctrl_hg.cpp.i
-.PHONY : src/h1-2/lowlevel/low_level_ctrl_hg.i
-
-# target to preprocess a source file
-src/h1-2/lowlevel/low_level_ctrl_hg.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/src/h1-2/lowlevel/low_level_ctrl_hg.cpp.i
-.PHONY : src/h1-2/lowlevel/low_level_ctrl_hg.cpp.i
-
-src/h1-2/lowlevel/low_level_ctrl_hg.s: src/h1-2/lowlevel/low_level_ctrl_hg.cpp.s
-.PHONY : src/h1-2/lowlevel/low_level_ctrl_hg.s
-
-# target to generate assembly for a file
-src/h1-2/lowlevel/low_level_ctrl_hg.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl_hg.dir/build.make CMakeFiles/low_level_ctrl_hg.dir/src/h1-2/lowlevel/low_level_ctrl_hg.cpp.s
-.PHONY : src/h1-2/lowlevel/low_level_ctrl_hg.cpp.s
-
-src/h2/high_level/h2_loco_client.o: src/h2/high_level/h2_loco_client.cpp.o
-.PHONY : src/h2/high_level/h2_loco_client.o
-
-# target to build an object file
-src/h2/high_level/h2_loco_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_loco_client.dir/build.make CMakeFiles/h2_loco_client.dir/src/h2/high_level/h2_loco_client.cpp.o
-.PHONY : src/h2/high_level/h2_loco_client.cpp.o
-
-src/h2/high_level/h2_loco_client.i: src/h2/high_level/h2_loco_client.cpp.i
-.PHONY : src/h2/high_level/h2_loco_client.i
-
-# target to preprocess a source file
-src/h2/high_level/h2_loco_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_loco_client.dir/build.make CMakeFiles/h2_loco_client.dir/src/h2/high_level/h2_loco_client.cpp.i
-.PHONY : src/h2/high_level/h2_loco_client.cpp.i
-
-src/h2/high_level/h2_loco_client.s: src/h2/high_level/h2_loco_client.cpp.s
-.PHONY : src/h2/high_level/h2_loco_client.s
-
-# target to generate assembly for a file
-src/h2/high_level/h2_loco_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_loco_client.dir/build.make CMakeFiles/h2_loco_client.dir/src/h2/high_level/h2_loco_client.cpp.s
-.PHONY : src/h2/high_level/h2_loco_client.cpp.s
-
-src/h2/low_level/h2_ankle_swing_example.o: src/h2/low_level/h2_ankle_swing_example.cpp.o
-.PHONY : src/h2/low_level/h2_ankle_swing_example.o
-
-# target to build an object file
-src/h2/low_level/h2_ankle_swing_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/src/h2/low_level/h2_ankle_swing_example.cpp.o
-.PHONY : src/h2/low_level/h2_ankle_swing_example.cpp.o
-
-src/h2/low_level/h2_ankle_swing_example.i: src/h2/low_level/h2_ankle_swing_example.cpp.i
-.PHONY : src/h2/low_level/h2_ankle_swing_example.i
-
-# target to preprocess a source file
-src/h2/low_level/h2_ankle_swing_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/src/h2/low_level/h2_ankle_swing_example.cpp.i
-.PHONY : src/h2/low_level/h2_ankle_swing_example.cpp.i
-
-src/h2/low_level/h2_ankle_swing_example.s: src/h2/low_level/h2_ankle_swing_example.cpp.s
-.PHONY : src/h2/low_level/h2_ankle_swing_example.s
-
-# target to generate assembly for a file
-src/h2/low_level/h2_ankle_swing_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/h2_ankle_swing_example.dir/build.make CMakeFiles/h2_ankle_swing_example.dir/src/h2/low_level/h2_ankle_swing_example.cpp.s
-.PHONY : src/h2/low_level/h2_ankle_swing_example.cpp.s
-
 src/low_level_ctrl.o: src/low_level_ctrl.cpp.o
 .PHONY : src/low_level_ctrl.o
 
@@ -1221,30 +609,6 @@ src/read_low_state.s: src/read_low_state.cpp.s
 src/read_low_state.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state.dir/build.make CMakeFiles/read_low_state.dir/src/read_low_state.cpp.s
 .PHONY : src/read_low_state.cpp.s
-
-src/read_low_state_hg.o: src/read_low_state_hg.cpp.o
-.PHONY : src/read_low_state_hg.o
-
-# target to build an object file
-src/read_low_state_hg.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state_hg.dir/build.make CMakeFiles/read_low_state_hg.dir/src/read_low_state_hg.cpp.o
-.PHONY : src/read_low_state_hg.cpp.o
-
-src/read_low_state_hg.i: src/read_low_state_hg.cpp.i
-.PHONY : src/read_low_state_hg.i
-
-# target to preprocess a source file
-src/read_low_state_hg.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state_hg.dir/build.make CMakeFiles/read_low_state_hg.dir/src/read_low_state_hg.cpp.i
-.PHONY : src/read_low_state_hg.cpp.i
-
-src/read_low_state_hg.s: src/read_low_state_hg.cpp.s
-.PHONY : src/read_low_state_hg.s
-
-# target to generate assembly for a file
-src/read_low_state_hg.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state_hg.dir/build.make CMakeFiles/read_low_state_hg.dir/src/read_low_state_hg.cpp.s
-.PHONY : src/read_low_state_hg.cpp.s
 
 src/read_motion_state.o: src/read_motion_state.cpp.o
 .PHONY : src/read_motion_state.o
@@ -1300,6 +664,7 @@ workspace/d1_sdk/src/msg/ArmString_.o: workspace/d1_sdk/src/msg/ArmString_.cpp.o
 # target to build an object file
 workspace/d1_sdk/src/msg/ArmString_.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.o
 .PHONY : workspace/d1_sdk/src/msg/ArmString_.cpp.o
 
 workspace/d1_sdk/src/msg/ArmString_.i: workspace/d1_sdk/src/msg/ArmString_.cpp.i
@@ -1308,6 +673,7 @@ workspace/d1_sdk/src/msg/ArmString_.i: workspace/d1_sdk/src/msg/ArmString_.cpp.i
 # target to preprocess a source file
 workspace/d1_sdk/src/msg/ArmString_.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.i
 .PHONY : workspace/d1_sdk/src/msg/ArmString_.cpp.i
 
 workspace/d1_sdk/src/msg/ArmString_.s: workspace/d1_sdk/src/msg/ArmString_.cpp.s
@@ -1316,6 +682,7 @@ workspace/d1_sdk/src/msg/ArmString_.s: workspace/d1_sdk/src/msg/ArmString_.cpp.s
 # target to generate assembly for a file
 workspace/d1_sdk/src/msg/ArmString_.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.s
 .PHONY : workspace/d1_sdk/src/msg/ArmString_.cpp.s
 
 workspace/d1_sdk/src/msg/PubServoInfo_.o: workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o
@@ -1324,6 +691,7 @@ workspace/d1_sdk/src/msg/PubServoInfo_.o: workspace/d1_sdk/src/msg/PubServoInfo_
 # target to build an object file
 workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o
 .PHONY : workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o
 
 workspace/d1_sdk/src/msg/PubServoInfo_.i: workspace/d1_sdk/src/msg/PubServoInfo_.cpp.i
@@ -1332,6 +700,7 @@ workspace/d1_sdk/src/msg/PubServoInfo_.i: workspace/d1_sdk/src/msg/PubServoInfo_
 # target to preprocess a source file
 workspace/d1_sdk/src/msg/PubServoInfo_.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.i
 .PHONY : workspace/d1_sdk/src/msg/PubServoInfo_.cpp.i
 
 workspace/d1_sdk/src/msg/PubServoInfo_.s: workspace/d1_sdk/src/msg/PubServoInfo_.cpp.s
@@ -1340,6 +709,7 @@ workspace/d1_sdk/src/msg/PubServoInfo_.s: workspace/d1_sdk/src/msg/PubServoInfo_
 # target to generate assembly for a file
 workspace/d1_sdk/src/msg/PubServoInfo_.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.s
 .PHONY : workspace/d1_sdk/src/msg/PubServoInfo_.cpp.s
 
 # Help Target
@@ -1357,86 +727,32 @@ help:
 	@echo "... test"
 	@echo "... uninstall"
 	@echo "... unitree_ros2_example_uninstall"
-	@echo "... b2_sport_client"
-	@echo "... b2_stand_example"
-	@echo "... b2w_sport_client"
-	@echo "... b2w_stand_example"
-	@echo "... g1_ankle_swing_example"
-	@echo "... g1_arm_action_example"
-	@echo "... g1_arm_sdk_dds_example"
-	@echo "... g1_audio_client_example"
-	@echo "... g1_dex3_example"
-	@echo "... g1_dual_arm_example"
-	@echo "... g1_loco_client_example"
-	@echo "... g1_low_level_example"
 	@echo "... go2_champ_dds_bridge"
 	@echo "... go2_champ_gait_planner"
+	@echo "... go2_d1_arm_poses"
 	@echo "... go2_d1_stand_controller"
 	@echo "... go2_robot_state_client"
 	@echo "... go2_sport_client"
 	@echo "... go2_stand_example"
-	@echo "... h2_ankle_swing_example"
-	@echo "... h2_loco_client"
 	@echo "... low_level_ctrl"
-	@echo "... low_level_ctrl_hg"
 	@echo "... read_low_state"
-	@echo "... read_low_state_hg"
 	@echo "... read_motion_state"
 	@echo "... read_wireless_controller"
-	@echo "... src/b2/b2_sport_client.o"
-	@echo "... src/b2/b2_sport_client.i"
-	@echo "... src/b2/b2_sport_client.s"
-	@echo "... src/b2/b2_stand_example.o"
-	@echo "... src/b2/b2_stand_example.i"
-	@echo "... src/b2/b2_stand_example.s"
-	@echo "... src/b2w/b2w_sport_client.o"
-	@echo "... src/b2w/b2w_sport_client.i"
-	@echo "... src/b2w/b2w_sport_client.s"
-	@echo "... src/b2w/b2w_stand_example.o"
-	@echo "... src/b2w/b2w_stand_example.i"
-	@echo "... src/b2w/b2w_stand_example.s"
 	@echo "... src/common/motor_crc.o"
 	@echo "... src/common/motor_crc.i"
 	@echo "... src/common/motor_crc.s"
-	@echo "... src/common/motor_crc_hg.o"
-	@echo "... src/common/motor_crc_hg.i"
-	@echo "... src/common/motor_crc_hg.s"
-	@echo "... src/common/ros2_b2_sport_client.o"
-	@echo "... src/common/ros2_b2_sport_client.i"
-	@echo "... src/common/ros2_b2_sport_client.s"
 	@echo "... src/common/ros2_sport_client.o"
 	@echo "... src/common/ros2_sport_client.i"
 	@echo "... src/common/ros2_sport_client.s"
-	@echo "... src/g1/audio_client/g1_audio_client_example.o"
-	@echo "... src/g1/audio_client/g1_audio_client_example.i"
-	@echo "... src/g1/audio_client/g1_audio_client_example.s"
-	@echo "... src/g1/dex3/g1_dex3_example.o"
-	@echo "... src/g1/dex3/g1_dex3_example.i"
-	@echo "... src/g1/dex3/g1_dex3_example.s"
-	@echo "... src/g1/high_level/g1_arm_action_example.o"
-	@echo "... src/g1/high_level/g1_arm_action_example.i"
-	@echo "... src/g1/high_level/g1_arm_action_example.s"
-	@echo "... src/g1/high_level/g1_arm_sdk_dds_example.o"
-	@echo "... src/g1/high_level/g1_arm_sdk_dds_example.i"
-	@echo "... src/g1/high_level/g1_arm_sdk_dds_example.s"
-	@echo "... src/g1/high_level/loco_client_example.o"
-	@echo "... src/g1/high_level/loco_client_example.i"
-	@echo "... src/g1/high_level/loco_client_example.s"
-	@echo "... src/g1/lowlevel/g1_ankle_swing_example.o"
-	@echo "... src/g1/lowlevel/g1_ankle_swing_example.i"
-	@echo "... src/g1/lowlevel/g1_ankle_swing_example.s"
-	@echo "... src/g1/lowlevel/g1_dual_arm_example.o"
-	@echo "... src/g1/lowlevel/g1_dual_arm_example.i"
-	@echo "... src/g1/lowlevel/g1_dual_arm_example.s"
-	@echo "... src/g1/lowlevel/g1_low_level_example.o"
-	@echo "... src/g1/lowlevel/g1_low_level_example.i"
-	@echo "... src/g1/lowlevel/g1_low_level_example.s"
 	@echo "... src/go2/go2_champ_dds_bridge.o"
 	@echo "... src/go2/go2_champ_dds_bridge.i"
 	@echo "... src/go2/go2_champ_dds_bridge.s"
 	@echo "... src/go2/go2_champ_gait_planner.o"
 	@echo "... src/go2/go2_champ_gait_planner.i"
 	@echo "... src/go2/go2_champ_gait_planner.s"
+	@echo "... src/go2/go2_d1_arm_poses.o"
+	@echo "... src/go2/go2_d1_arm_poses.i"
+	@echo "... src/go2/go2_d1_arm_poses.s"
 	@echo "... src/go2/go2_d1_stand_controller.o"
 	@echo "... src/go2/go2_d1_stand_controller.i"
 	@echo "... src/go2/go2_d1_stand_controller.s"
@@ -1449,24 +765,12 @@ help:
 	@echo "... src/go2/go2_stand_example.o"
 	@echo "... src/go2/go2_stand_example.i"
 	@echo "... src/go2/go2_stand_example.s"
-	@echo "... src/h1-2/lowlevel/low_level_ctrl_hg.o"
-	@echo "... src/h1-2/lowlevel/low_level_ctrl_hg.i"
-	@echo "... src/h1-2/lowlevel/low_level_ctrl_hg.s"
-	@echo "... src/h2/high_level/h2_loco_client.o"
-	@echo "... src/h2/high_level/h2_loco_client.i"
-	@echo "... src/h2/high_level/h2_loco_client.s"
-	@echo "... src/h2/low_level/h2_ankle_swing_example.o"
-	@echo "... src/h2/low_level/h2_ankle_swing_example.i"
-	@echo "... src/h2/low_level/h2_ankle_swing_example.s"
 	@echo "... src/low_level_ctrl.o"
 	@echo "... src/low_level_ctrl.i"
 	@echo "... src/low_level_ctrl.s"
 	@echo "... src/read_low_state.o"
 	@echo "... src/read_low_state.i"
 	@echo "... src/read_low_state.s"
-	@echo "... src/read_low_state_hg.o"
-	@echo "... src/read_low_state_hg.i"
-	@echo "... src/read_low_state_hg.s"
 	@echo "... src/read_motion_state.o"
 	@echo "... src/read_motion_state.i"
 	@echo "... src/read_motion_state.s"
