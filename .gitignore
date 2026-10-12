@@ -1,1 +1,8 @@
 .mujoco/
+
+**/build/
+**/.vscode/
+**/__pycache__/
+**/log/
+**/install/
+.cache
