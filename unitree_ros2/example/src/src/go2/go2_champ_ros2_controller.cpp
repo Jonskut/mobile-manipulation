@@ -27,6 +27,7 @@
 
 #include "unitree_go/msg/low_cmd.hpp"
 #include "unitree_go/msg/low_state.hpp"
+#include "unitree_go/msg/sport_mode_state.hpp"
 #include "motor_crc.h"
 
 #include "rclcpp/rclcpp.hpp"
@@ -122,6 +123,14 @@ class Go2ChampWalkController : public rclcpp::Node {
     declare_parameter("imu_pitch_feedback.kp", 0.3);
     declare_parameter("imu_pitch_feedback.kd", 0.05);
     declare_parameter("imu_pitch_feedback.max", 0.08);
+    // Sport-mode state reader (same source as read_motion_state.cpp):
+    // "lf/sportmodestate" (low frequency, default) or "sportmodestate"
+    // (500 Hz high frequency). Read-only odometry/gait/foot feedback; does
+    // not affect the CHAMP control loop.
+    declare_parameter("sport_state.enable", true);
+    declare_parameter("sport_state.high_freq", false);
+    declare_parameter("sport_state.log_foot", true);
+    declare_parameter("sport_state.log_period", 1.0);
     loadParams();
     gait_config_.knee_orientation = knee_orientation_.c_str();
     setLegGeometry();
@@ -301,6 +310,21 @@ class Go2ChampWalkController : public rclcpp::Node {
               arm_ros_received_ = true;
               last_arm_ros_ = std::chrono::steady_clock::now();
             });
+    // Sport-mode state reader (same topics as read_motion_state.cpp):
+    // "lf/sportmodestate" (low frequency, default) or "sportmodestate"
+    // (500 Hz high frequency). Read-only: caches odometry/gait/foot feedback
+    // and throttled-logs it; never feeds the CHAMP control loop.
+    if (sport_state_enable_) {
+      const char *sport_topic =
+          sport_state_high_freq_ ? "sportmodestate" : "lf/sportmodestate";
+      sport_state_sub_ =
+          create_subscription<unitree_go::msg::SportModeState>(
+              sport_topic, 10,
+              [this](const unitree_go::msg::SportModeState::SharedPtr msg) {
+                onSportModeState(msg);
+              });
+      RCLCPP_INFO(get_logger(), "SportModeState reader: SUB %s", sport_topic);
+    }
     RCLCPP_INFO(get_logger(), "CHAMP ROS2 controller ready (PUB /lowcmd, SUB /lowstate)");
     control_thread_ = std::thread([this]() { controlLoop(); });
   }
@@ -371,6 +395,10 @@ class Go2ChampWalkController : public rclcpp::Node {
     get_parameter("imu_pitch_feedback.kp", imu_fb_kp_);
     get_parameter("imu_pitch_feedback.kd", imu_fb_kd_);
     get_parameter("imu_pitch_feedback.max", imu_fb_max_);
+    get_parameter("sport_state.enable", sport_state_enable_);
+    get_parameter("sport_state.high_freq", sport_state_high_freq_);
+    get_parameter("sport_state.log_foot", sport_state_log_foot_);
+    get_parameter("sport_state.log_period", sport_state_log_period_);
   }
   void setLegGeometry() {
     struct LegOrigin { float hip_x, hip_y, thigh_y; };
@@ -735,6 +763,78 @@ class Go2ChampWalkController : public rclcpp::Node {
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr arm_joint_sub_;
   rclcpp::Subscription<unitree_arm::msg::PubServoInfo>::SharedPtr
       current_servo_angle_sub_;
+  // Sport-mode state reader (mirrors read_motion_state.cpp): subscribes
+  // "lf/sportmodestate" (low frequency) or "sportmodestate" (500 Hz high
+  // frequency). Caches the latest odometry/gait/foot feedback; read-only,
+  // never touches the CHAMP control loop.
+  rclcpp::Subscription<unitree_go::msg::SportModeState>::SharedPtr
+      sport_state_sub_;
+  std::mutex sport_state_mutex_;
+  bool sport_state_enable_ = true;
+  bool sport_state_high_freq_ = false;
+  bool sport_state_log_foot_ = true;
+  double sport_state_log_period_ = 1.0;
+  bool sport_state_received_ = false;
+  uint8_t sport_gait_type_ = 0;
+  float sport_foot_raise_height_ = 0.0F;
+  std::array<float, 3> sport_position_{};
+  float sport_body_height_ = 0.0F;
+  std::array<float, 3> sport_velocity_{};
+  float sport_yaw_speed_ = 0.0F;
+  std::array<float, 12> sport_foot_pos_{};
+  std::array<float, 12> sport_foot_vel_{};
+  std::chrono::steady_clock::time_point last_sport_log_steady_{};
+  void onSportModeState(const unitree_go::msg::SportModeState::SharedPtr &data) {
+    {
+      std::lock_guard<std::mutex> lock(sport_state_mutex_);
+      sport_gait_type_ = data->gait_type;
+      sport_foot_raise_height_ = data->foot_raise_height;
+      for (int i = 0; i < 3; ++i) {
+        sport_position_[i] = data->position[i];
+        sport_velocity_[i] = data->velocity[i];
+      }
+      sport_body_height_ = data->body_height;
+      sport_yaw_speed_ = data->yaw_speed;
+      for (int i = 0; i < 12; ++i) {
+        sport_foot_pos_[i] = data->foot_position_body[i];
+        sport_foot_vel_[i] = data->foot_speed_body[i];
+      }
+      sport_state_received_ = true;
+    }
+    // Throttled INFO log, same content as read_motion_state.cpp. The
+    // high-frequency topic runs at 500 Hz, so never log every callback.
+    const auto now_steady = std::chrono::steady_clock::now();
+    if (last_sport_log_steady_.time_since_epoch().count() != 0 &&
+        std::chrono::duration<double>(now_steady - last_sport_log_steady_)
+                .count() < sport_state_log_period_) {
+      return;
+    }
+    last_sport_log_steady_ = now_steady;
+    RCLCPP_INFO(get_logger(),
+                "SportModeState -- gait type: %d; raise height: %f",
+                data->gait_type, data->foot_raise_height);
+    RCLCPP_INFO(get_logger(),
+                "SportModeState position -- x: %f; y: %f; z: %f; body height: %f",
+                data->position[0], data->position[1], data->position[2],
+                data->body_height);
+    RCLCPP_INFO(get_logger(),
+                "SportModeState velocity -- vx: %f; vy: %f; vz: %f; yaw: %f",
+                data->velocity[0], data->velocity[1], data->velocity[2],
+                data->yaw_speed);
+    if (sport_state_log_foot_) {
+      for (int leg = 0; leg < 4; ++leg) {
+        RCLCPP_INFO(get_logger(),
+                    "SportModeState foot rel body -- num: %d; x: %f; y: %f; "
+                    "z: %f, vx: %f; vy: %f; vz: %f",
+                    leg, data->foot_position_body[leg * 3],
+                    data->foot_position_body[leg * 3 + 1],
+                    data->foot_position_body[leg * 3 + 2],
+                    data->foot_speed_body[leg * 3],
+                    data->foot_speed_body[leg * 3 + 1],
+                    data->foot_speed_body[leg * 3 + 2]);
+      }
+    }
+  }
   std::mutex state_mutex_;
   std::mutex cmd_mutex_;
   std::atomic_bool running_{true};

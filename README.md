@@ -37,6 +37,7 @@ colcon build --packages-select unitree_ros2_example --executor sequential
 ```
 #### Arm poses test
 ```bash
+cd /workspace/unitree_ros2/example
 ./build/unitree_ros2_example/go2_d1_arm_poses --help
 ./build/unitree_ros2_example/go2_d1_arm_poses home        # sim (domain 1, lo)
 ./build/unitree_ros2_example/go2_d1_arm_poses left
@@ -73,8 +74,8 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 ## Useful topics:
 ### To subscribe:
-- /odom/ground_truth
-    - For position and velocity of dog xyzrpy
+- /sportmodestate
+    - For position and velocity of dog, etc...
 - /current_servo_angle
     - For joint angles of d1 arm
 - /arm_Feedback
