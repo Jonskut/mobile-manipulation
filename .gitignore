@@ -4,5 +4,6 @@
 **/.vscode/
 **/__pycache__/
 **/log/
+!unitree_sdk2/include/unitree/common/log/
 **/install/
 .cache

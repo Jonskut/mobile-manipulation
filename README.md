@@ -64,7 +64,7 @@ colcon build --packages-select unitree_ros2_example --executor sequential
 ```
 Run
 ```bash 
-ros2 launch unitree_ros2_example go2_champ_ros2.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
+ros2 launch unitree_ros2_example go2_champ_walk.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
 ```
 
 #### Send twist messages

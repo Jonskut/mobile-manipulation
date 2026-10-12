@@ -65,6 +65,8 @@ target_compile_features(go2_stand_example PRIVATE cxx_std_20)
 
 add_executable(go2_champ_ros2_controller
   src/go2/go2_champ_ros2_controller.cpp
+  src/go2/go2_payload_compensator.cpp
+  src/go2/go2_sport_state_reader.cpp
   src/common/motor_crc.cpp
 )
 target_compile_features(go2_champ_ros2_controller PRIVATE cxx_std_20)
