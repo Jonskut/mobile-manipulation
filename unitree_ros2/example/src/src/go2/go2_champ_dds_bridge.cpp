@@ -33,6 +33,7 @@
 #include <unistd.h>
 #include <unitree/idl/go2/LowCmd_.hpp>
 #include <unitree/idl/go2/LowState_.hpp>
+#include <unitree/idl/go2/SportModeState_.hpp>
 #include <unitree/robot/channel/channel_factory.hpp>
 #include <unitree/robot/channel/channel_publisher.hpp>
 #include <unitree/robot/channel/channel_subscriber.hpp>
@@ -47,6 +48,11 @@ constexpr size_t kTargetsFloats = 36;   // 12 q + 12 kp + 12 kd
 constexpr size_t kFeedbackFloats = 28;  // 12 leg q + 4 quat + 3 gyro + 3 accel
                                         // + 6 arm q (rt/lowstate motors 12..17)
 constexpr size_t kFeedbackLegacyFloats = 22;  // pre-arm packet, still accepted
+// Sim ground truth (rt/sportmodestate): world position xyz + velocity xyz.
+// Appended after the arm q whenever fresh (50 Hz publish cadence below).
+constexpr size_t kOdomFloats = 6;
+constexpr size_t kOdomFeedbackFloats = kFeedbackFloats + kOdomFloats;  // 34
+constexpr double kOdomTimeoutSec = 0.5;
 constexpr int kNumArmMotors = 6;
 constexpr int kFirstArmMotor = 12;  // legs 0..11, D1 arm 12..17 in LowState
 uint32_t crc32_core(uint32_t *ptr, uint32_t length) {
@@ -76,10 +82,15 @@ struct BridgeState {
   std::array<float, 3> imu_gyro{};
   std::array<float, 3> imu_acc{};
   std::array<float, kNumArmMotors> arm_q{};
+  std::array<float, 3> odom_pos{};
+  std::array<float, 3> odom_vel{};
+  std::atomic_bool have_odom{false};
+  std::chrono::steady_clock::time_point last_odom{};
   std::atomic_bool have_low_state{false};
   unitree_go::msg::dds_::LowCmd_ low_cmd{};
   unitree::robot::ChannelPublisherPtr<unitree_go::msg::dds_::LowCmd_> pub;
   unitree::robot::ChannelSubscriberPtr<unitree_go::msg::dds_::LowState_> sub;
+  unitree::robot::ChannelSubscriberPtr<unitree_go::msg::dds_::SportModeState_> sport_sub;
 };
 static void handleLowState(BridgeState *s, const void *message) {
   const auto &state =
@@ -102,6 +113,19 @@ static void handleLowState(BridgeState *s, const void *message) {
   s->imu_acc[1] = state.imu_state().accelerometer()[1];
   s->imu_acc[2] = state.imu_state().accelerometer()[2];
   s->have_low_state.store(true, std::memory_order_release);
+}
+static void handleSportModeState(BridgeState *s, const void *message) {
+  // Sim ground truth: world-frame position + linear velocity of the imu site.
+  // On the real robot this topic is onboard odometry (drifts) — same fields.
+  const auto &state =
+      *static_cast<const unitree_go::msg::dds_::SportModeState_ *>(message);
+  std::lock_guard<std::mutex> lock(s->mutex);
+  for (int i = 0; i < 3; ++i) {
+    s->odom_pos[i] = state.position()[i];
+    s->odom_vel[i] = state.velocity()[i];
+  }
+  s->last_odom = std::chrono::steady_clock::now();
+  s->have_odom.store(true, std::memory_order_release);
 }
 static void initLowCmd(unitree_go::msg::dds_::LowCmd_ &cmd) {
   cmd.head()[0] = 0xFE;
@@ -148,6 +172,11 @@ int main(int argc, char **argv) {
   state.sub = std::make_shared<
       unitree::robot::ChannelSubscriber<unitree_go::msg::dds_::LowState_>>("rt/lowstate");
   state.sub->InitChannel([&state](const void *msg) { handleLowState(&state, msg); }, 1);
+  state.sport_sub = std::make_shared<
+      unitree::robot::ChannelSubscriber<unitree_go::msg::dds_::SportModeState_>>(
+      "rt/sportmodestate");
+  state.sport_sub->InitChannel(
+      [&state](const void *msg) { handleSportModeState(&state, msg); }, 1);
 
   // Loopback UDP sockets (no ROS in this process by design).
   const int rx_fd = ::socket(AF_INET, SOCK_DGRAM, 0);
@@ -175,6 +204,7 @@ int main(int argc, char **argv) {
   int pub_counter = 0;
   std::array<float, kTargetsFloats> rx_buf{};
   std::array<float, kFeedbackFloats> tx_buf{};
+  std::array<float, kOdomFeedbackFloats> tx_odom_buf{};
   while (state.running.load()) {
     next_tick += std::chrono::duration_cast<std::chrono::steady_clock::duration>(
         std::chrono::duration<double>(kControlPeriod));
@@ -206,6 +236,7 @@ int main(int argc, char **argv) {
                                      (sizeof(state.low_cmd) >> 2) - 1);
     state.pub->Write(state.low_cmd);
     if (++pub_counter % 10 == 0 && state.have_low_state.load(std::memory_order_acquire)) {
+      bool odom_fresh = false;
       {
         std::lock_guard<std::mutex> lock(state.mutex);
         for (int i = 0; i < kNumLegMotors; ++i) tx_buf[i] = state.measured_q[i];
@@ -221,9 +252,27 @@ int main(int argc, char **argv) {
         tx_buf[21] = state.imu_acc[2];
         for (int i = 0; i < kNumArmMotors; ++i)
           tx_buf[22 + i] = state.arm_q[i];
+        // Sim ground truth when fresh; planner keeps accepting 28-float
+        // packets so stale odom never breaks the feedback path.
+        if (state.have_odom.load(std::memory_order_acquire) &&
+            std::chrono::duration<double>(std::chrono::steady_clock::now() -
+                                          state.last_odom)
+                    .count() < kOdomTimeoutSec) {
+          odom_fresh = true;
+          for (size_t i = 0; i < kFeedbackFloats; ++i) tx_odom_buf[i] = tx_buf[i];
+          for (int i = 0; i < 3; ++i) {
+            tx_odom_buf[kFeedbackFloats + i] = state.odom_pos[i];
+            tx_odom_buf[kFeedbackFloats + 3 + i] = state.odom_vel[i];
+          }
+        }
       }
-      ::sendto(tx_fd, tx_buf.data(), tx_buf.size() * sizeof(float), 0,
-               reinterpret_cast<sockaddr *>(&tx_addr), sizeof(tx_addr));
+      if (odom_fresh) {
+        ::sendto(tx_fd, tx_odom_buf.data(), tx_odom_buf.size() * sizeof(float), 0,
+                 reinterpret_cast<sockaddr *>(&tx_addr), sizeof(tx_addr));
+      } else {
+        ::sendto(tx_fd, tx_buf.data(), tx_buf.size() * sizeof(float), 0,
+                 reinterpret_cast<sockaddr *>(&tx_addr), sizeof(tx_addr));
+      }
     }
     std::this_thread::sleep_until(next_tick);
   }

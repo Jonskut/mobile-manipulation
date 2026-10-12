@@ -9,6 +9,7 @@
 /workspace/build/unitree_ros2_example/CMakeFiles/go2_d1_stand_controller.dir
 /workspace/build/unitree_ros2_example/CMakeFiles/go2_d1_arm_poses.dir
 /workspace/build/unitree_ros2_example/CMakeFiles/go2_champ_dds_bridge.dir
+/workspace/build/unitree_ros2_example/CMakeFiles/go2_champ_ros2_controller.dir
 /workspace/build/unitree_ros2_example/CMakeFiles/go2_champ_gait_planner.dir
 /workspace/build/unitree_ros2_example/CMakeFiles/go2_robot_state_client.dir
 /workspace/build/unitree_ros2_example/CMakeFiles/test.dir

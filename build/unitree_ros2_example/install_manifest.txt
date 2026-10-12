@@ -6,11 +6,13 @@
 /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example
 /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge
 /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner
+/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_ros2_controller
 /workspace/install/unitree_ros2_example/bin/go2_robot_state_client
 /workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller
 /workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses
 /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config/go2_champ_gait.yaml
 /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_walk.launch.py
+/workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_ros2.launch.py
 /workspace/install/unitree_ros2_example/share/ament_index/resource_index/package_run_dependencies/unitree_ros2_example
 /workspace/install/unitree_ros2_example/share/ament_index/resource_index/parent_prefix_path/unitree_ros2_example
 /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.sh

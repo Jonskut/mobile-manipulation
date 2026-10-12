@@ -70,3 +70,18 @@ ros2 launch unitree_ros2_example go2_champ_ros2.launch.py dds_domain_id:=1 dds_i
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+
+## Useful topics:
+### To subscribe:
+- /odom/ground_truth
+    - For position and velocity of dog xyzrpy
+- /current_servo_angle
+    - For joint angles of d1 arm
+- /arm_Feedback
+    - d1 arm command acknowledgment, error reporting
+
+### To send
+- /cmd_vel
+    - We use this one to send velocity commands to the dog. xyzrpy
+- rt/arm_Command
+    - To send arm commands. JSON per-joint angles.

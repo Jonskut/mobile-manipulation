@@ -160,6 +160,12 @@ go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_int
 go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_introspection_cpp.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_cpp.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_py.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_c.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_cpp.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_c.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_cpp.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_py.so
 go2_d1_arm_poses: /opt/ros/humble/lib/librosbag2_cpp.so
 go2_d1_arm_poses: /opt/unitree_robotics/lib/libddsc.so
 go2_d1_arm_poses: /opt/unitree_robotics/lib/libddscxx.so
@@ -174,6 +180,8 @@ go2_d1_arm_poses: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib/
 go2_d1_arm_poses: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
@@ -186,10 +194,10 @@ go2_d1_arm_poses: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.s
 go2_d1_arm_poses: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-go2_d1_arm_poses: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
+go2_d1_arm_poses: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 go2_d1_arm_poses: /opt/ros/humble/lib/librclcpp.so

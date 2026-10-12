@@ -1,0 +1,88 @@
+Consolidate compiler generated dependencies of target go2_d1_arm_poses
+Consolidate compiler generated dependencies of target go2_d1_stand_controller
+[  3%] Building CXX object CMakeFiles/go2_champ_ros2_controller.dir/src/common/motor_crc.cpp.o
+[  6%] Building CXX object CMakeFiles/go2_champ_ros2_controller.dir/src/go2/go2_champ_ros2_controller.cpp.o
+[ 24%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.o
+[ 24%] Building CXX object CMakeFiles/read_motion_state.dir/src/read_motion_state.cpp.o
+[ 24%] Building CXX object CMakeFiles/go2_champ_dds_bridge.dir/src/go2/go2_champ_dds_bridge.cpp.o
+[ 24%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/low_level_ctrl.cpp.o
+[ 24%] Building CXX object CMakeFiles/go2_stand_example.dir/src/go2/go2_stand_example.cpp.o
+[ 24%] Building CXX object CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.o
+[ 27%] Building CXX object CMakeFiles/read_wireless_controller.dir/src/read_wireless_controller.cpp.o
+[ 30%] Building CXX object CMakeFiles/read_low_state.dir/src/read_low_state.cpp.o
+[ 33%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/src/go2/go2_d1_stand_controller.cpp.o
+[ 36%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o
+[ 39%] Building CXX object CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o
+[ 42%] Building CXX object CMakeFiles/go2_sport_client.dir/src/go2/go2_sport_client.cpp.o
+[ 48%] Building CXX object CMakeFiles/go2_champ_gait_planner.dir/src/go2/go2_champ_gait_planner.cpp.o
+[ 48%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/go2/go2_robot_state_client.cpp.o
+[ 51%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.o
+[ 57%] Linking CXX executable go2_d1_arm_poses
+[ 54%] Linking CXX executable go2_d1_stand_controller
+[ 60%] Linking CXX executable low_level_ctrl
+[ 63%] Linking CXX executable go2_champ_dds_bridge
+[ 63%] Built target low_level_ctrl
+[ 63%] Built target go2_champ_dds_bridge
+[ 69%] Built target go2_d1_stand_controller
+[ 75%] Built target go2_d1_arm_poses
+[ 78%] Linking CXX executable read_wireless_controller
+[ 81%] Linking CXX executable read_motion_state
+[ 84%] Linking CXX executable read_low_state
+[ 84%] Built target read_motion_state
+[ 84%] Built target read_wireless_controller
+[ 87%] Linking CXX executable go2_stand_example
+[ 87%] Built target read_low_state
+[ 87%] Built target go2_stand_example
+[ 90%] Linking CXX executable go2_sport_client
+[ 93%] Linking CXX executable go2_robot_state_client
+[ 93%] Built target go2_sport_client
+[ 93%] Built target go2_robot_state_client
+[ 96%] Linking CXX executable go2_champ_gait_planner
+[ 96%] Built target go2_champ_gait_planner
+[100%] Linking CXX executable go2_champ_ros2_controller
+[100%] Built target go2_champ_ros2_controller
+-- Install configuration: ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/low_level_ctrl
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/low_level_ctrl" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_low_state
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_low_state" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_motion_state
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_motion_state" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_wireless_controller
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_wireless_controller" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_sport_client
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_sport_client" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner" to ""
+-- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_ros2_controller
+-- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_ros2_controller" to ""
+-- Installing: /workspace/install/unitree_ros2_example/bin/go2_robot_state_client
+-- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_robot_state_client" to ""
+-- Installing: /workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller
+-- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller" to ""
+-- Installing: /workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses
+-- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses" to ""
+-- Up-to-date: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config/go2_champ_gait.yaml
+-- Up-to-date: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_walk.launch.py
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_ros2.launch.py
+-- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/package_run_dependencies/unitree_ros2_example
+-- Up-to-date: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/parent_prefix_path/unitree_ros2_example
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.sh
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.dsv
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/path.sh
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/path.dsv
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.bash
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.sh
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.zsh
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.dsv
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/package.dsv
+-- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/packages/unitree_ros2_example
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/cmake/unitree_ros2_exampleConfig.cmake
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/cmake/unitree_ros2_exampleConfig-version.cmake
+-- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/package.xml

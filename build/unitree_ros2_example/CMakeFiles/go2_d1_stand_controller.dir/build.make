@@ -160,6 +160,12 @@ go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupp
 go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_introspection_cpp.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_cpp.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_py.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_c.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_cpp.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_c.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_cpp.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_py.so
 go2_d1_stand_controller: /opt/ros/humble/lib/librosbag2_cpp.so
 go2_d1_stand_controller: /opt/unitree_robotics/lib/libddsc.so
 go2_d1_stand_controller: /opt/unitree_robotics/lib/libddscxx.so
@@ -174,6 +180,8 @@ go2_d1_stand_controller: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_a
 go2_d1_stand_controller: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
@@ -186,10 +194,10 @@ go2_d1_stand_controller: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesuppor
 go2_d1_stand_controller: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-go2_d1_stand_controller: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
+go2_d1_stand_controller: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 go2_d1_stand_controller: /opt/ros/humble/lib/librclcpp.so

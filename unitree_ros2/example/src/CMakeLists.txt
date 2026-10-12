@@ -32,6 +32,7 @@ set (
   sensor_msgs
   geometry_msgs
   trajectory_msgs
+  nav_msgs
   rosbag2_cpp
 )
 
@@ -45,6 +46,7 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 find_package(rosbag2_cpp REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(unitree_arm REQUIRED)

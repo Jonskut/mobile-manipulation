@@ -72,6 +72,7 @@ all: CMakeFiles/go2_stand_example.dir/all
 all: CMakeFiles/go2_d1_stand_controller.dir/all
 all: CMakeFiles/go2_d1_arm_poses.dir/all
 all: CMakeFiles/go2_champ_dds_bridge.dir/all
+all: CMakeFiles/go2_champ_ros2_controller.dir/all
 all: CMakeFiles/go2_champ_gait_planner.dir/all
 all: CMakeFiles/go2_robot_state_client.dir/all
 .PHONY : all
@@ -92,6 +93,7 @@ clean: CMakeFiles/go2_stand_example.dir/clean
 clean: CMakeFiles/go2_d1_stand_controller.dir/clean
 clean: CMakeFiles/go2_d1_arm_poses.dir/clean
 clean: CMakeFiles/go2_champ_dds_bridge.dir/clean
+clean: CMakeFiles/go2_champ_ros2_controller.dir/clean
 clean: CMakeFiles/go2_champ_gait_planner.dir/clean
 clean: CMakeFiles/go2_robot_state_client.dir/clean
 .PHONY : clean
@@ -155,7 +157,7 @@ CMakeFiles/unitree_ros2_example_uninstall.dir/clean:
 CMakeFiles/low_level_ctrl.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=22,23,24 "Built target low_level_ctrl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=25,26,27 "Built target low_level_ctrl"
 .PHONY : CMakeFiles/low_level_ctrl.dir/all
 
 # Build rule for subdir invocation for target.
@@ -181,7 +183,7 @@ CMakeFiles/low_level_ctrl.dir/clean:
 CMakeFiles/read_low_state.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state.dir/build.make CMakeFiles/read_low_state.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_low_state.dir/build.make CMakeFiles/read_low_state.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=25,26 "Built target read_low_state"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=28,29 "Built target read_low_state"
 .PHONY : CMakeFiles/read_low_state.dir/all
 
 # Build rule for subdir invocation for target.
@@ -207,7 +209,7 @@ CMakeFiles/read_low_state.dir/clean:
 CMakeFiles/read_motion_state.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_motion_state.dir/build.make CMakeFiles/read_motion_state.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_motion_state.dir/build.make CMakeFiles/read_motion_state.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=27,28 "Built target read_motion_state"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=30,31 "Built target read_motion_state"
 .PHONY : CMakeFiles/read_motion_state.dir/all
 
 # Build rule for subdir invocation for target.
@@ -233,7 +235,7 @@ CMakeFiles/read_motion_state.dir/clean:
 CMakeFiles/read_wireless_controller.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_wireless_controller.dir/build.make CMakeFiles/read_wireless_controller.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/read_wireless_controller.dir/build.make CMakeFiles/read_wireless_controller.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=29,30 "Built target read_wireless_controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=32,33 "Built target read_wireless_controller"
 .PHONY : CMakeFiles/read_wireless_controller.dir/all
 
 # Build rule for subdir invocation for target.
@@ -259,7 +261,7 @@ CMakeFiles/read_wireless_controller.dir/clean:
 CMakeFiles/go2_sport_client.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_sport_client.dir/build.make CMakeFiles/go2_sport_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_sport_client.dir/build.make CMakeFiles/go2_sport_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=16,17,18 "Built target go2_sport_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=19,20,21 "Built target go2_sport_client"
 .PHONY : CMakeFiles/go2_sport_client.dir/all
 
 # Build rule for subdir invocation for target.
@@ -285,7 +287,7 @@ CMakeFiles/go2_sport_client.dir/clean:
 CMakeFiles/go2_stand_example.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=19,20,21 "Built target go2_stand_example"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=22,23,24 "Built target go2_stand_example"
 .PHONY : CMakeFiles/go2_stand_example.dir/all
 
 # Build rule for subdir invocation for target.
@@ -311,7 +313,7 @@ CMakeFiles/go2_stand_example.dir/clean:
 CMakeFiles/go2_d1_stand_controller.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_stand_controller.dir/build.make CMakeFiles/go2_d1_stand_controller.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=9,10,11,12 "Built target go2_d1_stand_controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=12,13,14,15 "Built target go2_d1_stand_controller"
 .PHONY : CMakeFiles/go2_d1_stand_controller.dir/all
 
 # Build rule for subdir invocation for target.
@@ -337,7 +339,7 @@ CMakeFiles/go2_d1_stand_controller.dir/clean:
 CMakeFiles/go2_d1_arm_poses.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_d1_arm_poses.dir/build.make CMakeFiles/go2_d1_arm_poses.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=5,6,7,8 "Built target go2_d1_arm_poses"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=8,9,10,11 "Built target go2_d1_arm_poses"
 .PHONY : CMakeFiles/go2_d1_arm_poses.dir/all
 
 # Build rule for subdir invocation for target.
@@ -383,6 +385,32 @@ CMakeFiles/go2_champ_dds_bridge.dir/clean:
 .PHONY : CMakeFiles/go2_champ_dds_bridge.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/go2_champ_ros2_controller.dir
+
+# All Build rule for target.
+CMakeFiles/go2_champ_ros2_controller.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=5,6,7 "Built target go2_champ_ros2_controller"
+.PHONY : CMakeFiles/go2_champ_ros2_controller.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/go2_champ_ros2_controller.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/unitree_ros2_example/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/go2_champ_ros2_controller.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/build/unitree_ros2_example/CMakeFiles 0
+.PHONY : CMakeFiles/go2_champ_ros2_controller.dir/rule
+
+# Convenience name for target.
+go2_champ_ros2_controller: CMakeFiles/go2_champ_ros2_controller.dir/rule
+.PHONY : go2_champ_ros2_controller
+
+# clean rule for target.
+CMakeFiles/go2_champ_ros2_controller.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/clean
+.PHONY : CMakeFiles/go2_champ_ros2_controller.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/go2_champ_gait_planner.dir
 
 # All Build rule for target.
@@ -415,7 +443,7 @@ CMakeFiles/go2_champ_gait_planner.dir/clean:
 CMakeFiles/go2_robot_state_client.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=13,14,15 "Built target go2_robot_state_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspace/build/unitree_ros2_example/CMakeFiles --progress-num=16,17,18 "Built target go2_robot_state_client"
 .PHONY : CMakeFiles/go2_robot_state_client.dir/all
 
 # Build rule for subdir invocation for target.

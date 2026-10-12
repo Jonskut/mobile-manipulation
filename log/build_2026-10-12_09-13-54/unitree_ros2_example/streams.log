@@ -1,0 +1,108 @@
+[0.016s] Invoking command in '/workspace/build/unitree_ros2_example': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspace/build/unitree_ros2_example -- -j16 -l16
+[0.094s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.234s] -- Found unitree_go: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/share/unitree_go/cmake)
+[0.273s] -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.276s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.284s] -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.296s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.310s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.360s] -- Found unitree_hg: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/share/unitree_hg/cmake)
+[0.371s] -- Found unitree_api: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/share/unitree_api/cmake)
+[0.383s] -- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+[0.412s] -- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.413s] -- Found rmw_cyclonedds_cpp: 1.3.5 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[0.435s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.477s] -- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.493s] -- Found trajectory_msgs: 4.9.2 (/opt/ros/humble/share/trajectory_msgs/cmake)
+[0.514s] -- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.530s] -- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)
+[0.564s] -- Found unitree_arm: 0.0.0 (/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/share/unitree_arm/cmake)
+[0.616s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.716s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.748s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.750s] -- Configured cppcheck include dirs: /workspace/unitree_ros2/example/src/include;/workspace/unitree_ros2/example/src/include/common;/workspace/unitree_ros2/example/src/include/nlohmann;/workspace/unitree_ros2/example/src/include/champ;/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include;/workspace/unitree_ros2/example/src/../../../d1_sdk/src/msg
+[0.750s] -- Configured cppcheck exclude dirs and/or files: 
+[0.780s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.780s] -- Configured cpplint exclude dirs and/or files: 
+[0.784s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.792s] -- Added test 'lint_cmake' to check CMake code style
+[0.796s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.825s] -- Added test 'uncrustify' to check C / C++ code style
+[0.825s] -- Configured uncrustify additional arguments: 
+[0.829s] -- Added test 'xmllint' to check XML markup files
+[0.831s] -- Configuring done
+[0.910s] -- Generating done
+[0.933s] -- Build files have been written to: /workspace/build/unitree_ros2_example
+[0.977s] Consolidate compiler generated dependencies of target read_low_state
+[0.978s] Consolidate compiler generated dependencies of target read_wireless_controller
+[0.978s] Consolidate compiler generated dependencies of target read_motion_state
+[0.978s] Consolidate compiler generated dependencies of target go2_champ_dds_bridge
+[0.982s] Consolidate compiler generated dependencies of target go2_champ_gait_planner
+[0.982s] Consolidate compiler generated dependencies of target low_level_ctrl
+[0.982s] Consolidate compiler generated dependencies of target go2_stand_example
+[0.982s] Consolidate compiler generated dependencies of target go2_d1_arm_poses
+[0.982s] Consolidate compiler generated dependencies of target go2_d1_stand_controller
+[0.982s] Consolidate compiler generated dependencies of target go2_robot_state_client
+[0.983s] Consolidate compiler generated dependencies of target go2_sport_client
+[0.991s] [  6%] Building CXX object CMakeFiles/go2_champ_ros2_controller.dir/src/go2/go2_champ_ros2_controller.cpp.o
+[0.991s] [  6%] Building CXX object CMakeFiles/go2_champ_ros2_controller.dir/src/common/motor_crc.cpp.o
+[1.006s] [  9%] Building CXX object CMakeFiles/read_motion_state.dir/src/read_motion_state.cpp.o
+[1.006s] [ 15%] Building CXX object CMakeFiles/go2_stand_example.dir/src/go2/go2_stand_example.cpp.o
+[1.007s] [ 15%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/low_level_ctrl.cpp.o
+[1.007s] [ 18%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.o
+[1.007s] [ 21%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.o
+[1.007s] [ 24%] Building CXX object CMakeFiles/read_wireless_controller.dir/src/read_wireless_controller.cpp.o
+[1.010s] [ 27%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o
+[1.010s] [ 30%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/go2/go2_robot_state_client.cpp.o
+[1.012s] [ 33%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o
+[1.012s] [ 36%] Building CXX object CMakeFiles/go2_champ_dds_bridge.dir/src/go2/go2_champ_dds_bridge.cpp.o
+[1.017s] [ 39%] Building CXX object CMakeFiles/go2_champ_gait_planner.dir/src/go2/go2_champ_gait_planner.cpp.o
+[1.017s] [ 42%] Building CXX object CMakeFiles/read_low_state.dir/src/read_low_state.cpp.o
+[1.020s] [ 45%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/src/go2/go2_d1_stand_controller.cpp.o
+[1.020s] [ 48%] Building CXX object CMakeFiles/go2_sport_client.dir/src/go2/go2_sport_client.cpp.o
+[1.390s] In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+[1.390s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+[1.390s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+[1.391s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+[1.391s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+[1.391s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+[1.391s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+[1.391s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_dds_bridge.cpp:37:
+[1.391s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[1.391s]   123 | #define UT_THROW(ExceptionType, args...)    \
+[1.391s]       |                                     ^~~
+[1.391s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[1.391s]   131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+[1.391s]       |                                                   ^~~
+[1.518s] In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+[1.518s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+[1.518s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+[1.518s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+[1.520s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+[1.521s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+[1.521s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+[1.521s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_d1_arm_poses.cpp:33:
+[1.521s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[1.521s]   123 | #define UT_THROW(ExceptionType, args...)    \
+[1.521s]       |                                     ^~~
+[1.521s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[1.521s]   131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+[1.521s]       |                                                   ^~~
+[1.521s] In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+[1.521s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+[1.521s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+[1.521s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+[1.522s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+[1.522s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+[1.522s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+[1.522s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_d1_stand_controller.cpp:14:
+[1.522s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[1.522s]   123 | #define UT_THROW(ExceptionType, args...)    \
+[1.525s]       |                                     ^~~
+[1.525s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[1.526s]   131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+[1.526s]       |                                                   ^~~
+[3.249s] [ 51%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/ArmString_.cpp.o
+[3.312s] [ 54%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/workspace/d1_sdk/src/msg/PubServoInfo_.cpp.o
+[5.346s] [ 57%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.o
+[5.686s] [ 60%] Building CXX object CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o

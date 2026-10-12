@@ -127,6 +127,12 @@ go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesuppo
 go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_introspection_cpp.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_cpp.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_py.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_c.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_cpp.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_c.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_cpp.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_py.so
 go2_champ_gait_planner: /opt/ros/humble/lib/librosbag2_cpp.so
 go2_champ_gait_planner: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/libunitree_go__rosidl_typesupport_c.so
 go2_champ_gait_planner: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/libunitree_go__rosidl_generator_c.so
@@ -139,6 +145,8 @@ go2_champ_gait_planner: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_ar
 go2_champ_gait_planner: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
@@ -151,10 +159,10 @@ go2_champ_gait_planner: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport
 go2_champ_gait_planner: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-go2_champ_gait_planner: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
+go2_champ_gait_planner: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 go2_champ_gait_planner: /opt/ros/humble/lib/librclcpp.so

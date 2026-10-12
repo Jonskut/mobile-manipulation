@@ -25,6 +25,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "geometry_msgs/msg/pose.hpp"
+#include "nav_msgs/msg/odometry.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
 #include "sensor_msgs/msg/imu.hpp"
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
@@ -53,8 +54,12 @@ constexpr uint16_t kFeedbackPort = 17611;
 constexpr double kControlPeriod = 0.002;
 // Extended feedback: 12 leg q + 4 quat + 3 gyro + 3 accel + 6 arm q.
 // Legacy 22-float packets (pre-arm) are still accepted.
+// Odom extension: + 3 world pos xyz + 3 world vel xyz (sim ground truth from
+// rt/sportmodestate, forwarded by the bridge). Absent on stale/legacy links.
 constexpr size_t kFeedbackFloats = 28;
 constexpr size_t kFeedbackLegacyFloats = 22;
+constexpr size_t kOdomFloats = 6;
+constexpr size_t kOdomFeedbackFloats = kFeedbackFloats + kOdomFloats;  // 34
 constexpr double kDeg2Rad = 0.017453292519943295;
 constexpr std::array<int, kNumLegMotors> kChampToUnitreeMotor = {
     3, 4, 5, 0, 1, 2, 9, 10, 11, 6, 7, 8,
@@ -219,6 +224,10 @@ class Go2ChampWalkController : public rclcpp::Node {
     // trim_pitch_ff, trim_pitch_imu, pitch_measured] at the same 50 Hz.
     payload_trims_pub_ = create_publisher<std_msgs::msg::Float64MultiArray>(
         "payload_trims", 10);
+    // Sim ground truth odometry (bridge forwards rt/sportmodestate over UDP).
+    // Frame: odom (world) -> base_link. On the real robot this is onboard
+    // odometry (drifts); in sim it is exact MuJoCo frame_pos/frame_vel.
+    odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("odom/ground_truth", 10);
     arm_joint_sub_ = create_subscription<sensor_msgs::msg::JointState>(
         "d1_joint_states", 10,
         [this](const sensor_msgs::msg::JointState::SharedPtr msg) {
@@ -368,20 +377,30 @@ class Go2ChampWalkController : public rclcpp::Node {
     }
   }
   // Drain bridge feedback datagrams: 12 leg q + 4 quat + 3 gyro + 3 accel
-  // (+ 6 arm q when the extended 28-float packet is present).
-  // Also republishes joint_states_measured / imu_measured for introspection.
+  // (+ 6 arm q when the extended 28-float packet is present, + 6 odom floats
+  //  pos xyz / vel xyz when the 34-float ground-truth packet is present).
+  // Also republishes joint_states_measured / imu_measured / odom for
+  // introspection.
   void pollBridgeFeedback() {
     if (!udp_ok_) return;
-    // Accept both legacy (22) and extended (28) packets; newest wins.
+    // Accept legacy (22), extended (28) and odom (34) packets; newest wins.
     std::array<float, kFeedbackFloats> buf28{};
     std::array<float, kFeedbackLegacyFloats> buf22{};
+    std::array<float, kOdomFeedbackFloats> buf34{};
     bool got = false;
     bool got_arm = false;
+    bool got_odom = false;
     for (;;) {
-      char raw[kFeedbackFloats * sizeof(float)];
+      char raw[kOdomFeedbackFloats * sizeof(float)];
       const ssize_t n = ::recv(udp_rx_fd_, raw, sizeof(raw), 0);
-      if (n == static_cast<ssize_t>(kFeedbackFloats * sizeof(float))) {
-        std::memcpy(buf28.data(), raw, sizeof(raw));
+      if (n == static_cast<ssize_t>(kOdomFeedbackFloats * sizeof(float))) {
+        std::memcpy(buf34.data(), raw, sizeof(raw));
+        got = true;
+        got_arm = true;
+        got_odom = true;
+      } else if (n == static_cast<ssize_t>(kFeedbackFloats * sizeof(float))) {
+        std::memcpy(buf28.data(), raw,
+                    kFeedbackFloats * sizeof(float));
         got = true;
         got_arm = true;
       } else if (n == static_cast<ssize_t>(kFeedbackLegacyFloats *
@@ -396,7 +415,12 @@ class Go2ChampWalkController : public rclcpp::Node {
     if (!got) return;
     // Normalize to the 28-float view for the rest of the pipeline.
     std::array<float, kFeedbackFloats> buf{};
-    if (got_arm) {
+    std::array<float, kOdomFloats> odom{};
+    if (got_odom) {
+      for (size_t i = 0; i < kFeedbackFloats; ++i) buf[i] = buf34[i];
+      for (size_t i = 0; i < kOdomFloats; ++i)
+        odom[i] = buf34[kFeedbackFloats + i];
+    } else if (got_arm) {
       buf = buf28;
     } else {
       for (size_t i = 0; i < kFeedbackLegacyFloats; ++i) buf[i] = buf22[i];
@@ -443,6 +467,27 @@ class Go2ChampWalkController : public rclcpp::Node {
     imu.linear_acceleration.y = buf[20];
     imu.linear_acceleration.z = buf[21];
     imu_measured_pub_->publish(imu);
+    if (got_odom) {
+      nav_msgs::msg::Odometry odom_msg;
+      odom_msg.header.stamp = stamp;
+      odom_msg.header.frame_id = "odom";
+      odom_msg.child_frame_id = "base_link";
+      odom_msg.pose.pose.position.x = odom[0];
+      odom_msg.pose.pose.position.y = odom[1];
+      odom_msg.pose.pose.position.z = odom[2];
+      // Orientation from the same feedback quat (w,x,y,z in buf[12..15]).
+      odom_msg.pose.pose.orientation.w = buf[12];
+      odom_msg.pose.pose.orientation.x = buf[13];
+      odom_msg.pose.pose.orientation.y = buf[14];
+      odom_msg.pose.pose.orientation.z = buf[15];
+      odom_msg.twist.twist.linear.x = odom[3];
+      odom_msg.twist.twist.linear.y = odom[4];
+      odom_msg.twist.twist.linear.z = odom[5];
+      odom_msg.twist.twist.angular.x = buf[16];
+      odom_msg.twist.twist.angular.y = buf[17];
+      odom_msg.twist.twist.angular.z = buf[18];
+      odom_pub_->publish(odom_msg);
+    }
   }
   void stepOnce() {
     float target_joints[kNumLegMotors];
@@ -754,6 +799,7 @@ class Go2ChampWalkController : public rclcpp::Node {
   rclcpp::Publisher<geometry_msgs::msg::PointStamped>::SharedPtr payload_com_pub_;
   rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr
       payload_trims_pub_;
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_pub_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr arm_joint_sub_;
   rclcpp::Subscription<unitree_arm::msg::PubServoInfo>::SharedPtr
       current_servo_angle_sub_;

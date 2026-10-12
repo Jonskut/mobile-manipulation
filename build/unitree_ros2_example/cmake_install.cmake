@@ -203,6 +203,26 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example" TYPE EXECUTABLE FILES "/workspace/build/unitree_ros2_example/go2_champ_ros2_controller")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller"
+         OLD_RPATH "/workspace/unitree_ros2/example/src/src:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_hg/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_api/lib:/workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib:/opt/ros/humble/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/unitree_ros2_example/go2_champ_ros2_controller")
+    endif()
+  endif()
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_robot_state_client" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/go2_robot_state_client")
     file(RPATH_CHECK

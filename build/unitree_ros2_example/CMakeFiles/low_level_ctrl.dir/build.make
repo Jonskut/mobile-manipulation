@@ -143,6 +143,12 @@ low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_intro
 low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_introspection_cpp.so
 low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_cpp.so
 low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_py.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_c.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_cpp.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_c.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_cpp.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_py.so
 low_level_ctrl: /opt/ros/humble/lib/librosbag2_cpp.so
 low_level_ctrl: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/libunitree_go__rosidl_typesupport_c.so
 low_level_ctrl: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/libunitree_go__rosidl_generator_c.so
@@ -155,6 +161,8 @@ low_level_ctrl: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib/li
 low_level_ctrl: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 low_level_ctrl: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 low_level_ctrl: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
 low_level_ctrl: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 low_level_ctrl: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 low_level_ctrl: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
@@ -167,10 +175,10 @@ low_level_ctrl: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
 low_level_ctrl: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 low_level_ctrl: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 low_level_ctrl: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_c.so
 low_level_ctrl: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 low_level_ctrl: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-low_level_ctrl: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
+low_level_ctrl: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so
 low_level_ctrl: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 low_level_ctrl: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 low_level_ctrl: /opt/ros/humble/lib/librclcpp.so

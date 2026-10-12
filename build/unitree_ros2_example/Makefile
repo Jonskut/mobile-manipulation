@@ -315,6 +315,19 @@ go2_champ_dds_bridge/fast:
 .PHONY : go2_champ_dds_bridge/fast
 
 #=============================================================================
+# Target rules for targets named go2_champ_ros2_controller
+
+# Build rule for target.
+go2_champ_ros2_controller: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 go2_champ_ros2_controller
+.PHONY : go2_champ_ros2_controller
+
+# fast build rule for target.
+go2_champ_ros2_controller/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/build
+.PHONY : go2_champ_ros2_controller/fast
+
+#=============================================================================
 # Target rules for targets named go2_champ_gait_planner
 
 # Build rule for target.
@@ -347,6 +360,7 @@ src/common/motor_crc.o: src/common/motor_crc.cpp.o
 src/common/motor_crc.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/src/common/motor_crc.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.o
 .PHONY : src/common/motor_crc.cpp.o
 
@@ -357,6 +371,7 @@ src/common/motor_crc.i: src/common/motor_crc.cpp.i
 src/common/motor_crc.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/src/common/motor_crc.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.i
 .PHONY : src/common/motor_crc.cpp.i
 
@@ -367,6 +382,7 @@ src/common/motor_crc.s: src/common/motor_crc.cpp.s
 src/common/motor_crc.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/low_level_ctrl.dir/build.make CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_stand_example.dir/build.make CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/src/common/motor_crc.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_robot_state_client.dir/build.make CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.s
 .PHONY : src/common/motor_crc.cpp.s
 
@@ -441,6 +457,30 @@ src/go2/go2_champ_gait_planner.s: src/go2/go2_champ_gait_planner.cpp.s
 src/go2/go2_champ_gait_planner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_gait_planner.dir/build.make CMakeFiles/go2_champ_gait_planner.dir/src/go2/go2_champ_gait_planner.cpp.s
 .PHONY : src/go2/go2_champ_gait_planner.cpp.s
+
+src/go2/go2_champ_ros2_controller.o: src/go2/go2_champ_ros2_controller.cpp.o
+.PHONY : src/go2/go2_champ_ros2_controller.o
+
+# target to build an object file
+src/go2/go2_champ_ros2_controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/src/go2/go2_champ_ros2_controller.cpp.o
+.PHONY : src/go2/go2_champ_ros2_controller.cpp.o
+
+src/go2/go2_champ_ros2_controller.i: src/go2/go2_champ_ros2_controller.cpp.i
+.PHONY : src/go2/go2_champ_ros2_controller.i
+
+# target to preprocess a source file
+src/go2/go2_champ_ros2_controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/src/go2/go2_champ_ros2_controller.cpp.i
+.PHONY : src/go2/go2_champ_ros2_controller.cpp.i
+
+src/go2/go2_champ_ros2_controller.s: src/go2/go2_champ_ros2_controller.cpp.s
+.PHONY : src/go2/go2_champ_ros2_controller.s
+
+# target to generate assembly for a file
+src/go2/go2_champ_ros2_controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/go2_champ_ros2_controller.dir/build.make CMakeFiles/go2_champ_ros2_controller.dir/src/go2/go2_champ_ros2_controller.cpp.s
+.PHONY : src/go2/go2_champ_ros2_controller.cpp.s
 
 src/go2/go2_d1_arm_poses.o: src/go2/go2_d1_arm_poses.cpp.o
 .PHONY : src/go2/go2_d1_arm_poses.o
@@ -729,6 +769,7 @@ help:
 	@echo "... unitree_ros2_example_uninstall"
 	@echo "... go2_champ_dds_bridge"
 	@echo "... go2_champ_gait_planner"
+	@echo "... go2_champ_ros2_controller"
 	@echo "... go2_d1_arm_poses"
 	@echo "... go2_d1_stand_controller"
 	@echo "... go2_robot_state_client"
@@ -750,6 +791,9 @@ help:
 	@echo "... src/go2/go2_champ_gait_planner.o"
 	@echo "... src/go2/go2_champ_gait_planner.i"
 	@echo "... src/go2/go2_champ_gait_planner.s"
+	@echo "... src/go2/go2_champ_ros2_controller.o"
+	@echo "... src/go2/go2_champ_ros2_controller.i"
+	@echo "... src/go2/go2_champ_ros2_controller.s"
 	@echo "... src/go2/go2_d1_arm_poses.o"
 	@echo "... src/go2/go2_d1_arm_poses.i"
 	@echo "... src/go2/go2_d1_arm_poses.s"

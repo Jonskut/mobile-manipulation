@@ -352,6 +352,9 @@ CMakeFiles/go2_champ_dds_bridge.dir/src/go2/go2_champ_dds_bridge.cpp.o: \
  /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/idl/go2/BmsState_.hpp \
  /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/idl/go2/IMUState_.hpp \
  /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/idl/go2/MotorState_.hpp \
+ /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/idl/go2/SportModeState_.hpp \
+ /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/idl/go2/PathPoint_.hpp \
+ /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/idl/go2/TimeSpec_.hpp \
  /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp \
  /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp \
  /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp \

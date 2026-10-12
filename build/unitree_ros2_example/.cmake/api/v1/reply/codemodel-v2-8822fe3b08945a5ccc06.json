@@ -1,0 +1,178 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-fbfc3ea2fc382b1909d0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "unitree_ros2_example",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_champ_dds_bridge::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_champ_dds_bridge-e92f9eeca89f906e8288.json",
+					"name" : "go2_champ_dds_bridge",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_champ_gait_planner::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_champ_gait_planner-cc784fee509f7995d058.json",
+					"name" : "go2_champ_gait_planner",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_champ_ros2_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_champ_ros2_controller-6e7017b9c3e807525088.json",
+					"name" : "go2_champ_ros2_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_d1_arm_poses::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_d1_arm_poses-475c29e9577ed54290e7.json",
+					"name" : "go2_d1_arm_poses",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_d1_stand_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_d1_stand_controller-5398ba433c29c5aef456.json",
+					"name" : "go2_d1_stand_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_robot_state_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_robot_state_client-c84ab84731aa36b9a7f8.json",
+					"name" : "go2_robot_state_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_sport_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_sport_client-4f9c5a3aa9f144fe8358.json",
+					"name" : "go2_sport_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "go2_stand_example::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-go2_stand_example-ef33a4b8d7d5f492c062.json",
+					"name" : "go2_stand_example",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "low_level_ctrl::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-low_level_ctrl-fdb0d550aaaa46a7c39d.json",
+					"name" : "low_level_ctrl",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_low_state::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_low_state-42160a720da6509e93b6.json",
+					"name" : "read_low_state",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_motion_state::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_motion_state-b767774ad48bf3e0e909.json",
+					"name" : "read_motion_state",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "read_wireless_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-read_wireless_controller-189e144069592c864409.json",
+					"name" : "read_wireless_controller",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-2593a684608c48f0ad76.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "unitree_ros2_example_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-unitree_ros2_example_uninstall-1e4b30ec772a3cd7e5c5.json",
+					"name" : "unitree_ros2_example_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/workspace/build/unitree_ros2_example",
+		"source" : "/workspace/unitree_ros2/example/src"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

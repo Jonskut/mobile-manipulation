@@ -143,6 +143,12 @@ go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_in
 go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_introspection_cpp.so
 go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_cpp.so
 go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_py.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_c.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_fastrtps_cpp.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_c.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_introspection_cpp.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_py.so
 go2_stand_example: /opt/ros/humble/lib/librosbag2_cpp.so
 go2_stand_example: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/libunitree_go__rosidl_typesupport_c.so
 go2_stand_example: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_go/lib/libunitree_go__rosidl_generator_c.so
@@ -155,6 +161,8 @@ go2_stand_example: /workspace/unitree_ros2/cyclonedds_ws/install/unitree_arm/lib
 go2_stand_example: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 go2_stand_example: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 go2_stand_example: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
 go2_stand_example: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 go2_stand_example: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 go2_stand_example: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
@@ -167,10 +175,10 @@ go2_stand_example: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.
 go2_stand_example: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 go2_stand_example: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
 go2_stand_example: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_typesupport_c.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_c.so
 go2_stand_example: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 go2_stand_example: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-go2_stand_example: /opt/ros/humble/lib/libtrajectory_msgs__rosidl_generator_c.so
+go2_stand_example: /opt/ros/humble/lib/libnav_msgs__rosidl_generator_c.so
 go2_stand_example: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 go2_stand_example: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 go2_stand_example: /opt/ros/humble/lib/librclcpp.so

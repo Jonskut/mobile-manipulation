@@ -1,0 +1,448 @@
+[0.016s] Invoking command in '/workspace/build/unitree_ros2_example': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspace/build/unitree_ros2_example -- -j16 -l16
+[0.129s] Consolidate compiler generated dependencies of target go2_d1_arm_poses
+[0.132s] Consolidate compiler generated dependencies of target go2_d1_stand_controller
+[0.135s] [  3%] Building CXX object CMakeFiles/go2_champ_ros2_controller.dir/src/common/motor_crc.cpp.o
+[0.135s] [  6%] Building CXX object CMakeFiles/go2_champ_ros2_controller.dir/src/go2/go2_champ_ros2_controller.cpp.o
+[0.174s] [ 24%] Building CXX object CMakeFiles/go2_d1_arm_poses.dir/src/go2/go2_d1_arm_poses.cpp.o
+[0.174s] [ 24%] Building CXX object CMakeFiles/read_motion_state.dir/src/read_motion_state.cpp.o
+[0.174s] [ 24%] Building CXX object CMakeFiles/go2_champ_dds_bridge.dir/src/go2/go2_champ_dds_bridge.cpp.o
+[0.175s] [ 24%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/low_level_ctrl.cpp.o
+[0.175s] [ 24%] Building CXX object CMakeFiles/go2_stand_example.dir/src/go2/go2_stand_example.cpp.o
+[0.175s] [ 24%] Building CXX object CMakeFiles/go2_stand_example.dir/src/common/motor_crc.cpp.o
+[0.176s] [ 27%] Building CXX object CMakeFiles/read_wireless_controller.dir/src/read_wireless_controller.cpp.o
+[0.177s] [ 30%] Building CXX object CMakeFiles/read_low_state.dir/src/read_low_state.cpp.o
+[0.177s] [ 33%] Building CXX object CMakeFiles/go2_d1_stand_controller.dir/src/go2/go2_d1_stand_controller.cpp.o
+[0.182s] [ 36%] Building CXX object CMakeFiles/low_level_ctrl.dir/src/common/motor_crc.cpp.o
+[0.190s] [ 39%] Building CXX object CMakeFiles/go2_sport_client.dir/src/common/ros2_sport_client.cpp.o
+[0.190s] [ 42%] Building CXX object CMakeFiles/go2_sport_client.dir/src/go2/go2_sport_client.cpp.o
+[0.196s] [ 48%] Building CXX object CMakeFiles/go2_champ_gait_planner.dir/src/go2/go2_champ_gait_planner.cpp.o
+[0.196s] [ 48%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/go2/go2_robot_state_client.cpp.o
+[0.817s] In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+[0.817s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+[0.817s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+[0.817s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+[0.818s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+[0.818s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+[0.818s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+[0.818s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_dds_bridge.cpp:37:
+[0.818s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[0.818s]   123 | #define UT_THROW(ExceptionType, args...)    \
+[0.818s]       |                                     ^~~
+[0.820s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[0.820s]   131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+[0.820s]       |                                                   ^~~
+[0.870s] In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+[0.870s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+[0.871s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+[0.871s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+[0.871s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+[0.871s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+[0.871s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+[0.871s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_d1_stand_controller.cpp:14:
+[0.872s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[0.877s]   123 | #define UT_THROW(ExceptionType, args...)    \
+[0.877s]       |                                     ^~~
+[0.878s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[0.878s]   131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+[0.878s]       |                                                   ^~~
+[0.881s] In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+[0.882s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+[0.882s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+[0.883s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+[0.883s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+[0.883s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+[0.883s]                  from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+[0.883s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_d1_arm_poses.cpp:33:
+[0.883s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[0.883s]   123 | #define UT_THROW(ExceptionType, args...)    \
+[0.883s]       |                                     ^~~
+[0.883s] /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+[0.884s]   131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+[0.884s]       |                                                   ^~~
+[11.013s] [ 51%] Building CXX object CMakeFiles/go2_robot_state_client.dir/src/common/motor_crc.cpp.o
+[13.349s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.355s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.355s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Point::Point(const geometry::Point&)’:
+[13.356s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:65: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.356s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.356s]       |                                                                 ^~~
+[13.356s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.356s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.356s]       |             ^~~~~
+[13.376s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Rotation::Rotation(const geometry::Rotation&)’:
+[13.376s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:71: warning: implicitly-declared ‘constexpr geometry::Rotation& geometry::Rotation::operator=(const geometry::Rotation&)’ is deprecated [-Wdeprecated-copy]
+[13.376s]    91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }
+[13.377s]       |                                                                       ^~~
+[13.382s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:13: note: because ‘geometry::Rotation’ has user-provided ‘geometry::Rotation::Rotation(const geometry::Rotation&)’
+[13.382s]    91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }
+[13.383s]       |             ^~~~~~~~
+[13.396s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.397s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.397s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Point::Point(const geometry::Point&)’:
+[13.401s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:65: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.402s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.408s]       |                                                                 ^~~
+[13.417s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.417s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.417s]       |             ^~~~~
+[13.418s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Rotation::Rotation(const geometry::Rotation&)’:
+[13.418s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:71: warning: implicitly-declared ‘constexpr geometry::Rotation& geometry::Rotation::operator=(const geometry::Rotation&)’ is deprecated [-Wdeprecated-copy]
+[13.418s]    91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }
+[13.418s]       |                                                                       ^~~
+[13.418s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:91:13: note: because ‘geometry::Rotation’ has user-provided ‘geometry::Rotation::Rotation(const geometry::Rotation&)’
+[13.418s]    91 |             Rotation(const Rotation &obj) : Matrix<3,3>() { (*this) = obj; }
+[13.418s]       |             ^~~~~~~~
+[13.418s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Transformation::Transformation(const geometry::Transformation&)’:
+[13.418s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:67: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.418s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.419s]       |                                                                   ^~~
+[13.419s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.419s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.419s]       |             ^~~~~~~~~~~~~~
+[13.419s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateX(float)’:
+[13.419s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:273:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.419s]   273 |                 p = tmp;
+[13.419s]       |                     ^~~
+[13.419s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.420s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.420s]       |             ^~~~~
+[13.420s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateY(float)’:
+[13.420s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:287:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.420s]   287 |                 p = tmp;
+[13.420s]       |                     ^~~
+[13.420s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.420s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.437s]       |             ^~~~~
+[13.438s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateZ(float)’:
+[13.438s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:301:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.438s]   301 |                 p = tmp;
+[13.438s]       |                     ^~~
+[13.438s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.439s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.440s]       |             ^~~~~
+[13.440s] In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:32,
+[13.440s]                  from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,
+[13.440s]                  from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+[13.440s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.440s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h: At global scope:
+[13.441s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:103:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.441s]   103 |             const float x() const
+[13.441s]       |             ^~~~~
+[13.441s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:108:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.441s]   108 |             const float y() const
+[13.441s]       |             ^~~~~
+[13.441s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:113:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.441s]   113 |             const float z() const
+[13.444s]       |             ^~~~~
+[13.444s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:118:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.444s]   118 |             const float roll() const
+[13.444s]       |             ^~~~~
+[13.444s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:123:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.444s]   123 |             const float pitch() const
+[13.444s]       |             ^~~~~
+[13.444s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:128:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.444s]   128 |             const float yaw() const
+[13.444s]       |             ^~~~~
+[13.445s] In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,
+[13.445s]                  from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+[13.445s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.445s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h: In member function ‘geometry::Transformation champ::QuadrupedLeg::foot_from_base()’:
+[13.445s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:95:51: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.445s]    95 |                 foot_position.p = foot_from_hip().p;
+[13.445s]       |                                                   ^
+[13.445s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.445s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.445s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.445s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.446s]       |             ^~~~~
+[13.446s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+[13.446s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.446s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h: In member function ‘void champ::QuadrupedBase::getFootPositions(geometry::Transformation*)’:
+[13.446s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:94:65: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.446s]    94 |                     foot_positions[i] = legs[i]->foot_from_base();
+[13.446s]       |                                                                 ^
+[13.446s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.446s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.451s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.458s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.458s]       |             ^~~~~~~~~~~~~~
+[13.458s] In file included from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.458s] /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h: In static member function ‘static void champ::BodyController::poseCommand(geometry::Transformation&, champ::QuadrupedLeg&, const champ::Pose&)’:
+[13.458s] /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:80:49: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.458s]    80 |                 foot_position = leg.zero_stance();
+[13.458s]       |                                                 ^
+[13.459s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.459s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.459s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.459s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.459s]       |             ^~~~~~~~~~~~~~
+[13.459s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.459s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:42:
+[13.459s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h: In member function ‘void champ::TrajectoryPlanner::generate(geometry::Transformation&, float, float, float, float)’:
+[13.461s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:110:43: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.461s]   110 |                     prev_foot_position_ = foot_position;
+[13.461s]       |                                           ^~~~~~~~~~~~~
+[13.461s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.464s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.464s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.464s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.464s]       |             ^~~~~~~~~~~~~~
+[13.464s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.465s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:42:
+[13.465s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:116:43: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.465s]   116 |                     prev_foot_position_ = foot_position;
+[13.465s]       |                                           ^~~~~~~~~~~~~
+[13.465s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.465s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.465s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.465s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.465s]       |             ^~~~~~~~~~~~~~
+[13.465s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.465s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:42:
+[13.466s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:156:37: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.466s]   156 |                     foot_position = prev_foot_position_;
+[13.466s]       |                                     ^~~~~~~~~~~~~~~~~~~
+[13.466s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.466s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.466s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.466s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.466s]       |             ^~~~~~~~~~~~~~
+[13.467s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.467s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:42:
+[13.467s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:159:39: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.467s]   159 |                 prev_foot_position_ = foot_position;
+[13.467s]       |                                       ^~~~~~~~~~~~~
+[13.467s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.471s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.471s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.472s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.472s]       |             ^~~~~~~~~~~~~~
+[13.472s] In file included from /workspace/unitree_ros2/example/src/include/champ/kinematics/kinematics.h:36,
+[13.472s]                  from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:34,
+[13.472s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:41:
+[13.472s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In static member function ‘static champ::PhaseGenerator::Time champ::PhaseGenerator::now()’:
+[13.472s] /workspace/unitree_ros2/example/src/include/champ/macros/macros.h:34:23: warning: ISO C++ forbids braced-groups within expressions [-Wpedantic]
+[13.472s]    34 |     #define time_us() ({ \
+[13.472s]       |                       ^
+[13.472s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:40:47: note: in expansion of macro ‘time_us’
+[13.473s]    40 |             static inline Time now() { return time_us(); }
+[13.473s]       |                                               ^~~~~~~
+[13.473s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:35,
+[13.473s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_gait_planner.cpp:42:
+[13.473s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In member function ‘void champ::PhaseGenerator::run(float, float, champ::PhaseGenerator::Time)’:
+[13.473s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:60:51: warning: unused parameter ‘step_length’ [-Wunused-parameter]
+[13.473s]    60 |             void run(float target_velocity, float step_length, Time time = now())
+[13.473s]       |                                             ~~~~~~^~~~~~~~~~~
+[13.473s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In copy constructor ‘geometry::Transformation::Transformation(const geometry::Transformation&)’:
+[13.473s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:67: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.473s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.474s]       |                                                                   ^~~
+[13.477s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.478s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.478s]       |             ^~~~~~~~~~~~~~
+[13.478s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateX(float)’:
+[13.478s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:273:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.478s]   273 |                 p = tmp;
+[13.479s]       |                     ^~~
+[13.479s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.479s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.479s]       |             ^~~~~
+[13.479s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateY(float)’:
+[13.480s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:287:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.480s]   287 |                 p = tmp;
+[13.480s]       |                     ^~~
+[13.480s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.480s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.480s]       |             ^~~~~
+[13.482s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h: In member function ‘geometry::Transformation& geometry::Transformation::RotateZ(float)’:
+[13.482s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:301:21: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.483s]   301 |                 p = tmp;
+[13.483s]       |                     ^~~
+[13.483s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.483s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.483s]       |             ^~~~~
+[13.483s] In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:32,
+[13.483s]                  from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,
+[13.483s]                  from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+[13.483s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.484s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h: At global scope:
+[13.484s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:103:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.484s]   103 |             const float x() const
+[13.484s]       |             ^~~~~
+[13.486s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:108:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.486s]   108 |             const float y() const
+[13.486s]       |             ^~~~~
+[13.486s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:113:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.486s]   113 |             const float z() const
+[13.486s]       |             ^~~~~
+[13.486s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:118:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.486s]   118 |             const float roll() const
+[13.486s]       |             ^~~~~
+[13.487s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:123:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.487s]   123 |             const float pitch() const
+[13.487s]       |             ^~~~~
+[13.487s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_joint.h:128:13: warning: type qualifiers ignored on function return type [-Wignored-qualifiers]
+[13.487s]   128 |             const float yaw() const
+[13.487s]       |             ^~~~~
+[13.487s] In file included from /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:32,
+[13.487s]                  from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+[13.487s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.487s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h: In member function ‘geometry::Transformation champ::QuadrupedLeg::foot_from_base()’:
+[13.487s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_leg.h:95:51: warning: implicitly-declared ‘constexpr geometry::Point& geometry::Point::operator=(const geometry::Point&)’ is deprecated [-Wdeprecated-copy]
+[13.487s]    95 |                 foot_position.p = foot_from_hip().p;
+[13.488s]       |                                                   ^
+[13.488s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.488s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.488s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:39:13: note: because ‘geometry::Point’ has user-provided ‘geometry::Point::Point(const geometry::Point&)’
+[13.488s]    39 |             Point(const Point &obj) : Matrix<3,1>() { (*this) = obj; }
+[13.488s]       |             ^~~~~
+[13.488s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:32,
+[13.488s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.492s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h: In member function ‘void champ::QuadrupedBase::getFootPositions(geometry::Transformation*)’:
+[13.492s] /workspace/unitree_ros2/example/src/include/champ/quadruped_base/quadruped_base.h:94:65: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.492s]    94 |                     foot_positions[i] = legs[i]->foot_from_base();
+[13.492s]       |                                                                 ^
+[13.492s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.492s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.493s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.493s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.493s]       |             ^~~~~~~~~~~~~~
+[13.493s] In file included from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.493s] /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h: In static member function ‘static void champ::BodyController::poseCommand(geometry::Transformation&, champ::QuadrupedLeg&, const champ::Pose&)’:
+[13.493s] /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:80:49: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.493s]    80 |                 foot_position = leg.zero_stance();
+[13.493s]       |                                                 ^
+[13.493s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.493s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.493s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.493s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.494s]       |             ^~~~~~~~~~~~~~
+[13.494s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.494s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:42:
+[13.494s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h: In member function ‘void champ::TrajectoryPlanner::generate(geometry::Transformation&, float, float, float, float)’:
+[13.494s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:110:43: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.494s]   110 |                     prev_foot_position_ = foot_position;
+[13.494s]       |                                           ^~~~~~~~~~~~~
+[13.494s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.494s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.494s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.494s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.494s]       |             ^~~~~~~~~~~~~~
+[13.495s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.495s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:42:
+[13.495s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:116:43: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.495s]   116 |                     prev_foot_position_ = foot_position;
+[13.495s]       |                                           ^~~~~~~~~~~~~
+[13.495s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.495s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.495s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.495s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.495s]       |             ^~~~~~~~~~~~~~
+[13.496s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.497s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:42:
+[13.497s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:156:37: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.497s]   156 |                     foot_position = prev_foot_position_;
+[13.497s]       |                                     ^~~~~~~~~~~~~~~~~~~
+[13.497s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.497s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.497s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.497s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.498s]       |             ^~~~~~~~~~~~~~
+[13.498s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:34,
+[13.498s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:42:
+[13.498s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/trajectory_planner.h:159:39: warning: implicitly-declared ‘constexpr geometry::Transformation& geometry::Transformation::operator=(const geometry::Transformation&)’ is deprecated [-Wdeprecated-copy]
+[13.498s]   159 |                 prev_foot_position_ = foot_position;
+[13.498s]       |                                       ^~~~~~~~~~~~~
+[13.498s] In file included from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:31,
+[13.498s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.498s] /workspace/unitree_ros2/example/src/include/champ/geometry/geometry.h:230:13: note: because ‘geometry::Transformation’ has user-provided ‘geometry::Transformation::Transformation(const geometry::Transformation&)’
+[13.498s]   230 |             Transformation(const Transformation &obj) { (*this) = obj; }
+[13.499s]       |             ^~~~~~~~~~~~~~
+[13.499s] In file included from /workspace/unitree_ros2/example/src/include/champ/kinematics/kinematics.h:36,
+[13.499s]                  from /workspace/unitree_ros2/example/src/include/champ/body_controller/body_controller.h:34,
+[13.499s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:41:
+[13.499s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In static member function ‘static champ::PhaseGenerator::Time champ::PhaseGenerator::now()’:
+[13.499s] /workspace/unitree_ros2/example/src/include/champ/macros/macros.h:34:23: warning: ISO C++ forbids braced-groups within expressions [-Wpedantic]
+[13.499s]    34 |     #define time_us() ({ \
+[13.499s]       |                       ^
+[13.499s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:40:47: note: in expansion of macro ‘time_us’
+[13.499s]    40 |             static inline Time now() { return time_us(); }
+[13.500s]       |                                               ^~~~~~~
+[13.500s] In file included from /workspace/unitree_ros2/example/src/include/champ/leg_controller/leg_controller.h:35,
+[13.500s]                  from /workspace/unitree_ros2/example/src/src/go2/go2_champ_ros2_controller.cpp:42:
+[13.500s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h: In member function ‘void champ::PhaseGenerator::run(float, float, champ::PhaseGenerator::Time)’:
+[13.500s] /workspace/unitree_ros2/example/src/include/champ/leg_controller/phase_generator.h:60:51: warning: unused parameter ‘step_length’ [-Wunused-parameter]
+[13.500s]    60 |             void run(float target_velocity, float step_length, Time time = now())
+[13.500s]       |                                             ~~~~~~^~~~~~~~~~~
+[14.398s] [ 57%] Linking CXX executable go2_d1_arm_poses
+[14.399s] [ 54%] Linking CXX executable go2_d1_stand_controller
+[14.588s] [ 60%] Linking CXX executable low_level_ctrl
+[16.000s] [ 63%] Linking CXX executable go2_champ_dds_bridge
+[16.303s] [ 63%] Built target low_level_ctrl
+[18.101s] [ 63%] Built target go2_champ_dds_bridge
+[18.199s] [ 69%] Built target go2_d1_stand_controller
+[18.232s] [ 75%] Built target go2_d1_arm_poses
+[23.760s] [ 78%] Linking CXX executable read_wireless_controller
+[23.811s] [ 81%] Linking CXX executable read_motion_state
+[23.879s] [ 84%] Linking CXX executable read_low_state
+[25.448s] [ 84%] Built target read_motion_state
+[25.455s] [ 84%] Built target read_wireless_controller
+[25.557s] [ 87%] Linking CXX executable go2_stand_example
+[25.573s] [ 87%] Built target read_low_state
+[26.562s] [ 87%] Built target go2_stand_example
+[28.407s] [ 90%] Linking CXX executable go2_sport_client
+[29.165s] [ 93%] Linking CXX executable go2_robot_state_client
+[29.834s] [ 93%] Built target go2_sport_client
+[30.032s] [ 93%] Built target go2_robot_state_client
+[43.367s] [ 96%] Linking CXX executable go2_champ_gait_planner
+[45.193s] [ 96%] Built target go2_champ_gait_planner
+[45.809s] [100%] Linking CXX executable go2_champ_ros2_controller
+[47.711s] [100%] Built target go2_champ_ros2_controller
+[47.729s] Invoked command in '/workspace/build/unitree_ros2_example' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /workspace/build/unitree_ros2_example -- -j16 -l16
+[47.742s] Invoking command in '/workspace/build/unitree_ros2_example': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /workspace/build/unitree_ros2_example
+[47.751s] -- Install configuration: ""
+[47.752s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/low_level_ctrl
+[47.754s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/low_level_ctrl" to ""
+[47.755s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_low_state
+[47.759s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_low_state" to ""
+[47.759s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_motion_state
+[47.764s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_motion_state" to ""
+[47.764s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_wireless_controller
+[47.769s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/read_wireless_controller" to ""
+[47.769s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_sport_client
+[47.776s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_sport_client" to ""
+[47.777s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example
+[47.781s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_stand_example" to ""
+[47.782s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge
+[47.787s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_dds_bridge" to ""
+[47.787s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner
+[47.801s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_gait_planner" to ""
+[47.801s] -- Installing: /workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_ros2_controller
+[47.817s] -- Set runtime path of "/workspace/install/unitree_ros2_example/lib/unitree_ros2_example/go2_champ_ros2_controller" to ""
+[47.818s] -- Installing: /workspace/install/unitree_ros2_example/bin/go2_robot_state_client
+[47.824s] -- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_robot_state_client" to ""
+[47.824s] -- Installing: /workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller
+[47.830s] -- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_d1_stand_controller" to ""
+[47.830s] -- Installing: /workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses
+[47.835s] -- Set runtime path of "/workspace/install/unitree_ros2_example/bin/go2_d1_arm_poses" to ""
+[47.836s] -- Up-to-date: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config
+[47.836s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/config/go2_champ_gait.yaml
+[47.836s] -- Up-to-date: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch
+[47.836s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_walk.launch.py
+[47.837s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/launch/go2_champ_ros2.launch.py
+[47.837s] -- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/package_run_dependencies/unitree_ros2_example
+[47.838s] -- Up-to-date: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/parent_prefix_path/unitree_ros2_example
+[47.838s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.sh
+[47.838s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/ament_prefix_path.dsv
+[47.838s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/path.sh
+[47.839s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/environment/path.dsv
+[47.839s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.bash
+[47.840s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.sh
+[47.840s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.zsh
+[47.841s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/local_setup.dsv
+[47.841s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/package.dsv
+[47.841s] -- Installing: /workspace/install/unitree_ros2_example/share/ament_index/resource_index/packages/unitree_ros2_example
+[47.842s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/cmake/unitree_ros2_exampleConfig.cmake
+[47.842s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/cmake/unitree_ros2_exampleConfig-version.cmake
+[47.843s] -- Installing: /workspace/install/unitree_ros2_example/share/unitree_ros2_example/package.xml
+[47.845s] Invoked command in '/workspace/build/unitree_ros2_example' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /workspace/build/unitree_ros2_example

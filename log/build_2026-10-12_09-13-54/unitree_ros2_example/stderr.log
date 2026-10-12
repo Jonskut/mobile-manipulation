@@ -1,0 +1,42 @@
+In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_champ_dds_bridge.cpp:37:
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  123 | #define UT_THROW(ExceptionType, args...)    \
+      |                                     ^~~
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+      |                                                   ^~~
+In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_d1_arm_poses.cpp:33:
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  123 | #define UT_THROW(ExceptionType, args...)    \
+      |                                     ^~~
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+      |                                                   ^~~
+In file included from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/any.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/json/json.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_policy_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_qos_parameter.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_parameter.hpp:5,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/dds/dds_factory_model.hpp:4,
+                 from /workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/robot/channel/channel_factory.hpp:4,
+                 from /workspace/unitree_ros2/example/src/src/go2/go2_d1_stand_controller.cpp:14:
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:123:37: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  123 | #define UT_THROW(ExceptionType, args...)    \
+      |                                     ^~~
+/workspace/unitree_ros2/example/src/../../../unitree_sdk2/include/unitree/common/exception.hpp:131:51: warning: ISO C++ does not permit named variadic macros [-Wvariadic-macros]
+  131 | #define UT_THROW_IF(condition, ExceptionType, args...)  \
+      |                                                   ^~~
