@@ -1,8 +1,13 @@
 # Mobile manipulation
-#### Required ros2 humble and vs code dev containers
+## Researchers:
+Petteri Pyhäluoto, Eero Rannikko, Jonatan Tevaniemi
 
+## Installation
+#### Required ros2 humble and vs code dev containers
+#### Clone repo
 #### Open in dev containers (shift+ctrl+P) -> rebuild and reopen in container
 
+## Run the simulation
 ### Terminal 1
 Build
 ```bash
@@ -30,44 +35,35 @@ cd /workspace/unitree_ros2/example
 export MAKEFLAGS="-j 1"
 colcon build --packages-select unitree_ros2_example --executor sequential
 ```
-Run
+#### Arm poses test
 ```bash
-cd /workspace/unitree_ros2/cyclonedds_ws
-source /opt/ros/humble/setup.bash
-source install/setup.bash
-source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
-cd /workspace/unitree_ros2/example
-source install/setup.bash
-ros2 run unitree_ros2_example go2_d1_stand_controller
+./build/unitree_ros2_example/go2_d1_arm_poses --help
+./build/unitree_ros2_example/go2_d1_arm_poses home        # sim (domain 1, lo)
+./build/unitree_ros2_example/go2_d1_arm_poses left
+./build/unitree_ros2_example/go2_d1_arm_poses demo
+./build/unitree_ros2_example/go2_d1_arm_poses forward eth0  # real (domain 0)
 ```
-
-The Go2 bridge/controller uses the native Unitree DDS topic names `rt/lowcmd`
-and `rt/lowstate` (reserved for the Go2 leg motors). The D1 arm stand
-controller is arm-only and uses the D1 SDK topics `rt/arm_Command`,
-`current_servo_angle`, and `arm_Feedback`, so the same command and feedback
-topics are used with MuJoCo and the physical robot.
+#### Listen to payload com message
+```bash
+ros2 topic echo /payload_com
+```
 
 ### Terminal 3 Champ 
 Build
-```bash 
+```bash
+cd /workspace/unitree_ros2/cyclonedds_ws
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install --parallel-workers 1
+source install/setup.bash
+source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
+
 cd /workspace/unitree_ros2/example
 export MAKEFLAGS="-j 1"
 colcon build --packages-select unitree_ros2_example --executor sequential
 ```
 Run
-```bash
-source /opt/ros/humble/setup.bash
-source /workspace/unitree_ros2/cyclonedds_ws/install/setup.bash
-source /workspace/unitree_ros2/example/install/setup.bash
-export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-export ROS_DOMAIN_ID=1
-export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="lo" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'
-
-ros2 launch unitree_ros2_example go2_champ_walk.launch.py
-```
-or:
 ```bash 
-ros2 launch unitree_ros2_example go2_champ_walk.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
+ros2 launch unitree_ros2_example go2_champ_ros2.launch.py dds_domain_id:=1 dds_interface:=lo kp:=60.0 kd:=5.0
 ```
 
 #### Send twist messages

@@ -80,6 +80,11 @@ add_executable(go2_champ_dds_bridge
 )
 target_compile_features(go2_champ_dds_bridge PRIVATE cxx_std_20)
 target_link_libraries(go2_champ_dds_bridge unitree_sdk2)
+add_executable(go2_champ_ros2_controller
+  src/go2/go2_champ_ros2_controller.cpp
+  src/common/motor_crc.cpp
+)
+target_compile_features(go2_champ_ros2_controller PRIVATE cxx_std_20)
 add_executable(go2_champ_gait_planner
   src/go2/go2_champ_gait_planner.cpp
 )
@@ -113,6 +118,8 @@ ament_target_dependencies(go2_d1_arm_poses ${DEPENDENCY_LIST})
 ament_target_dependencies(go2_champ_gait_planner ${DEPENDENCY_LIST})
 # Eigen for the payload CoM estimator (header-only FK).
 target_include_directories(go2_champ_gait_planner PRIVATE ${EIGEN3_INCLUDE_DIR})
+ament_target_dependencies(go2_champ_ros2_controller ${DEPENDENCY_LIST})
+target_include_directories(go2_champ_ros2_controller PRIVATE ${EIGEN3_INCLUDE_DIR})
 # NOTE: go2_champ_dds_bridge intentionally has NO ament_target_dependencies:
 # it must stay ROS-free (Unitree's bundled CycloneDDS clashes with ROS's
 # rmw_cyclonedds_cpp inside one process). It talks to the gait planner
@@ -130,6 +137,7 @@ install(TARGETS
         go2_stand_example
         go2_champ_dds_bridge
         go2_champ_gait_planner
+        go2_champ_ros2_controller
         DESTINATION lib/${PROJECT_NAME}
         )
 
